@@ -2,4 +2,4 @@ services:
   donkeybot:
     image: ghcr.io/mattvperry/donkeybot:db3
     env_file: stack.env
-    restart: true
+    restart: always
