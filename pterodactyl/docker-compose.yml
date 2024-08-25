@@ -11,6 +11,7 @@ services:
     restart: always
     volumes:
       - pterodactyl_panel:/data
+
   ##
   # -- Pterodactyl Daemon --
   # This service provides the wings runtime.
@@ -30,7 +31,7 @@ services:
       - pterodactyl_config:/etc/pterodactyl
       # - ${PTERO_HOME}/conf.d/letsencrypt:/etc/letsencrypt:ro
       # - ${PTERO_HOME}/conf.d/certs:/etc/certs:ro
-    working_dir: pterodactyl_daemon
+
   ##
   # -- MariaDB --
   # Required for the control panel to work.
@@ -46,6 +47,7 @@ services:
     restart: always
     volumes:
       - pterodactyl_mysql:/var/lib/mysql
+
   ##
   # -- Pterodactyl Panel --
   # This is the container that provides the main web interface.
@@ -63,6 +65,7 @@ services:
         condition: service_started
       redis:
         condition: service_started
+
   ##
   # -- Redis --
   ##
@@ -76,6 +79,7 @@ services:
         aliases:
           - cache
     restart: always
+
   ##
   # -- Panel Worker --
   ##
