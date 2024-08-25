@@ -1,7 +1,7 @@
 services:
   watchtower:
     image: containrrr/watchtower
-    command: --debug --http-api-update
+    command: --debug --http-api-update --http-api-periodic-polls
     environment:
       - WATCHTOWER_HTTP_API_TOKEN=${WATCHTOWER_HTTP_API_TOKEN}
     restart: always
