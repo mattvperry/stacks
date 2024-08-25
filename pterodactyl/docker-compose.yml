@@ -25,13 +25,13 @@ services:
     privileged: true
     restart: always
     volumes:
-      - ${DAEMON_DATA_DIRECTORY:-/var/lib/pterodactyl}:${DAEMON_DATA_DIRECTORY:-/var/lib/pterodactyl}
+      - pterodactyl/daemon:/var/lib/pterodactyl
       - ${DOCKER_SOCKET:-/var/run/docker.sock}:${DOCKER_SOCKET:-/var/run/docker.sock}
       - /tmp/pterodactyl/:/tmp/pterodactyl/
       - pterodactyl/conf.d/daemon:/etc/pterodactyl
       # - ${PTERO_HOME}/conf.d/letsencrypt:/etc/letsencrypt:ro
       # - ${PTERO_HOME}/conf.d/certs:/etc/certs:ro
-    working_dir: ${DAEMON_DATA_DIRECTORY:-/var/lib/pterodactyl}
+    working_dir: /var/lib/pterodactyl
   ##
   # -- MariaDB --
   # Required for the control panel to work.
