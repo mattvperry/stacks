@@ -1,5 +1,7 @@
 services:
   donkeybot:
     image: ghcr.io/mattvperry/donkeybot:db3
-    env_file: stack.env
     restart: always
+    environment:
+      - HUBOT_DISCORD_TOKEN=${HUBOT_DISCORD_TOKEN}
+      - HUBOT_PTERO_API=${HUBOT_PTERO_API}

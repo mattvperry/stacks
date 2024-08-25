@@ -30,7 +30,7 @@ services:
       - pterodactyl_config:/etc/pterodactyl
       # - ${PTERO_HOME}/conf.d/letsencrypt:/etc/letsencrypt:ro
       # - ${PTERO_HOME}/conf.d/certs:/etc/certs:ro
-    working_dir: /var/lib/pterodactyl
+    working_dir: pterodactyl_daemon
   ##
   # -- MariaDB --
   # Required for the control panel to work.
