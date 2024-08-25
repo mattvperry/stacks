@@ -5,7 +5,7 @@ services:
     environment:
       - WATCHTOWER_HTTP_API_TOKEN=${WATCHTOWER_HTTP_API_TOKEN}
     restart: always
-    volume:
+    volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - 8182:8080
