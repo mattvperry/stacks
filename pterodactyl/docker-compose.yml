@@ -10,7 +10,7 @@ services:
     image: ccarney16/pterodactyl-panel:${PANEL_VERSION:-latest}
     restart: always
     volumes:
-      - pterodactyl_panel:/data
+      - panel:/data
 
   ##
   # -- Pterodactyl Daemon --
@@ -26,12 +26,10 @@ services:
     privileged: true
     restart: always
     volumes:
-      - pterodactyl_daemon_data:/var/lib/pterodactyl
-      - ${DOCKER_SOCKET:-/var/run/docker.sock}:${DOCKER_SOCKET:-/var/run/docker.sock}
-      - pterodactyl_config:/etc/pterodactyl
-      - pterodactyl_temp:/tmp/pterodactyl
-      # - ${PTERO_HOME}/conf.d/letsencrypt:/etc/letsencrypt:ro
-      # - ${PTERO_HOME}/conf.d/certs:/etc/certs:ro
+      - /var/lib/pterodactyl:/var/lib/pterodactyl
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/pterodactyl:/tmp/pterodactyl
+      - config:/etc/pterodactyl
 
   ##
   # -- MariaDB --
@@ -47,7 +45,7 @@ services:
           - mysql
     restart: always
     volumes:
-      - pterodactyl_mysql:/var/lib/mysql
+      - mysql:/var/lib/mysql
 
   ##
   # -- Pterodactyl Panel --
@@ -60,7 +58,7 @@ services:
       - 127.0.0.1:8123:80
     restart: always
     volumes:
-      - pterodactyl_panel:/data
+      - panel:/data
     depends_on:
       mariadb:
         condition: service_started
@@ -72,7 +70,6 @@ services:
   ##
   redis:
     cpu_count: 2
-    cpu_percent: 50
     image: docker.io/library/redis:alpine
     mem_limit: 128m
     networks:
@@ -90,13 +87,9 @@ services:
     image: docker.io/ccarney16/pterodactyl-panel:${PANEL_VERSION:-latest}
     restart: always
     volumes:
-      - pterodactyl_panel:/data
+      - panel:/data
 
 volumes:
-  pterodactyl_panel:
-  pterodactyl_mysql:
-  pterodactyl_config:
-  pterodactyl_daemon_data:
-    external: true
-  pterodactyl_temp:
-    external: true
+  panel:
+  mysql:
+  config:
