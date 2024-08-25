@@ -46,7 +46,7 @@ services:
           - mysql
     restart: always
     volumes:
-      - pteroactyl/data/mysql:/var/lib/mysql
+      - pterodactyl/data/mysql:/var/lib/mysql
   ##
   # -- Pterodactyl Panel --
   # This is the container that provides the main web interface.
