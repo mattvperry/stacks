@@ -1,4 +1,3 @@
-version: "3.8"
 services:
   ##
   # -- Panel Cron --
@@ -7,11 +6,11 @@ services:
   ##
   cron:
     command: p:cron
-    env_file: ./conf.d/panel.env
+    env_file: ${PTERO_HOME}/conf.d/panel.env
     image: ccarney16/pterodactyl-panel:${PANEL_VERSION:-latest}
     restart: always
     volumes:
-      - ./data/panel:/data
+      - ${PTERO_HOME}/data/panel:/data
   ##
   # -- Pterodactyl Daemon --
   # This service provides the wings runtime.
@@ -29,9 +28,9 @@ services:
       - ${DAEMON_DATA_DIRECTORY:-/var/lib/pterodactyl}:${DAEMON_DATA_DIRECTORY:-/var/lib/pterodactyl}
       - ${DOCKER_SOCKET:-/var/run/docker.sock}:${DOCKER_SOCKET:-/var/run/docker.sock}
       - /tmp/pterodactyl/:/tmp/pterodactyl/
-      - ./conf.d/daemon:/etc/pterodactyl
-      # - ./conf.d/letsencrypt:/etc/letsencrypt:ro
-      # - ./conf.d/certs:/etc/certs:ro
+      - ${PTERO_HOME}/conf.d/daemon:/etc/pterodactyl
+      # - ${PTERO_HOME}/conf.d/letsencrypt:/etc/letsencrypt:ro
+      # - ${PTERO_HOME}/conf.d/certs:/etc/certs:ro
     working_dir: ${DAEMON_DATA_DIRECTORY:-/var/lib/pterodactyl}
   ##
   # -- MariaDB --
@@ -40,26 +39,26 @@ services:
   ##
   mariadb:
     image: docker.io/library/mariadb:10.11
-    env_file: ./conf.d/mariadb.env
+    env_file: ${PTERO_HOME}/conf.d/mariadb.env
     networks:
       default:
         aliases:
           - mysql
     restart: always
     volumes:
-      - ./data/mysql:/var/lib/mysql
+      - ${PTERO_HOME}/data/mysql:/var/lib/mysql
   ##
   # -- Pterodactyl Panel --
   # This is the container that provides the main web interface.
   ##
   panel:
-    env_file: ./conf.d/panel.env
+    env_file: ${PTERO_HOME}/conf.d/panel.env
     image: docker.io/ccarney16/pterodactyl-panel:${PANEL_VERSION:-latest}
     ports:
       - 127.0.0.1:8123:80
     restart: always
     volumes:
-      - ./data/panel:/data
+      - ${PTERO_HOME}/data/panel:/data
     depends_on:
       mariadb:
         condition: service_started
@@ -83,8 +82,8 @@ services:
   ##
   worker:
     command: p:worker
-    env_file: ./conf.d/panel.env
+    env_file: ${PTERO_HOME}/conf.d/panel.env
     image: docker.io/ccarney16/pterodactyl-panel:${PANEL_VERSION:-latest}
     restart: always
     volumes:
-      - ./data/panel:/data
+      - ${PTERO_HOME}/data/panel:/data
