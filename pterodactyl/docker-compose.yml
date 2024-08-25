@@ -94,12 +94,9 @@ services:
 
 volumes:
   pterodactyl_panel:
-    external: true
   pterodactyl_mysql:
-    external: true
-  pterodactyl_daemon_data:
-    external: true
   pterodactyl_config:
+  pterodactyl_daemon_data:
     external: true
   pterodactyl_temp:
     external: true
