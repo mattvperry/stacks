@@ -26,7 +26,7 @@ services:
     privileged: true
     restart: always
     volumes:
-      - pterodactyl_daemon:/var/lib/pterodactyl
+      - pterodactyl_daemon_data:/var/lib/pterodactyl
       - ${DOCKER_SOCKET:-/var/run/docker.sock}:${DOCKER_SOCKET:-/var/run/docker.sock}
       - pterodactyl_config:/etc/pterodactyl
       # - ${PTERO_HOME}/conf.d/letsencrypt:/etc/letsencrypt:ro
@@ -96,7 +96,7 @@ volumes:
     external: true
   pterodactyl_mysql:
     external: true
-  pterodactyl_daemon:
+  pterodactyl_daemon_data:
     external: true
   pterodactyl_config:
     external: true
