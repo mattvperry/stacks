@@ -35,10 +35,8 @@ services:
       - homepage.icon=transmission
       - homepage.href=https://mattvperry.com/torrent/web/
       - homepage.widget.type=transmission
-      - homepage.widget.url=https://mattvperry.com/torrent/
+      - homepage.widget.url=http://192.168.1.100:9091/torrent/
       - homepage.widget.rpcUrl=transmission/
-      - homepage.widget.username=
-      - homepage.widget.password=
 
 volumes:
   homepage_config:
