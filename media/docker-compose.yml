@@ -17,7 +17,7 @@ services:
   # Bittorrent client
   ##
   transmission:
-    image: docker.io/linuxserver/transmission
+    image: docker.io/linuxserver/transmission:latest
     environment:
       - PUID=169
       - PGID=1001
@@ -39,6 +39,30 @@ services:
       - homepage.widget.url=http://transmission:9091/
       - homepage.widget.rpcUrl=transmission/
 
+  ##
+  # Usenet client
+  ##
+  nzbget:
+    image: docker.io/linuxserver/nzbget:latest
+    environment:
+      - PUID=974
+      - PGID=1001
+      - TZ=America/New_York
+    volumes:
+      - nzbget_config:/config
+      - /media/trinity/.usenet:/downloads
+    ports:
+      - 127.0.0.1:6789:6789
+    restart: always
+    labels:
+      - homepage.group=Downloads
+      - homepage.name=NZBGet
+      - homepage.icon=nzbget
+      - homepage.href=https://mattvperry.com/nzb/
+      - homepage.widget.type=nzbget
+      - homepage.url=http://nzbget:6789/
+
 volumes:
   homepage_config:
   transmission_config:
+  nzbget_config:
