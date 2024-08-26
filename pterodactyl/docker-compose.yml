@@ -64,6 +64,14 @@ services:
         condition: service_started
       redis:
         condition: service_started
+    labels:
+      - homepage.group=Games
+      - homepage.name=Pterodactyl
+      - homepage.icon=pterodactyl
+      - homepage.href=https://games.mattvperry.com
+      - homepage.widget.type=pterodactyl
+      - homepage.widget.url=https://games.mattvperry.com
+      - homepage.widget.key=${PTERO_API_KEY}
 
   ##
   # -- Redis --
