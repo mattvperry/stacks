@@ -24,7 +24,7 @@ services:
       - TZ=America/New_York
     volumes:
       - transmission_config:/config
-      - /media/trinity/.torrents:/downloads
+      - /media/trinity/.torrents:/data/.torrents
     ports:
       - 127.0.0.1:9091:9091
       - 51413:51413
@@ -50,7 +50,7 @@ services:
       - TZ=America/New_York
     volumes:
       - nzbget_config:/config
-      - /media/trinity/.usenet:/downloads
+      - /media/trinity/.usenet:/data/.usenet
     ports:
       - 127.0.0.1:6789:6789
     restart: always
