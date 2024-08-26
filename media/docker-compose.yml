@@ -110,6 +110,30 @@ services:
       - homepage.widget.key=${RADARR_API}
       - homepage.widget.enableQueue=true
 
+  ##
+  # Television
+  ##
+  sonarr:
+    image: docker.io/linuxserver/sonarr:latest
+    environment:
+      - PUID=991
+      - PGID=1001
+      - TZ=America/New_York
+    volumes:
+      - sonarr_config:/config
+      - /media/trinity:/data
+    ports:
+      - 127.0.0.1:8989:8989
+    restart: always
+    labels:
+      - homepage.group=Media
+      - homepage.name=Sonarr
+      - homepage.icon=sonarr
+      - homepage.href=https://mattvperry.com/tv/
+      - homepage.widget.type=sonarr
+      - homepage.widget.url=http://sonarr:8989
+      - homepage.widget.key=${SONARR_API}
+      - homepage.widget.enableQueue=true
 
 volumes:
   homepage_config:
@@ -117,3 +141,4 @@ volumes:
   nzbget_config:
   prowlarr_config:
   radarr_config:
+  sonarr_config:
