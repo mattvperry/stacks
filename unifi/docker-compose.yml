@@ -1,6 +1,7 @@
 services:
   unifi-db:
     image: docker.io/mongo:6.0.17
+    container_name: unifi-db
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=example
@@ -15,6 +16,7 @@ services:
 
   unifi-network-app:
     image: docker.io/linuxserver/unifi-network-application:latest
+    container_name: unifi-network-app
     environment:
       - PUID=113
       - PGID=113
