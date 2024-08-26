@@ -1,0 +1,35 @@
+services:
+  ##
+  # Server homepage
+  # https://gethomepage.dev/
+  ##
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    volumes:
+      - homepage_config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 3000:3000
+    restart: always
+
+  ##
+  # Bittorrent client
+  ##
+  transmission:
+    image: docker.io/linuxserver/transmission
+    environment:
+      - PUID=169
+      - PGID=1001
+      - TZ=America/New_York
+    volumes:
+      - transmission_config:/config
+      - /media/trinity/.torrents:/downloads
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    restart: always
+
+volumes:
+  homepage_config:
+  transmission_config:
