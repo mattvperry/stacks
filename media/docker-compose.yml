@@ -135,6 +135,32 @@ services:
       - homepage.widget.key=${SONARR_API}
       - homepage.widget.enableQueue=true
 
+  ##
+  # Library & Streaming
+  ##
+  plex:
+    image: docker.io/linuxserver/plex:latest
+    network_mode: host
+    environment: 
+      - PUID=421
+      - PGID=1001
+      - TZ=America/New_York
+      - VERSION=public
+    volumes:
+      - plex_config:/config
+      - /media/trinity:/data
+    devices:
+      - /dev/dri:/dev/dri
+    restart: always
+    labels:
+      - homepage.group=Media
+      - homepage.name=Plex
+      - homepage.icon=plex
+      - homepage.href=https://plex.mattvperry.com/
+      - homepage.widget.type=plex
+      - homepage.widget.url=http://plex:32400
+      - homepage.widget.key=${PLEX_API}
+
 volumes:
   homepage_config:
   transmission_config:
@@ -142,3 +168,4 @@ volumes:
   prowlarr_config:
   radarr_config:
   sonarr_config:
+  plex_config:
