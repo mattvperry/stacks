@@ -5,6 +5,8 @@ services:
   ##
   homepage:
     image: ghcr.io/gethomepage/homepage:latest
+    environment:
+      - LOG_LEVEL=debug
     volumes:
       - homepage_config:/app/config
       - /media/trinity:/trinity:ro
