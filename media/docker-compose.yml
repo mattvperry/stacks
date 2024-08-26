@@ -95,7 +95,7 @@ services:
       - PGID=977
       - TZ=America/New_York
     volumes:
-      - radarr:/config
+      - radarr_config:/config
       - /media/trinity:/data
     ports:
       - 127.0.0.1:7878:7878
