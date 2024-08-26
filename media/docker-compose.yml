@@ -35,7 +35,7 @@ services:
       - homepage.icon=transmission
       - homepage.href=https://mattvperry.com/torrent/web/
       - homepage.widget.type=transmission
-      - homepage.widget.url=http://127.0.0.1:9091/
+      - homepage.widget.url=http://localhost:9091/
       - homepage.widget.rpcUrl=transmission/
 
 volumes:
