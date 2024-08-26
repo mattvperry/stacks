@@ -62,7 +62,31 @@ services:
       - homepage.widget.type=nzbget
       - homepage.widget.url=http://nzbget:6789
 
+  ##
+  # Index organizer
+  ##
+  prowlarr:
+    image: docker.io/linuxserver/prowlarr:latest
+    environment:
+      - PUID=977
+      - PGID=977
+      - TZ=America/New_York
+    volumes:
+      - prowlarr_config:/config
+    ports:
+      - 127.0.0.1:9696:9696
+    restart: always
+    labels:
+      - homepage.group=Downloads
+      - homepage.name=Prowlarr
+      - homepage.icon=prowlarr
+      - homepage.href=https://mattvperry.com/index/
+      - homepage.widget.type=prowlarr
+      - homepage.widget.url=http://prowlarr:9696
+      - homepage.widget.key=21203cc52bb54aae8706b781ebdbe70b
+
 volumes:
   homepage_config:
   transmission_config:
   nzbget_config:
+  prowlarr_config:
