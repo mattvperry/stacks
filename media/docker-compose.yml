@@ -60,7 +60,7 @@ services:
       - homepage.icon=nzbget
       - homepage.href=https://mattvperry.com/nzb/
       - homepage.widget.type=nzbget
-      - homepage.url=http://nzbget:6789/
+      - homepage.url=http://nzbget:6789
 
 volumes:
   homepage_config:
