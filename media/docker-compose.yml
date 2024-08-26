@@ -37,7 +37,8 @@ services:
       - homepage.widget.type=transmission
       - homepage.widget.url=https://mattvperry.com/torrent/
       - homepage.widget.rpcUrl=transmission/
-      - homepage.widget.password=${TRANSMISSION_RPC_PASS}
+      - homepage.widget.username=
+      - homepage.widget.password=
 
 volumes:
   homepage_config:
