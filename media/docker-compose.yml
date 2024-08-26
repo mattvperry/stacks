@@ -83,10 +83,37 @@ services:
       - homepage.href=https://mattvperry.com/index/
       - homepage.widget.type=prowlarr
       - homepage.widget.url=http://prowlarr:9696
-      - homepage.widget.key=21203cc52bb54aae8706b781ebdbe70b
+      - homepage.widget.key=${PROWLARR_API}
+
+  ##
+  # Movies
+  ##
+  radarr:
+    image: docker.io/linuxserver/radarr:latest
+    environment:
+      - PUID=977
+      - PGID=977
+      - TZ=America/New_York
+    volumes:
+      - radarr:/config
+      - /media/trinity:/data
+    ports:
+      - 127.0.0.1:7878:7878
+    restart: always
+    labels:
+      - homepage.group=Media
+      - homepage.name=Radarr
+      - homepage.icon=radarr
+      - homepage.href=https://mattvperry.com/movies/
+      - homepage.widget.type=radarr
+      - homepage.widget.url=http://radarr:7878
+      - homepage.widget.key=${RADARR_API}
+      - homepage.widget.enableQueue=true
+
 
 volumes:
   homepage_config:
   transmission_config:
   nzbget_config:
   prowlarr_config:
+  radarr_config:
