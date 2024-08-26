@@ -158,7 +158,7 @@ services:
       - homepage.icon=plex
       - homepage.href=https://plex.mattvperry.com/
       - homepage.widget.type=plex
-      - homepage.widget.url=http://plex.mattvperry.com
+      - homepage.widget.url=https://plex.mattvperry.com
       - homepage.widget.key=${PLEX_API}
 
 volumes:
