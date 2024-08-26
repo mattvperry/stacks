@@ -33,10 +33,11 @@ services:
       - homepage.group=Downloads
       - homepage.name=Transmission
       - homepage.icon=transmission
-      - homepage.href=https://mattvperry.com/torrents/web/
+      - homepage.href=https://mattvperry.com/torrent/web/
       - homepage.widget.type=transmission
-      - homepage.widget.url=https://mattvperry.com/torrents/
-      - homepage.widget.rpcUrl=/transmission/
+      - homepage.widget.url=https://mattvperry.com/torrent/
+      - homepage.widget.rpcUrl=transmission/
+      - homepage.widget.password=${TRANSMISSION_RPC_PASS}
 
 volumes:
   homepage_config:
