@@ -25,10 +25,18 @@ services:
       - transmission_config:/config
       - /media/trinity/.torrents:/downloads
     ports:
-      - 9091:9091
+      - 127.0.0.1:9091:9091
       - 51413:51413
       - 51413:51413/udp
     restart: always
+    labels:
+      - homepage.group=Downloads
+      - homepage.name=Transmission
+      - homepage.icon=transmission
+      - homepage.href=https://mattvperry.com/torrents/web/
+      - homepage.widget.type=transmission
+      - homepage.widget.url=https://mattvperry.com/torrents/
+      - homepage.widget.rpcUrl=/transmission/
 
 volumes:
   homepage_config:
