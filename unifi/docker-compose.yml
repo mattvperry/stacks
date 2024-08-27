@@ -3,15 +3,12 @@ services:
     image: docker.io/mongo:7.0.14
     container_name: unifi-db
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=example
       - MONGO_USER=unifi
       - MONGO_PASS=${MONGO_PASS}
       - MONGO_DBNAME=unifi
-      - MONGO_AUTHSOURCE=admin
     volumes:
       - mongo_db:/data/db
-      - /var/lib/mongodb/init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh:ro
+      - /var/lib/mongodb/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
     restart: always
 
   unifi-network-app:
@@ -26,7 +23,6 @@ services:
       - MONGO_HOST=unifi-db
       - MONGO_PORT=27017
       - MONGO_DBNAME=unifi
-      - MONGO_AUTHSOURCE=admin
     volumes:
       - unifi_config:/config
     ports:
