@@ -14,7 +14,7 @@ services:
       - 3000:3000
     restart: always
     networks:
-      - frontend_default
+      - default
       - media_default
 
   ##
@@ -34,17 +34,16 @@ services:
       - 81:80
       - 444:443
       - 444:443/udp
-      - 2015:2015
     restart: always
     networks:
-      - frontend_default
+      - default
       - media_default
     labels:
       - homepage.group=System
       - homepage.name=Caddy
       - homepage.icon=caddy
       - homepage.widget.type=caddy
-      - homepage.widget.url=http://proxy:2019/
+      - homepage.widget.url=http://proxy:2019
 
 volumes:
   homepage_config:
@@ -52,6 +51,6 @@ volumes:
   caddy_config:
 
 networks:
-  frontend_default:
+  default:
   media_default:
     external: true
