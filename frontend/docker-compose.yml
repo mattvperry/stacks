@@ -47,7 +47,7 @@ services:
       - homepage.name=Caddy
       - homepage.icon=caddy
       - homepage.widget.type=caddy
-      - homepage.widget.url=http://proxy:2019
+      - homepage.widget.url=http://caddy:2019
 
 volumes:
   homepage_config:
