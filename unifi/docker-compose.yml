@@ -34,6 +34,10 @@ services:
       - 3478:3478/udp
       - 10001:10001/udp
       - 8080:8080
+    networks:
+      default:
+        aliases:
+          - unifi
     restart: always
     labels:
       - homepage.group=System
@@ -41,7 +45,7 @@ services:
       - homepage.icon=unifi
       - homepage.href=https://unifi.mattvperry.com
       - homepage.widget.type=unifi
-      - homepage.widget.url=https://unifi-network-app:8443
+      - homepage.widget.url=https://unifi:8443
       - homepage.widget.username=${UNIFI_USER}
       - homepage.widget.password=${UNIFI_PASS}
       - homepage.widget.fields=["uptime","wlan_devices"]
