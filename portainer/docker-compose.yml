@@ -11,6 +11,7 @@ services:
       - homepage.group=System
       - homepage.name=Portainer
       - homepage.icon=portainer
+      - homepage.href=https://mattvperry.com/portainer
       - homepage.widget.type=portainer
       - homepage.widget.env=2
       - homepage.widget.url=http://portainer:9000

@@ -62,3 +62,5 @@ networks:
     external: true
   portainer_default:
     external: true
+  unifi_default:
+    external: true
