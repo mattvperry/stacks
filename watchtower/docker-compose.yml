@@ -1,6 +1,7 @@
 services:
   watchtower:
     image: containrrr/watchtower
+    container_name: watchtower
     command: --debug --http-api-update --http-api-periodic-polls --cleanup --remove-volumes
     environment:
       - WATCHTOWER_HTTP_API_TOKEN=${WATCHTOWER_HTTP_API_TOKEN}
@@ -9,3 +10,11 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - 8182:8080
+    labels:
+      - homepage.group=System
+      - homepage.name=Watchtower
+      - homepage.icon=watchtower
+      - homepage.description=Docker updater
+      - homepage.widget.type=watchtower
+      - homepage.widget.url=http://watchtower:8080
+      - homepage.widget.key=${WATCHTOWER_HTTP_API_TOKEN}

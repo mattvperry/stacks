@@ -17,6 +17,7 @@ services:
       - pterodactyl_default
       - portainer_default
       - unifi_default
+      - watchtower_default
 
   ##
   # Reverse proxy
@@ -43,10 +44,12 @@ services:
       - pterodactyl_default
       - portainer_default
       - unifi_default
+      - watchtower_default
     labels:
       - homepage.group=System
       - homepage.name=Caddy
       - homepage.icon=caddy
+      - homepage.description=Reverse proxy
       - homepage.widget.type=caddy
       - homepage.widget.url=http://caddy:2019
 
@@ -64,4 +67,6 @@ networks:
   portainer_default:
     external: true
   unifi_default:
+    external: true
+  watchtower_default:
     external: true

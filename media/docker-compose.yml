@@ -21,6 +21,7 @@ services:
       - homepage.name=Transmission
       - homepage.icon=transmission
       - homepage.href=https://mattvperry.com/torrent/web/
+      - homepage.description=Torrent downloader
       - homepage.widget.type=transmission
       - homepage.widget.url=http://transmission:9091/
       - homepage.widget.rpcUrl=transmission/
@@ -44,6 +45,7 @@ services:
       - homepage.name=NZBGet
       - homepage.icon=nzbget
       - homepage.href=https://mattvperry.com/nzb/
+      - homepage.description=Usenet downloader
       - homepage.widget.type=nzbget
       - homepage.widget.url=http://nzbget:6789
 
@@ -65,6 +67,7 @@ services:
       - homepage.name=Prowlarr
       - homepage.icon=prowlarr
       - homepage.href=https://mattvperry.com/index/
+      - homepage.description=Usenet indexer
       - homepage.widget.type=prowlarr
       - homepage.widget.url=http://prowlarr:9696
       - homepage.widget.key=${PROWLARR_API}
@@ -88,6 +91,7 @@ services:
       - homepage.name=Radarr
       - homepage.icon=radarr
       - homepage.href=https://mattvperry.com/movies/
+      - homepage.description=Movie management
       - homepage.widget.type=radarr
       - homepage.widget.url=http://radarr:7878
       - homepage.widget.key=${RADARR_API}
@@ -112,6 +116,7 @@ services:
       - homepage.name=Sonarr
       - homepage.icon=sonarr
       - homepage.href=https://mattvperry.com/tv/
+      - homepage.description=Television management
       - homepage.widget.type=sonarr
       - homepage.widget.url=http://sonarr:8989
       - homepage.widget.key=${SONARR_API}
@@ -140,6 +145,7 @@ services:
       - homepage.name=Plex
       - homepage.icon=plex
       - homepage.href=https://plex.mattvperry.com/
+      - homepage.description=Media library
       - homepage.widget.type=plex
       - homepage.widget.url=https://plex.mattvperry.com
       - homepage.widget.key=${PLEX_API}

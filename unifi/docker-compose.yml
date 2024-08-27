@@ -44,6 +44,7 @@ services:
       - homepage.name=Unifi
       - homepage.icon=unifi
       - homepage.href=https://unifi.mattvperry.com
+      - homepage.description=Network management
       - homepage.widget.type=unifi
       - homepage.widget.url=https://unifi:8443
       - homepage.widget.username=${UNIFI_USER}

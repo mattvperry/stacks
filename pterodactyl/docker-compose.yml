@@ -66,6 +66,7 @@ services:
       - homepage.name=Pterodactyl
       - homepage.icon=pterodactyl
       - homepage.href=https://games.mattvperry.com
+      - homepage.description=Game server management
       - homepage.widget.type=pterodactyl
       - homepage.widget.url=https://games.mattvperry.com
       - homepage.widget.key=${PTERO_API_KEY}
