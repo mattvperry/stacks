@@ -2,7 +2,7 @@ services:
   watchtower:
     image: containrrr/watchtower
     container_name: watchtower
-    command: --debug --http-api-update --http-api-periodic-polls --cleanup --remove-volumes
+    command: --debug --http-api-update --http-api-periodic-polls --cleanup --remove-volumes --http-api-metrics
     environment:
       - WATCHTOWER_HTTP_API_TOKEN=${WATCHTOWER_HTTP_API_TOKEN}
     restart: always
