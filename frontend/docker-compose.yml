@@ -40,3 +40,7 @@ volumes:
   homepage_config:
   caddy_data:
   caddy_config:
+
+networks:
+  media_default:
+    external: true
