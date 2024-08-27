@@ -42,6 +42,8 @@ services:
       - homepage.href=https://mattvperry.com:8443/manage/
       - homepage.widget.type=unifi
       - homepage.widget.url=https://mattvperry.com:8443
+      - homepage.widget.username=${UNIFI_USER}
+      - homepage.widget.password=${UNIFI_PASS}
 
 volumes:
   mongo_db:
