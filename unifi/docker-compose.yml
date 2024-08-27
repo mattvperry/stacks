@@ -39,7 +39,7 @@ services:
       - homepage.group=System
       - homepage.name=Unifi
       - homepage.icon=unifi
-      - homepage.href=https://mattvperry.com:8443/manage/
+      - homepage.href=https://unifi.mattvperry.com:8443
       - homepage.widget.type=unifi
       - homepage.widget.url=https://mattvperry.com:8443
       - homepage.widget.username=${UNIFI_USER}

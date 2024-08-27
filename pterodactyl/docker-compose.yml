@@ -22,7 +22,6 @@ services:
     image: docker.io/ccarney16/pterodactyl-daemon:${DAEMON_VERSION:-latest}
     ports:
       - 2022:2022
-      - 127.0.0.1:8900:9443
     privileged: true
     restart: always
     volumes:
@@ -54,8 +53,6 @@ services:
   panel:
     env_file: ./panel.env
     image: docker.io/ccarney16/pterodactyl-panel:${PANEL_VERSION:-latest}
-    ports:
-      - 127.0.0.1:8123:80
     restart: always
     volumes:
       - panel:/data
