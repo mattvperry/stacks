@@ -1,0 +1,4 @@
+services:
+  graylog:
+    image: docker.io/graylog/graylog:latest
+    container_name: graylog
