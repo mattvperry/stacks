@@ -44,6 +44,7 @@ services:
       - homepage.widget.url=https://mattvperry.com:8443
       - homepage.widget.username=${UNIFI_USER}
       - homepage.widget.password=${UNIFI_PASS}
+      - homepage.widget.fields=["lan","lan_users","lan_devices"]
 
 volumes:
   mongo_db:
