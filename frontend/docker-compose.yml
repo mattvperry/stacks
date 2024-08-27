@@ -1,0 +1,41 @@
+services:
+  ##
+  # Server homepage
+  # https://gethomepage.dev/
+  ##
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    volumes:
+      - homepage_config:/app/config
+      - /media/trinity:/trinity:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 3000:3000
+    restart: always
+    networks:
+      - media_default
+
+  ##
+  # Reverse proxy
+  ##
+  proxy:
+    image: docker.io/caddy:latest
+    container_name: caddy
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+    ports:
+      - 80:80
+      - 443:443
+      - 443:443/udp
+    restart: always
+    networks:
+      - media_default
+
+volumes:
+  homepage_config:
+  caddy_data:
+  caddy_config:
