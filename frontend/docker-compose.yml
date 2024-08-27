@@ -16,6 +16,7 @@ services:
     networks:
       - default
       - media_default
+      - pterodactyl_default
 
   ##
   # Reverse proxy
@@ -38,6 +39,7 @@ services:
     networks:
       - default
       - media_default
+      - pterodactyl_default
     labels:
       - homepage.group=System
       - homepage.name=Caddy
@@ -53,4 +55,6 @@ volumes:
 networks:
   default:
   media_default:
+    external: true
+  pterodactyl_default:
     external: true
