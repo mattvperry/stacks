@@ -39,6 +39,12 @@ services:
     networks:
       - frontend_default
       - media_default
+    labels:
+      - homepage.group=System
+      - homepage.name=Caddy
+      - homepage.icon=caddy
+      - homepage.widget.type=caddy
+      - homepage.widget.url=http://proxy:2019/
 
 volumes:
   homepage_config:
