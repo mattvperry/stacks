@@ -1,0 +1,21 @@
+services:
+  portainer:
+    image: docker.io/portainer/portainer-ce:latest
+    container_name: portainer
+    command: --http-enabled
+    volumes:
+      - portainer_data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    labels:
+      - homepage.group=System
+      - homepage.name=Portainer
+      - homepage.icon=portainer
+      - homepage.widget.type=portainer
+      - homepage.widget.env=2
+      - homepage.widget.url=http://portainer:9000
+      - homepage.widget.key=${PORTAINER_KEY}
+
+volumes:
+  portainer_data:
+    external: true
