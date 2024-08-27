@@ -31,9 +31,9 @@ services:
       - caddy_data:/data
       - caddy_config:/config
     ports:
-      - 81:80
-      - 444:443
-      - 444:443/udp
+      - 80:80
+      - 443:443
+      - 443:443/udp
     restart: always
     networks:
       - default
