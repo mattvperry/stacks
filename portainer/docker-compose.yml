@@ -6,6 +6,8 @@ services:
     volumes:
       - portainer_data:/data
       - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 9444:9443
     restart: always
     labels:
       - homepage.group=System
