@@ -41,7 +41,7 @@ services:
       - homepage.icon=unifi
       - homepage.href=https://unifi.mattvperry.com
       - homepage.widget.type=unifi
-      - homepage.widget.url=https://mattvperry.com:8443
+      - homepage.widget.url=https://unifi-network-app:8443
       - homepage.widget.username=${UNIFI_USER}
       - homepage.widget.password=${UNIFI_PASS}
       - homepage.widget.fields=["uptime","wlan_devices"]

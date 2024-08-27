@@ -16,6 +16,7 @@ services:
       - media_default
       - pterodactyl_default
       - portainer_default
+      - unifi_default
 
   ##
   # Reverse proxy
@@ -41,6 +42,7 @@ services:
       - media_default
       - pterodactyl_default
       - portainer_default
+      - unifi_default
     labels:
       - homepage.group=System
       - homepage.name=Caddy
