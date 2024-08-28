@@ -13,6 +13,7 @@ services:
   ##
   datanode:
     image: docker.io/graylog/graylog-datanode:6.0
+    hostname: 0949ffe8e265
     environment:
       GRAYLOG_DATANODE_NODE_ID_FILE: /var/lib/graylog-datanode/node-id
       GRAYLOG_DATANODE_PASSWORD_SECRET: ${GRAYLOG_PASSWORD_SECRET:?Please configure GRAYLOG_PASSWORD_SECRET in the .env file}
