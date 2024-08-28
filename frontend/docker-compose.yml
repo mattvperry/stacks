@@ -18,6 +18,7 @@ services:
       - portainer_default
       - unifi_default
       - watchtower_default
+      - metrics_default
 
   ##
   # Reverse proxy
@@ -45,6 +46,7 @@ services:
       - portainer_default
       - unifi_default
       - watchtower_default
+      - metrics_default
     labels:
       - homepage.group=System
       - homepage.name=Caddy
@@ -69,4 +71,6 @@ networks:
   unifi_default:
     external: true
   watchtower_default:
+    external: true
+  metrics_default:
     external: true
