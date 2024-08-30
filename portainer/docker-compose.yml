@@ -1,6 +1,6 @@
 services:
   portainer:
-    image: docker.io/portainer/portainer-ce:latest
+    image: docker.io/portainer/portainer-ee:latest
     container_name: portainer
     command: --http-enabled
     volumes:
