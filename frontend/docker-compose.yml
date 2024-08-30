@@ -29,7 +29,7 @@ services:
     cap_add:
       - NET_ADMIN
     volumes:
-      - ./config/Caddyfile:/etc/caddy/Caddyfile
+      - /var/lib/caddy/Caddyfile:/etc/caddy/Caddyfile
       - /srv:/srv
       - caddy_data:/data
       - caddy_config:/config
