@@ -4,7 +4,7 @@ services:
     container_name: loki
     command: -config.file=/etc/loki/loki.yaml
     volumes:
-      - ./config/loki/loki.yml:/etc/loki/loki.yaml
+      - ./config/loki/loki.yaml:/etc/loki/loki.yaml
     restart: always
   
   promtail:
