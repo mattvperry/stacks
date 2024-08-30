@@ -1,0 +1,79 @@
+{
+	admin :2019
+}
+
+www.mattvperry.com, mattvperry.com {
+	@auth {
+		not client_ip private_ranges
+		not path /public*
+	}
+
+	basic_auth @auth {
+		mperry $2y$10$vYT73/y7QSGsiL6FUjARbOeUHz91zaR58CBx5t.oW6LnGkbnwarwy
+	}
+
+	reverse_proxy homepage:3000
+
+	redir /nzb /nzb/
+	handle_path /nzb/* {
+		reverse_proxy nzbget:6789
+	}
+
+	handle_path /tv* {
+		rewrite * /tv{uri}
+		reverse_proxy sonarr:8989
+	}
+
+	handle_path /movies* {
+		rewrite * /movies{uri}
+		reverse_proxy radarr:7878
+	}
+
+	handle_path /index* {
+		rewrite * /index{uri}
+		reverse_proxy prowlarr:9696
+	}
+
+	handle_path /torrent* {
+		rewrite * /transmission{uri}
+		reverse_proxy transmission:9091
+	}
+
+	handle_path /files* {
+		root * /srv/http/files
+		file_server browse
+	}
+
+	handle_path /public* {
+		root * /srv/http/public
+		file_server browse
+	}
+}
+
+plex.mattvperry.com {
+	reverse_proxy mattvperry.com:32400
+}
+
+games.mattvperry.com {
+	reverse_proxy panel:80
+}
+
+games.mattvperry.com:9443 {
+	reverse_proxy daemon:9443
+}
+
+unifi.mattvperry.com {
+	reverse_proxy unifi:8443 {
+		transport http {
+			tls_insecure_skip_verify
+		}
+	}
+}
+
+docker.mattvperry.com {
+	reverse_proxy portainer:9000
+}
+
+logs.mattvperry.com {
+	reverse_proxy grafana:3000
+}
