@@ -23,7 +23,11 @@ services:
     volumes:
       - ./config/grafana/datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
       - ./config/grafana/plugins.yaml:/etc/grafana/provisioning/plugins/app.yaml
+      - grafana_data:/var/lib/grafana
     environment:
       - GF_FEATURE_TOGGLES_ENABLE=accessControlOnCall lokiLogsDataplane
       - GF_INSTALL_PLUGINS=https://storage.googleapis.com/integration-artifacts/grafana-lokiexplore-app/grafana-lokiexplore-app-latest.zip;grafana-lokiexplore-app
     restart: always
+
+volumes:
+  grafana_data:
