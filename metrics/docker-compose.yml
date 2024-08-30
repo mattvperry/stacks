@@ -4,7 +4,7 @@ services:
     container_name: loki
     command: -config.file=/etc/loki/loki.yaml
     volumes:
-      - ./config/loki/loki.yaml:/etc/loki/loki.yaml
+      - ./metrics/config/loki/loki.yaml:/etc/loki/loki.yaml
     restart: always
   
   promtail:
@@ -12,7 +12,7 @@ services:
     container_name: promtail
     command: -config.file=/etc/promtail/docker-config.yaml
     volumes:
-      - ./config/promtail/promtail.yaml:/etc/promtail/docker-config.yaml
+      - ./metrics/config/promtail/promtail.yaml:/etc/promtail/docker-config.yaml
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
@@ -21,8 +21,8 @@ services:
     image: docker.io/grafana/grafana:latest
     container_name: grafana
     volumes:
-      - ./config/grafana/datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
-      - ./config/grafana/plugins.yaml:/etc/grafana/provisioning/plugins/app.yaml
+      - ./metrics/config/grafana/datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
+      - ./metrics/config/grafana/plugins.yaml:/etc/grafana/provisioning/plugins/app.yaml
     environment:
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
