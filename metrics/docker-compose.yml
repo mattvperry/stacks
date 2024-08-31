@@ -5,8 +5,6 @@ services:
   vector:
     image: docker.io/timberio/vector:latest-alpine
     container_name: vector
-    command:
-      - -vv
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/lib/docker:/var/lib/docker
