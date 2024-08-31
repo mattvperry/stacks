@@ -27,7 +27,7 @@ services:
       - -storageDataPath=/vlogs
       - -loggerFormat=json
     healthcheck:
-      test: ["CMD", "wget", "-q0-", "http://victorialogs:9428/health"]
+      test: ["CMD", "wget", "-qO-", "http://victorialogs:9428/health"]
       interval: 1s
       timeout: 1s
       retries: 10
@@ -46,7 +46,7 @@ services:
       - -promscrape.config=/promscrape.yml
       - -loggerFormat=json
     healthcheck:
-      test: ["CMD", "wget", "-q0-", "http://victoriametrics:8428/health"]
+      test: ["CMD", "wget", "-qO-", "http://victoriametrics:8428/health"]
       interval: 1s
       timeout: 1s
       retries: 10
