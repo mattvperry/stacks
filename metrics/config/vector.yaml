@@ -16,7 +16,7 @@ transforms:
     source: |-
       data, err = parse_json(.message)
       if err != null {
-        .log = { msg: .message }
+        .log = { msg = .message }
       } else {
         .log = data
         .message = data.msg
