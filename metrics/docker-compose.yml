@@ -29,7 +29,7 @@ services:
     healthcheck:
       test: ["CMD", "wget", "-q0-", "http://victorialogs:9428/health"]
       interval: 1s
-      timeoute: 1s
+      timeout: 1s
       retries: 10
 
   ##
