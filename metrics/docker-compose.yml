@@ -8,7 +8,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/lib/docker:/var/lib/docker
-      - ./config/vector.toml:/etc/vector/vector.toml:ro
+      - ./config/vector.yaml:/etc/vector/vector.yaml:ro
     depends_on:
       victorialogs:
         condition: service_healthy
@@ -40,10 +40,10 @@ services:
     container_name: victoriametrics
     volumes:
       - victoriametrics_data:/vmsingle
-      - ./config/scrape.yml:/promscrape.yml
+      - ./config/scrape.yaml:/promscrape.yaml
     command:
       - -storageDataPath=/vmsingle
-      - -promscrape.config=/promscrape.yml
+      - -promscrape.config=/promscrape.yaml
       - -loggerFormat=json
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://victoriametrics:8428/health"]
