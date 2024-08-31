@@ -10,3 +10,9 @@ scrape_configs:
     static_configs:
       - targets:
           - victorialogs:9428
+
+  - job_name: "caddy"
+    scrape_interval: 30s
+    static_configs:
+      - targets:
+          - caddy:2019

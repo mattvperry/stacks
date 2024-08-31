@@ -1,5 +1,8 @@
 {
 	admin :2019
+	servers {
+		metrics
+	}
 }
 
 www.mattvperry.com, mattvperry.com {
@@ -75,5 +78,5 @@ docker.mattvperry.com {
 }
 
 logs.mattvperry.com {
-	reverse_proxy victorialogs:9428
+	reverse_proxy victoriametrics:8428
 }
