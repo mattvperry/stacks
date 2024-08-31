@@ -23,7 +23,7 @@ transforms:
       data, err = parse_json(.message)
       if err == null {
         .message = data.msg
-        delete(data.msg)
+        del(data.msg)
         . |= data
       }
           
