@@ -14,7 +14,13 @@ transforms:
     inputs:
       - docker
     source: |-
-      .log = parse_json!(.message)
+      data, err = parse_json!(.message)
+      if err != null {
+        .log = { msg: .message }
+      } else {
+        .log = data
+        .message = data.msg
+      }
       del(.message)
           
 sinks:
