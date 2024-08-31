@@ -1,33 +1,56 @@
 services:
-  loki:
-    image: docker.io/grafana/loki:main
-    container_name: loki
-    command: -config.file=/etc/loki/loki.yaml
+  ##
+  # Collection aggregation
+  ##
+  vector:
+    image: docker.io/timberio/vector:latest-alpine
+    container_name: vector
     volumes:
-      - ./config/loki/loki.yaml:/etc/loki/loki.yaml
-    restart: always
-  
-  promtail:
-    image: docker.io/grafana/promtail:main
-    container_name: promtail
-    command: -config.file=/etc/promtail/docker-config.yaml
-    volumes:
-      - ./config/promtail/promtail.yaml:/etc/promtail/docker-config.yaml
-      - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock
-    restart: always
+      - /var/lib/docker:/var/lib/docker
+      - ./config/vector.toml:/etc/vector/vector.toml:ro
+    depends_on:
+      victorialogs:
+        condition: service_healthy
+      victoriametrics:
+        condition: service_healthy
 
-  grafana:
-    image: docker.io/grafana/grafana:main
-    container_name: grafana
+  ##
+  # Log aggregation
+  ##
+  victorialogs:
+    image: docker.io/victoriametrics/victoria-logs:latest
+    container_name: victorialogs
     volumes:
-      - ./config/grafana/datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
-      - ./config/grafana/plugins.yaml:/etc/grafana/provisioning/plugins/app.yaml
-      - grafana_data:/var/lib/grafana
-    environment:
-      - GF_FEATURE_TOGGLES_ENABLE=accessControlOnCall lokiLogsDataplane
-      - GF_INSTALL_PLUGINS=https://storage.googleapis.com/integration-artifacts/grafana-lokiexplore-app/grafana-lokiexplore-app-latest.zip;grafana-lokiexplore-app
-    restart: always
+      - victorialogs_data:/vlogs
+    command:
+      - -storageDataPath=/vlogs
+      - -loggerFormat=json
+    healthcheck:
+      test: ["CMD", "wget", "-q0-", "http://victorialogs:9428/health"]
+      interval: 1s
+      timeoute: 1s
+      retries: 10
+
+  ##
+  # Metric aggregation
+  ##
+  victoriametrics:
+    image: docker.io/victoriametrics/victoria-metrics:latest
+    container_name: victoriametrics
+    volumes:
+      - victoriametrics_data:/vmsingle
+      - ./config/scrape.yml:/promscrape.yml
+    command:
+      - -storageDataPath=/vmsingle
+      - -promscrape.config=/promscrape.yml
+      - -loggerFormat=json
+    healthcheck:
+      test: ["CMD", "wget", "-q0-", "http://victoriametrics:8428/health"]
+      interval: 1s
+      timeout: 1s
+      retries: 10
 
 volumes:
-  grafana_data:
+  victorialogs_data:
+  victoriametrics_data:
