@@ -21,33 +21,18 @@ transforms:
       - docker
     source: |-
       data, err = parse_json(.message)
-      if err != null {
-        .log = { "msg": .message }
-      } else {
-        .log = data
+      if err == null {
+        .message = data.msg
+        delete(data.msg)
+        . |= data
       }
-      del(.message)
           
 sinks:
   vlogs:
     type: elasticsearch
     inputs:
-      - docker_msg_parser
-    endpoints:
-      - 'http://victorialogs:9428/insert/elasticsearch/'
-    mode: bulk
-    api_version: v8
-    healthcheck:
-      enabled: false
-    query:
-      _msg_field: log.msg
-      _time_field: timestamp
-      _stream_fields: 'host,container_name'
-
-  caddylogs:
-    type: elasticsearch
-    inputs:
       - vector_logs
+      - docker_msg_parser
     endpoints:
       - 'http://victorialogs:9428/insert/elasticsearch/'
     mode: bulk
@@ -57,20 +42,13 @@ sinks:
     query:
       _msg_field: message
       _time_field: timestamp
-      _stream_fields: host
-
-  caddymetrics:
-    type: prometheus_remote_write
-    endpoint: 'http://victoriametrics:8428/api/v1/write'
-    inputs:
-      - caddy_metrics
-    healthcheck:
-      enabled: false
+      _stream_fields: 'host,container_name'
 
   victoriametrics:
     type: prometheus_remote_write
     endpoint: 'http://victoriametrics:8428/api/v1/write'
     inputs:
       - vector_metrics
+      - caddy_metrics
     healthcheck:
       enabled: false
