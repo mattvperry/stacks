@@ -24,7 +24,7 @@ transforms:
       if err == null {
         .message = data.msg
         del(data.msg)
-        . |= data
+        . = merge!(., data)
       }
           
 sinks:
