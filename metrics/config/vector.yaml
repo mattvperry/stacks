@@ -5,11 +5,15 @@ api:
 sources:
   docker:
     type: docker_logs
+  caddy_metrics:
+    type: prometheus_scrape
+    endpoints:
+      - http://caddy:2019/metrics
   vector_metrics:
     type: internal_metrics
 
 transforms:
-  msg_parser:
+  docker_msg_parser:
     type: remap
     inputs:
       - docker
@@ -27,7 +31,7 @@ sinks:
   vlogs:
     type: elasticsearch
     inputs:
-      - msg_parser
+      - docker_msg_parser
     endpoints:
       - 'http://victorialogs:9428/insert/elasticsearch/'
     mode: bulk
@@ -43,6 +47,7 @@ sinks:
     type: prometheus_remote_write
     endpoint: 'http://victoriametrics:8428/api/v1/write'
     inputs:
+      - caddy_metrics
       - vector_metrics
     healthcheck:
       enabled: false
