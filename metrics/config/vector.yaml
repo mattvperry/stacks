@@ -5,12 +5,25 @@ api:
 sources:
   docker:
     type: docker_logs
+
+  cadvisor:
+    type: prometheus_scrape
+    endpoints:
+      - http://cadvisor:8080/metrics
+  
+  node_exporter:
+    type: prometheus_scrape
+    endpoints:
+      - http://host.docker.internal:9100/metrics
+  
   caddy_metrics:
     type: prometheus_scrape
     endpoints:
       - http://caddy:2019/metrics
+  
   vector_logs:
     type: internal_logs
+
   vector_metrics:
     type: internal_metrics
 
@@ -49,6 +62,8 @@ sinks:
     endpoint: 'http://victoriametrics:8428/api/v1/write'
     inputs:
       - vector_metrics
+      - cadvisor
+      - node_exporter
       - caddy_metrics
     healthcheck:
       enabled: false
