@@ -1,14 +1,5 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "Prometheus",
-      "description": "Prometheus as the datasource is obligatory",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
+  "__inputs": [],
   "__requires": [
     {
       "type": "grafana",
@@ -24,8 +15,8 @@
     },
     {
       "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
+      "id": "victoriametrics-datasource",
+      "name": "VictoriaMetrics",
       "version": "1.0.0"
     }
   ],
@@ -55,7 +46,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "VictoriaMetrics",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -174,7 +165,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "VictoriaMetrics",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -280,7 +271,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "VictoriaMetrics",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -395,7 +386,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "VictoriaMetrics",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -501,7 +492,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "VictoriaMetrics",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -608,7 +599,7 @@
       {
         "allValue": ".*",
         "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": "VictoriaMetrics",
         "definition": "label_values(up{job=~\"caddy.*\"},instance)",
         "description": null,
         "error": null,
@@ -620,7 +611,7 @@
         "options": [],
         "query": {
           "query": "label_values(up{job=~\"caddy.*\"},instance)",
-          "refId": "Prometheus-host-Variable-Query"
+          "refId": "VictoriaMetrics-host-Variable-Query"
         },
         "refresh": 1,
         "regex": "",
@@ -635,7 +626,7 @@
       {
         "allValue": ".*",
         "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": "VictoriaMetrics",
         "definition": "label_values({__name__=~\"^caddy.*\",handler=~\".*\"},handler)",
         "description": null,
         "error": null,
@@ -647,7 +638,7 @@
         "options": [],
         "query": {
           "query": "label_values({__name__=~\"^caddy.*\",handler=~\".*\"},handler)",
-          "refId": "Prometheus-handler-Variable-Query"
+          "refId": "VictoriaMetrics-handler-Variable-Query"
         },
         "refresh": 1,
         "regex": "",
