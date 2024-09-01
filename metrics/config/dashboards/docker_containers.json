@@ -80,7 +80,8 @@
               "intervalFactor": 1,
               "legendFormat": "",
               "refId": "A",
-              "step": 10
+              "step": 10,
+              "instant": true
             }
           ],
           "thresholds": "65, 90",
@@ -163,7 +164,8 @@
               "legendFormat": "",
               "metric": "machine_cpu_cores",
               "refId": "A",
-              "step": 20
+              "step": 20,
+              "instant": true
             }
           ],
           "thresholds": "",
@@ -242,7 +244,8 @@
               "intervalFactor": 2,
               "legendFormat": "",
               "refId": "A",
-              "step": 20
+              "step": 20,
+              "instant": true
             }
           ],
           "thresholds": "65, 90",
@@ -325,7 +328,8 @@
               "intervalFactor": 2,
               "legendFormat": "",
               "refId": "A",
-              "step": 20
+              "step": 20,
+              "instant": true
             }
           ],
           "thresholds": "",
@@ -408,7 +412,8 @@
               "intervalFactor": 1,
               "legendFormat": "",
               "refId": "A",
-              "step": 30
+              "step": 30,
+              "instant": true
             }
           ],
           "thresholds": "65, 90",
@@ -490,7 +495,8 @@
               "interval": "30s",
               "intervalFactor": 2,
               "refId": "A",
-              "step": 60
+              "step": 60,
+              "instant": true
             }
           ],
           "thresholds": "",
