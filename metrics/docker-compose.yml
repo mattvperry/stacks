@@ -8,6 +8,7 @@ services:
     volumes:
       - /:/host:ro,rslave
     command:
+      - --web.listen-address=127.0.0.1:9100
       - --path.rootfs=/host
     network_mode: host
     pid: host
@@ -20,6 +21,9 @@ services:
     image: gcr.io/cadvisor/cadvisor:latest
     container_name: cadvisor
     privileged: true
+    command:
+      - --listen_ip=127.0.0.1
+      - --port=8081
     devices:
       - /dev/kmsg:/dev/kmsg
     volumes:
