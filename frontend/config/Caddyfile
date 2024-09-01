@@ -32,7 +32,7 @@ www.mattvperry.com, mattvperry.com {
 		reverse_proxy radarr:7878
 	}
 
-	handle_path /requests {
+	handle_path /requests* {
 		rewrite * /requests{uri}
 		reverse_proxy overseerr:5055
 	}
