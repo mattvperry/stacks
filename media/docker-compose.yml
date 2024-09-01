@@ -150,6 +150,29 @@ services:
       - homepage.widget.url=https://plex.mattvperry.com
       - homepage.widget.key=${PLEX_API}
 
+  ##
+  # Requests
+  ##
+  overseerr:
+    image: lscr.io/linuxserver/overseerr:latest
+    container_name: overseerr
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - TZ=America/New_York
+    volumes:
+      - overseerr_config:/config
+    restart: always
+    labels:
+      - homepage.group=Media
+      - homepage.name=Overseerr
+      - homepage.icon=overseerr
+      - homepage.href=https://mattvperry.com/requests
+      - homepage.description=Media requests
+      - homepage.widget.type=overseerr
+      - homepage.widget.url=https://overseerr:5055
+      - homepage.widget.key=${OVERSEERR_API}
+
 volumes:
   transmission_config:
   nzbget_config:
@@ -157,3 +180,4 @@ volumes:
   radarr_config:
   sonarr_config:
   plex_config:
+  overseerr_config:
