@@ -78,5 +78,5 @@ docker.mattvperry.com {
 }
 
 logs.mattvperry.com {
-	reverse_proxy victoriametrics:8428
+	reverse_proxy grafana:3000
 }
