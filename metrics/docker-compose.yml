@@ -88,6 +88,26 @@ services:
       retries: 10
     restart: always
 
+  ##
+  # Dashboard and query interface
+  ##
+  grafana:
+    image: docker.io/grafana/grafana:latest
+    container_name: grafana
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ./provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./config/dashboards:/var/lib/grafana/dashboards
+    environment:
+      - GF_SECURITY_ADMIN_USER=${ADMIN_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_INSTALL_PLUGINS=${GF_VL_PLUGIN};victorialogs-datasource,${GF_VM_PLUGIN};victoriametrics-datasource
+      - GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=victorialogs-datasource,victoriametrics-datasource
+    restart: always
+
 volumes:
   victorialogs_data:
   victoriametrics_data:
+  grafana_data:
