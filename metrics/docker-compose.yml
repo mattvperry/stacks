@@ -17,7 +17,7 @@ services:
   # Docker metrics
   ##
   cadvisor:
-    image: ghcr.io/cadvisor/cadvisor:latest
+    image: gcr.io/cadvisor/cadvisor:latest
     container_name: cadvisor
     privileged: true
     devices:
