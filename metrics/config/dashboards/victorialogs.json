@@ -2579,7 +2579,7 @@
         "multi": false,
         "name": "ds",
         "options": [],
-        "query": "prometheus",
+        "query": "victoriametrics-datasource",
         "queryValue": "",
         "refresh": 1,
         "regex": "",
