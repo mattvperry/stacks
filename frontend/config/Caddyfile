@@ -32,11 +32,6 @@ www.mattvperry.com, mattvperry.com {
 		reverse_proxy radarr:7878
 	}
 
-	handle_path /requests* {
-		rewrite * /requests{uri}
-		reverse_proxy overseerr:5055
-	}
-
 	handle_path /index* {
 		rewrite * /index{uri}
 		reverse_proxy prowlarr:9696
@@ -56,6 +51,10 @@ www.mattvperry.com, mattvperry.com {
 		root * /srv/http/public
 		file_server browse
 	}
+}
+
+media.mattvperry.com {
+	reverse_proxy overseerr:5055
 }
 
 plex.mattvperry.com {

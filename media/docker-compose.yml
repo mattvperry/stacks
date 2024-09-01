@@ -167,7 +167,7 @@ services:
       - homepage.group=Media
       - homepage.name=Overseerr
       - homepage.icon=overseerr
-      - homepage.href=https://mattvperry.com/requests
+      - homepage.href=https://media.mattvperry.com
       - homepage.description=Media requests
       - homepage.widget.type=overseerr
       - homepage.widget.url=https://overseerr:5055
