@@ -170,7 +170,7 @@ services:
       - homepage.href=https://media.mattvperry.com
       - homepage.description=Media requests
       - homepage.widget.type=overseerr
-      - homepage.widget.url=https://overseerr:5055
+      - homepage.widget.url=http://overseerr:5055
       - homepage.widget.key=${OVERSEERR_API}
 
 volumes:
