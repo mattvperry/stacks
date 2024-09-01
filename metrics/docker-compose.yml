@@ -1,5 +1,36 @@
 services:
   ##
+  # Machine stats collector
+  ##
+  node_exporter:
+    image: docker.io/prom/node-exporter:latest
+    container_name: node_exporter
+    volumes:
+      - /:/host:ro,rslave
+    command:
+      - --path.rootfs=/host
+    network_mode: host
+    pid: host
+    restart: always
+
+  ##
+  # Docker metrics
+  ##
+  cadvisor:
+    image: ghcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    privileged: true
+    devices:
+      - /dev/kmsg:/dev/kmsg
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+      - /dev/disk:/dev/disk:ro
+    restart: always
+
+  ##
   # Collection aggregation
   ##
   vector:
@@ -14,6 +45,7 @@ services:
         condition: service_healthy
       victoriametrics:
         condition: service_healthy
+    restart: always
 
   ##
   # Log aggregation
@@ -31,6 +63,7 @@ services:
       interval: 1s
       timeout: 1s
       retries: 10
+    restart: always
 
   ##
   # Metric aggregation
@@ -50,6 +83,7 @@ services:
       interval: 1s
       timeout: 1s
       retries: 10
+    restart: always
 
 volumes:
   victorialogs_data:
