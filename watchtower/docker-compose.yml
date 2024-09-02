@@ -2,8 +2,14 @@ services:
   watchtower:
     image: containrrr/watchtower
     container_name: watchtower
-    command: --debug --http-api-update --http-api-periodic-polls --cleanup --remove-volumes --http-api-metrics
+    command: 
+      - --http-api-update
+      - --http-api-periodic-polls
+      - --http-api-metrics
+      - --cleanup
+      - --remove-volumes
     environment:
+      - WATCHTOWER_POLL_INTERVAL=43200
       - WATCHTOWER_HTTP_API_TOKEN=${WATCHTOWER_HTTP_API_TOKEN}
     restart: always
     volumes:
