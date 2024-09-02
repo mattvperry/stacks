@@ -5,6 +5,7 @@ services:
   # function correctly.
   ##
   cron:
+    container_name: pterodactyl_cron
     command: p:cron
     env_file: ./panel.env
     image: ccarney16/pterodactyl-panel:${PANEL_VERSION:-latest}
@@ -17,6 +18,7 @@ services:
   # This service provides the wings runtime.
   ##
   daemon:
+    container_name: pterodactyl_wings
     environment:
       - TZ=${DAEMON_TIMEZONE:-UTC}
     image: docker.io/ccarney16/pterodactyl-daemon:${DAEMON_VERSION:-latest}
@@ -36,6 +38,7 @@ services:
   # Stores Server/User information
   ##
   mariadb:
+    container_name: pterodactyl_db
     image: docker.io/library/mariadb:10.11
     env_file: ./mariadb.env
     networks:
@@ -51,6 +54,7 @@ services:
   # This is the container that provides the main web interface.
   ##
   panel:
+    container_name: pterodactyl_panel
     env_file: ./panel.env
     image: docker.io/ccarney16/pterodactyl-panel:${PANEL_VERSION:-latest}
     restart: always
@@ -75,6 +79,7 @@ services:
   # -- Redis --
   ##
   redis:
+    container_name: pterodactyl_cache
     cpu_count: 2
     image: docker.io/library/redis:alpine
     mem_limit: 128m
@@ -88,6 +93,7 @@ services:
   # -- Panel Worker --
   ##
   worker:
+    container_name: pterodactyl_worker
     command: p:worker
     env_file: ./panel.env
     image: docker.io/ccarney16/pterodactyl-panel:${PANEL_VERSION:-latest}
