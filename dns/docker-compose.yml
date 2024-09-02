@@ -14,7 +14,7 @@ services:
     networks:
       default:
         ipv4_address: 172.27.0.3
-    restart: always
+    restart: unless-stopped
     labels:
       - homepage.group=Network
       - homepage.name=PiHole
@@ -37,7 +37,7 @@ services:
       timeout: 30s
       retries: 3
       start_period: 30s
-    restart: always
+    restart: unless-stopped
 
 volumes:
   pihole_config:

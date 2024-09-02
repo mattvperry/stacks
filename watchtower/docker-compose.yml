@@ -11,7 +11,7 @@ services:
     environment:
       - WATCHTOWER_POLL_INTERVAL=43200
       - WATCHTOWER_HTTP_API_TOKEN=${WATCHTOWER_HTTP_API_TOKEN}
-    restart: always
+    restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:

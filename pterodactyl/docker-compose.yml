@@ -9,7 +9,7 @@ services:
     command: p:cron
     env_file: ./panel.env
     image: ccarney16/pterodactyl-panel:${PANEL_VERSION:-latest}
-    restart: always
+    restart: unless-stopped
     volumes:
       - panel:/data
 
@@ -25,7 +25,7 @@ services:
     ports:
       - 2022:2022
     privileged: true
-    restart: always
+    restart: unless-stopped
     volumes:
       - /var/lib/pterodactyl:/var/lib/pterodactyl
       - /var/run/docker.sock:/var/run/docker.sock
@@ -45,7 +45,7 @@ services:
       default:
         aliases:
           - mysql
-    restart: always
+    restart: unless-stopped
     volumes:
       - mysql:/var/lib/mysql
 
@@ -57,7 +57,7 @@ services:
     container_name: pterodactyl_panel
     env_file: ./panel.env
     image: docker.io/ccarney16/pterodactyl-panel:${PANEL_VERSION:-latest}
-    restart: always
+    restart: unless-stopped
     volumes:
       - panel:/data
     depends_on:
@@ -87,7 +87,7 @@ services:
       default:
         aliases:
           - cache
-    restart: always
+    restart: unless-stopped
 
   ##
   # -- Panel Worker --
@@ -97,7 +97,7 @@ services:
     command: p:worker
     env_file: ./panel.env
     image: docker.io/ccarney16/pterodactyl-panel:${PANEL_VERSION:-latest}
-    restart: always
+    restart: unless-stopped
     volumes:
       - panel:/data
 

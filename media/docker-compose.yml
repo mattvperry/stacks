@@ -15,7 +15,7 @@ services:
     ports:
       - 51413:51413
       - 51413:51413/udp
-    restart: always
+    restart: unless-stopped
     labels:
       - homepage.group=Downloads
       - homepage.name=Transmission
@@ -39,7 +39,7 @@ services:
     volumes:
       - nzbget_config:/config
       - /media/trinity/.usenet:/data/.usenet
-    restart: always
+    restart: unless-stopped
     labels:
       - homepage.group=Downloads
       - homepage.name=NZBGet
@@ -61,7 +61,7 @@ services:
       - TZ=America/New_York
     volumes:
       - prowlarr_config:/config
-    restart: always
+    restart: unless-stopped
     labels:
       - homepage.group=Downloads
       - homepage.name=Prowlarr
@@ -85,7 +85,7 @@ services:
     volumes:
       - radarr_config:/config
       - /media/trinity:/data
-    restart: always
+    restart: unless-stopped
     labels:
       - homepage.group=Media
       - homepage.name=Radarr
@@ -110,7 +110,7 @@ services:
     volumes:
       - sonarr_config:/config
       - /media/trinity:/data
-    restart: always
+    restart: unless-stopped
     labels:
       - homepage.group=Media
       - homepage.name=Sonarr
@@ -134,7 +134,7 @@ services:
       - TZ=America/New_York
     volumes:
       - tautulli_config:/config
-    restart: always
+    restart: unless-stopped
     labels:
       - homepage.group=Media
       - homepage.name=Tautulli
@@ -162,7 +162,7 @@ services:
       - /media/trinity:/data
     devices:
       - /dev/dri:/dev/dri
-    restart: always
+    restart: unless-stopped
     labels:
       - homepage.group=Media
       - homepage.name=Plex
@@ -185,7 +185,7 @@ services:
       - TZ=America/New_York
     volumes:
       - overseerr_config:/config
-    restart: always
+    restart: unless-stopped
     labels:
       - homepage.group=Media
       - homepage.name=Overseerr

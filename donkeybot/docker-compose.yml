@@ -1,7 +1,7 @@
 services:
   donkeybot:
     image: ghcr.io/mattvperry/donkeybot:db3
-    restart: always
+    restart: unless-stopped
     environment:
       - HUBOT_DISCORD_TOKEN=${HUBOT_DISCORD_TOKEN}
       - HUBOT_PTERO_API=${HUBOT_PTERO_API}

@@ -12,7 +12,7 @@ services:
       - --path.rootfs=/host
     network_mode: host
     pid: host
-    restart: always
+    restart: unless-stopped
 
   ##
   # Docker metrics
@@ -29,7 +29,7 @@ services:
       - /sys:/sys:ro
       - /var/lib/docker:/var/lib/docker:ro
       - /dev/disk:/dev/disk:ro
-    restart: always
+    restart: unless-stopped
 
   ##
   # Collection aggregation
@@ -48,7 +48,7 @@ services:
         condition: service_healthy
       victoriametrics:
         condition: service_healthy
-    restart: always
+    restart: unless-stopped
 
   ##
   # Log aggregation
@@ -66,7 +66,7 @@ services:
       interval: 1s
       timeout: 1s
       retries: 10
-    restart: always
+    restart: unless-stopped
 
   ##
   # Metric aggregation
@@ -86,7 +86,7 @@ services:
       interval: 1s
       timeout: 1s
       retries: 10
-    restart: always
+    restart: unless-stopped
 
   ##
   # Dashboard and query interface
@@ -103,7 +103,7 @@ services:
       - GF_USERS_ALLOW_SIGN_UP=false
       - GF_INSTALL_PLUGINS=${GF_VL_PLUGIN};victorialogs-datasource,${GF_VM_PLUGIN};victoriametrics-datasource
       - GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=victorialogs-datasource,victoriametrics-datasource
-    restart: always
+    restart: unless-stopped
 
 volumes:
   victorialogs_data:

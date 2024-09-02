@@ -8,7 +8,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - 9444:9443
-    restart: always
+    restart: unless-stopped
     labels:
       - homepage.group=System
       - homepage.name=Portainer
