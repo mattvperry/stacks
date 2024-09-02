@@ -60,6 +60,10 @@ www.mattvperry.com, mattvperry.com {
 	}
 }
 
+auth.mattvperry.com {
+	reverse_proxy auth_server:9000
+}
+
 dns.mattvperry.com {
 	reverse_proxy pihole
 }
