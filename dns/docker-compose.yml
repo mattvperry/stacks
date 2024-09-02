@@ -24,6 +24,7 @@ services:
 
   unbound:
     image: docker.io/klutchell/unbound:latest
+    container_name: unbound
     restart: always
     healthcheck:
       test: ["CMD", "dig", "-p", "53", "dnssec.works", "@127.0.0.1"]
