@@ -40,7 +40,7 @@ services:
           - unifi
     restart: always
     labels:
-      - homepage.group=System
+      - homepage.group=Network
       - homepage.name=Unifi
       - homepage.icon=unifi
       - homepage.href=https://unifi.mattvperry.com

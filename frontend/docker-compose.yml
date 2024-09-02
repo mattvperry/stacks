@@ -19,6 +19,7 @@ services:
       - unifi_default
       - watchtower_default
       - metrics_default
+      - dns_default
 
   ##
   # Reverse proxy
@@ -47,6 +48,7 @@ services:
       - unifi_default
       - watchtower_default
       - metrics_default
+      - dns_default
     labels:
       - homepage.group=System
       - homepage.name=Caddy
@@ -73,4 +75,6 @@ networks:
   watchtower_default:
     external: true
   metrics_default:
+    external: true
+  dns_default:
     external: true

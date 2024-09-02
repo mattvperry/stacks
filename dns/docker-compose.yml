@@ -16,7 +16,7 @@ services:
     labels:
       - homepage.group=Network
       - homepage.name=PiHole
-      - homepage.icon=pihole
+      - homepage.icon=pi-hole
       - homepage.href=https://dns.mattvperry.com
       - homepage.description=Network adblock
       - homepage.widget.type=pihole
