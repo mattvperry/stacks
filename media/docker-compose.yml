@@ -123,6 +123,29 @@ services:
       - homepage.widget.enableQueue=true
 
   ##
+  # Media metrics
+  ##
+  tautulli:
+    image: docker.io/linuxserver/tautulli:latest
+    container_name: tautulli
+    environment:
+      - PUID=421
+      - PGID=1001
+      - TZ=America/New_York
+    volumes:
+      - tautulli_config:/config
+    restart: always
+    labels:
+      - homepage.group=Media
+      - homepage.name=Tautulli
+      - homepage.icon=tautulli
+      - homepage.href=https://mattvperry.com/stats
+      - homepage.description=Media statistics
+      - homepage.widget.type=tautulli
+      - homepage.widget.url=https://tautulli:8181
+      - homepage.widget.key=${TAUTULLI_API}
+
+  ##
   # Library & Streaming
   ##
   plex:
@@ -154,7 +177,7 @@ services:
   # Requests
   ##
   overseerr:
-    image: lscr.io/linuxserver/overseerr:latest
+    image: docker.io/linuxserver/overseerr:latest
     container_name: overseerr
     environment:
       - PUID=1000
@@ -179,5 +202,6 @@ volumes:
   prowlarr_config:
   radarr_config:
   sonarr_config:
+  tautulli_config:
   plex_config:
   overseerr_config:

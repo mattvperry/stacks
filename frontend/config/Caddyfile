@@ -32,6 +32,10 @@ www.mattvperry.com, mattvperry.com {
 		reverse_proxy radarr:7878
 	}
 
+	handle_path /stats* {
+		reverse_proxy tautulli:8181
+	}
+
 	handle_path /index* {
 		rewrite * /index{uri}
 		reverse_proxy prowlarr:9696
