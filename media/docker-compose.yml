@@ -142,7 +142,7 @@ services:
       - homepage.href=https://mattvperry.com/stats
       - homepage.description=Media statistics
       - homepage.widget.type=tautulli
-      - homepage.widget.url=http://tautulli:8181
+      - homepage.widget.url=http://tautulli:8181/stats
       - homepage.widget.key=${TAUTULLI_API}
 
   ##
