@@ -13,7 +13,7 @@ services:
       - 53:53/udp
     networks:
       default:
-        ipv4_address: 172.28.0.3
+        ipv4_address: 172.27.0.3
     restart: always
     labels:
       - homepage.group=Network
@@ -30,7 +30,7 @@ services:
     container_name: unbound
     networks:
       default:
-        ipv4_address: 172.28.0.2
+        ipv4_address: 172.27.0.2
     healthcheck:
       test: ["CMD", "dig", "-p", "53", "dnssec.works", "@127.0.0.1"]
       interval: 30s
