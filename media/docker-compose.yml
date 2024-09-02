@@ -196,24 +196,6 @@ services:
       - homepage.widget.url=http://overseerr:5055
       - homepage.widget.key=${OVERSEERR_API}
 
-  ##
-  # Maintenance
-  ##
-  maintainerr:
-    image: ghcr.io/jorenn92/maintainerr:latest
-    container_name: maintainerr
-    user: 1000:1001
-    volumes:
-      - maintainerr_data:/opt/data
-    environment:
-      - TZ=America/New_York
-    restart: always
-    labels:
-      - homepage.group=Media
-      - homepage.name=Maintainerr
-      - homepage.href=https://mattvperry.com/maintain
-      - homepage.description=Media maintenance
-
 volumes:
   transmission_config:
   nzbget_config:

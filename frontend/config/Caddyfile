@@ -49,10 +49,6 @@ www.mattvperry.com, mattvperry.com {
 		}
 	}
 
-	handle_path /maintain* {
-		reverse_proxy maintainerr:6246
-	}
-
 	handle_path /files* {
 		root * /srv/http/files
 		file_server browse
