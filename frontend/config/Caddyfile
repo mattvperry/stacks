@@ -22,6 +22,16 @@ www.mattvperry.com, mattvperry.com {
 		reverse_proxy nzbget:6789
 	}
 
+	handle_path /torrent* {
+		rewrite * /transmission{uri}
+		reverse_proxy transmission:9091
+	}
+
+	handle_path /index* {
+		rewrite * /index{uri}
+		reverse_proxy prowlarr:9696
+	}
+
 	handle_path /tv* {
 		rewrite * /tv{uri}
 		reverse_proxy sonarr:8989
@@ -39,14 +49,8 @@ www.mattvperry.com, mattvperry.com {
 		}
 	}
 
-	handle_path /index* {
-		rewrite * /index{uri}
-		reverse_proxy prowlarr:9696
-	}
-
-	handle_path /torrent* {
-		rewrite * /transmission{uri}
-		reverse_proxy transmission:9091
+	handle_path /maintain* {
+		reverse_proxy maintainerr:6246
 	}
 
 	handle_path /files* {
