@@ -33,7 +33,10 @@ www.mattvperry.com, mattvperry.com {
 	}
 
 	handle_path /stats* {
-		reverse_proxy tautulli:8181
+		rewrite * /stats{uri}
+		reverse_proxy tautulli:8181 {
+			header_up X-Forwarded-Ssl on
+		}
 	}
 
 	handle_path /index* {
