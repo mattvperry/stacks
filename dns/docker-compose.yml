@@ -1,0 +1,28 @@
+services:
+  pihole:
+    image: docker.io/pihole/pihole:latest
+    container_name: pihole
+    environment:
+      - TZ=America/New_York
+      - WEBPASSWORD=${PIHOLE_PASS}
+    volumes:
+      - pihole_config:/etc/pihole
+      - pihole_dnsmasq:/etc/dnsmasq.d
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 8998:80/tcp
+    restart: always
+    labels:
+      - homepage.group=Network
+      - homepage.name=PiHole
+      - homepage.icon=pihole
+      - homepage.href=https://dns.mattvperry.com
+      - homepage.description=Network adblock
+      - homepage.widget.type=pihole
+      - homepage.widget.url=http://pihole
+      - homepage.widget.key=${PIHOLE_KEY}
+
+volumes:
+  pihole_config:
+  pihole_dnsmasq:
