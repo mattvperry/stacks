@@ -205,4 +205,3 @@ volumes:
   tautulli_config:
   plex_config:
   overseerr_config:
-  maintainerr_data:
