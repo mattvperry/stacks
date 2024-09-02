@@ -11,17 +11,26 @@ services:
     ports:
       - 53:53/tcp
       - 53:53/udp
-      - 8998:80/tcp
     restart: always
     labels:
       - homepage.group=Network
       - homepage.name=PiHole
-      - homepage.icon=pi-hole
+      - homepage.icon=pi-hole-unbound
       - homepage.href=https://dns.mattvperry.com
       - homepage.description=Network adblock
       - homepage.widget.type=pihole
       - homepage.widget.url=http://pihole
       - homepage.widget.key=${PIHOLE_KEY}
+
+  unbound:
+    image: docker.io/klutchell/unbound:latest
+    restart: always
+    healthcheck:
+      test: ["CMD", "dig", "-p", "53", "dnssec.works", "@127.0.0.1"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+      start_period: 30s
 
 volumes:
   pihole_config:
