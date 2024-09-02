@@ -61,7 +61,8 @@ www.mattvperry.com, mattvperry.com {
 }
 
 dns.mattvperry.com {
-	handle_path /pihole* {
+	redir /pihole /pihole/
+	handle_path /pihole/* {
 		rewrite * /admin{uri}
 		reverse_proxy pihole
 	}
