@@ -35,6 +35,7 @@ services:
     container_name: auth_server
     command: server
     environment:
+      - AUTHENTIK_LOG_LEVEL=trace
       - AUTHENTIK_SECRET_KEY=${AUTHENTIK_SECRET_KEY}
       - AUTHENTIK_REDIS__HOST=redis
       - AUTHENTIK_POSTGRESQL__HOST=postgresql
@@ -61,11 +62,14 @@ services:
       - AUTHENTIK_POSTGRESQL__NAME=${PG_DB:-authentik}
       - AUTHENTIK_POSTGRESQL__PASSWORD=${PG_PASS}
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      # - /var/run/docker.sock:/var/run/docker.sock
       #- ./media:/media
       #- ./certs:/certs
       #- ./custom-templates:/templates
     user: root
+    networks:
+      - default
+      - media_default
     depends_on:
       - postgresql
       - redis
@@ -74,3 +78,7 @@ services:
 volumes:
   database:
   redis:
+
+networks:
+  media_default:
+    external: true
