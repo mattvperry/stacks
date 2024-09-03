@@ -5,17 +5,47 @@
 	}
 }
 
+(fwauth) {
+	reverse_proxy /outpost.goauthentik.io/* auth_server:9000
+
+	forward_auth {args[0]} auth_server:9000 {
+		uri /outpost.goauthentik.io/auth/caddy
+		copy_headers {
+			X-Authentik-Username
+			X-Authentik-Groups
+			X-Authentik-Email
+			X-Authentik-Name
+			X-Authentik-Uid
+			X-Authentik-Jwt
+			X-Authentik-Meta-Jwks
+			X-Authentik-Meta-Outpost
+			X-Authentik-Meta-Provider
+			X-Authentik-Meta-App
+			X-Authentik-Meta-Version
+		}
+		trusted_proxies private_ranges
+	}
+}
+
 www.mattvperry.com, mattvperry.com {
 	@auth {
 		not client_ip private_ranges
 		not path /public*
 	}
 
-	basic_auth @auth {
-		mperry $2y$10$vYT73/y7QSGsiL6FUjARbOeUHz91zaR58CBx5t.oW6LnGkbnwarwy
-	}
+	import fwauth @auth
 
-	reverse_proxy homepage:3000
+	reverse_proxy / homepage:3000
+
+	reverse_proxy /index* prowlarr:9696
+
+	reverse_proxy /tv* sonarr:8989
+
+	reverse_proxy /movies* radarr:7878
+
+	reverse_proxy /stats* tautulli:8181 {
+		header_up X-Forwarded-Ssl on
+	}
 
 	redir /nzb /nzb/
 	handle_path /nzb/* {
@@ -25,28 +55,6 @@ www.mattvperry.com, mattvperry.com {
 	handle_path /torrent* {
 		rewrite * /transmission{uri}
 		reverse_proxy transmission:9091
-	}
-
-	handle_path /index* {
-		rewrite * /index{uri}
-		reverse_proxy prowlarr:9696
-	}
-
-	handle_path /tv* {
-		rewrite * /tv{uri}
-		reverse_proxy sonarr:8989
-	}
-
-	handle_path /movies* {
-		rewrite * /movies{uri}
-		reverse_proxy radarr:7878
-	}
-
-	handle_path /stats* {
-		rewrite * /stats{uri}
-		reverse_proxy tautulli:8181 {
-			header_up X-Forwarded-Ssl on
-		}
 	}
 
 	handle_path /files* {

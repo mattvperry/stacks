@@ -35,7 +35,6 @@ services:
     container_name: auth_server
     command: server
     environment:
-      - AUTHENTIK_LOG_LEVEL=trace
       - AUTHENTIK_SECRET_KEY=${AUTHENTIK_SECRET_KEY}
       - AUTHENTIK_REDIS__HOST=redis
       - AUTHENTIK_POSTGRESQL__HOST=postgresql
