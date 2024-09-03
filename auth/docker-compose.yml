@@ -42,7 +42,7 @@ services:
       - AUTHENTIK_POSTGRESQL__USER=${PG_USER:-authentik}
       - AUTHENTIK_POSTGRESQL__NAME=${PG_DB:-authentik}
       - AUTHENTIK_POSTGRESQL__PASSWORD=${PG_PASS}
-    # volumes:
+    #volumes:
       #- ./media:/media
       #- ./custom-templates:/templates
     depends_on:
@@ -61,8 +61,8 @@ services:
       - AUTHENTIK_POSTGRESQL__USER=${PG_USER:-authentik}
       - AUTHENTIK_POSTGRESQL__NAME=${PG_DB:-authentik}
       - AUTHENTIK_POSTGRESQL__PASSWORD=${PG_PASS}
-    volumes:
-      # - /var/run/docker.sock:/var/run/docker.sock
+    #volumes:
+      #- /var/run/docker.sock:/var/run/docker.sock
       #- ./media:/media
       #- ./certs:/certs
       #- ./custom-templates:/templates
