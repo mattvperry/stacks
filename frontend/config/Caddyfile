@@ -35,7 +35,7 @@ www.mattvperry.com, mattvperry.com {
 
 	import fwauth @auth
 
-	reverse_proxy / homepage:3000
+	reverse_proxy homepage:3000
 
 	reverse_proxy /index* prowlarr:9696
 
