@@ -18,26 +18,12 @@ services:
     labels:
       - homepage.group=Network
       - homepage.name=PiHole
-      - homepage.icon=pi-hole-unbound
+      - homepage.icon=pi-hole
       - homepage.href=https://dns.mattvperry.com/admin
       - homepage.description=Network adblock
       - homepage.widget.type=pihole
       - homepage.widget.url=http://pihole
       - homepage.widget.key=${PIHOLE_KEY}
-
-  unbound:
-    image: docker.io/klutchell/unbound:latest
-    container_name: unbound
-    networks:
-      default:
-        ipv4_address: 172.27.0.2
-    healthcheck:
-      test: ["CMD", "dig", "-p", "53", "dnssec.works", "@127.0.0.1"]
-      interval: 30s
-      timeout: 30s
-      retries: 3
-      start_period: 30s
-    restart: unless-stopped
 
 volumes:
   pihole_config:
