@@ -4,7 +4,7 @@ services:
     container_name: pihole
     environment:
       - TZ=America/New_York
-      - WEBPASSWORD=${PIHOLE_PASS}
+      - FTLCONF_webserver_api_password=${PIHOLE_PASS}
     volumes:
       - pihole_config:/etc/pihole
       - pihole_dnsmasq:/etc/dnsmasq.d
