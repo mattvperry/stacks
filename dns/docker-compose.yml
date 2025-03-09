@@ -24,6 +24,7 @@ services:
       - homepage.widget.type=pihole
       - homepage.widget.url=http://pihole
       - homepage.widget.key=${PIHOLE_KEY}
+      - homepage.widget.version=6
 
 volumes:
   pihole_config:
