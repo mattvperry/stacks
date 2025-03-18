@@ -6,6 +6,8 @@ services:
   homepage:
     image: ghcr.io/gethomepage/homepage:latest
     container_name: homepage
+    environment:
+      - HOMEPAGE_ALLOWED_HOSTS=mattvperry.com
     volumes:
       - homepage_config:/app/config
       - /media/trinity:/trinity:ro
