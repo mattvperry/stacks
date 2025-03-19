@@ -156,7 +156,7 @@ services:
       - PUID=421
       - PGID=1001
       - TZ=America/New_York
-      - VERSION=public
+      - VERSION=latest
     volumes:
       - plex_config:/config
       - /media/trinity:/data
