@@ -51,6 +51,15 @@ services:
       - homepage.widget.password=${UNIFI_PASS}
       - homepage.widget.fields=["uptime","wlan_devices"]
 
+  orb-docker:
+    image: orbforge/orb:latest
+    container_name: orb-sensor # Optional: Give the container a specific name
+    network_mode: host # Required: Allows Orb to see network traffic
+    volumes:
+      - orb_data:/root/.config/orb # Persists Orb configuration
+    restart: always # Ensures Orb restarts if it stops or on system reboot
+
 volumes:
   mongo_db:
   unifi_config:
+  orb_data:
