@@ -51,15 +51,29 @@ services:
       - homepage.widget.password=${UNIFI_PASS}
       - homepage.widget.fields=["uptime","wlan_devices"]
 
+  ddclient:
+    image: docker.io/linuxserver/ddclient:latest
+    container_name: ddclient
+    environment:
+      - PUID=113
+      - PGID=113
+      - TZ=America/New_York
+      - CLOUDFLARE_LOGIN=${CLOUDFLARE_LOGIN}
+      - CLOUDFLARE_TOKEN=${CLOUDFLARE_TOKEN}
+    volumes:
+      - ddclient_config:/config
+    restart: unless-stopped
+
   orb-docker:
     image: orbforge/orb:latest
-    container_name: orb-sensor # Optional: Give the container a specific name
-    network_mode: host # Required: Allows Orb to see network traffic
+    container_name: orb-sensor
+    network_mode: host
     volumes:
-      - orb_data:/root/.config/orb # Persists Orb configuration
-    restart: always # Ensures Orb restarts if it stops or on system reboot
+      - orb_data:/root/.config/orb
+    restart: unless-stopped
 
 volumes:
   mongo_db:
   unifi_config:
   orb_data:
+  ddclient_config:
