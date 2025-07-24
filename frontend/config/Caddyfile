@@ -107,3 +107,7 @@ docker.mattvperry.com {
 logs.mattvperry.com {
 	reverse_proxy grafana:3000
 }
+
+archi.mattvperry.com {
+	reverse_proxy archi-nginx-1:80
+}
