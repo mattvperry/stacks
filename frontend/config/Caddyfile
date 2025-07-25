@@ -113,5 +113,5 @@ archi.mattvperry.com {
 }
 
 archi.mattvperry.com:61512 {
-    reverse_proxy localhost:61511
+    reverse_proxy archi-multiworld-1:61511
 }
