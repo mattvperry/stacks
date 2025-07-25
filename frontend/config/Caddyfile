@@ -111,3 +111,7 @@ logs.mattvperry.com {
 archi.mattvperry.com {
 	reverse_proxy archi-nginx-1:80
 }
+
+archi.mattvperry.com:61512 {
+    reverse_proxy localhost:61511
+}
