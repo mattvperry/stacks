@@ -21,9 +21,16 @@ services:
       timeout: 10s
       retries: 3
       start_period: 10s
+    networks:
+      - default
+      - metrics_default
     labels:
       - homepage.group=System
       - homepage.name=WhatsUpDocker
       - homepage.icon=whats-up-docker
       - homepage.description=Docker monitoring and updates
       - homepage.href=https://wud.mattvperry.com
+
+network:
+  metrics_default:
+    external: true
