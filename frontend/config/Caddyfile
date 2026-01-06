@@ -108,10 +108,6 @@ logs.mattvperry.com {
 	reverse_proxy grafana:3000
 }
 
-archi.mattvperry.com {
-	reverse_proxy archi-nginx-1:80
-}
-
-archi.mattvperry.com:61512 {
-	reverse_proxy 192.168.1.100:61511
+wud.mattvperry.com {
+	reverse_proxy wud:3000
 }

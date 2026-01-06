@@ -87,5 +87,5 @@ networks:
     external: true
   auth_default:
     external: true
-  archi_default:
+  wud_default:
     external: true
