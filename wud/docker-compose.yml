@@ -26,5 +26,3 @@ services:
       - homepage.icon=whats-up-docker
       - homepage.description=Docker monitoring and updates
       - homepage.href=https://wud.mattvperry.com
-      - homepage.widget.type=whatsupdocker
-      - homepage.widget.url=http://wud:3000
