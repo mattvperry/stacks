@@ -70,7 +70,7 @@ www.mattvperry.com, mattvperry.com {
 }
 
 auth.mattvperry.com {
-	reverse_proxy pocket-id:1411
+	reverse_proxy pocketid:1411
 }
 
 dns.mattvperry.com {

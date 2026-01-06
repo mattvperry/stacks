@@ -78,6 +78,7 @@ services:
 
   pocket-id:
     image: ghcr.io/pocket-id/pocket-id:latest
+    container_name: pocketid
     restart: unless-stopped
     volumes:
       - pocketid_data:/data
