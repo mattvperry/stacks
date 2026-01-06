@@ -8,6 +8,8 @@ services:
     environment:
       - WUD_TRIGGER_DOCKER_LOCAL_AUTO=true
       - WUD_TRIGGER_DOCKER_LOCAL_PRUNE=true
+      - WUD_REGISTRY_HUB_PUBLIC_LOGIN=${DOCKERHUB_USERNAME}
+      - WUD_REGISTRY_HUB_PUBLIC_TOKEN=${DOCKERHUB_TOKEN}
       - WUD_AUTH_OIDC_AUTHENTIK_CLIENTID=${AUTH_CLIENT_ID}
       - WUD_AUTH_OIDC_AUTHENTIK_CLIENTSECRET=${AUTH_CLIENT_SECRET}
       - WUD_AUTH_OIDC_AUTHENTIK_DISCOVERY=https://auth.mattvperry.com/application/o/wud/.well-known/openid-configuration
@@ -18,3 +20,11 @@ services:
       timeout: 10s
       retries: 3
       start_period: 10s
+    labels:
+      - homepage.group=System
+      - homepage.name=WhatsUpDocker
+      - homepage.icon=whatsupdocker
+      - homepage.description=Docker monitoring and updates
+      - homepage.href=https://wud.mattvperry.com
+      - homepage.widget.type=whatsupdocker
+      - homepage.widget.url=http://wud:3000
