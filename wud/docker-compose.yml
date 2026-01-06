@@ -6,8 +6,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
     environment:
-      - WUD_TRIGGER_DOCKER_DEFAULT_AUTO=true
-      - WUD_TRIGGER_DOCKER_DEFAULT_PRUNE=true
+      - WUD_TRIGGER_DOCKER_LOCAL_AUTO=true
+      - WUD_TRIGGER_DOCKER_LOCAL_PRUNE=true
       - WUD_AUTH_OIDC_AUTHENTIK_CLIENTID=${AUTH_CLIENT_ID}
       - WUD_AUTH_OIDC_AUTHENTIK_CLIENTSECRET=${AUTH_CLIENT_SECRET}
       - WUD_AUTH_OIDC_AUTHENTIK_DISCOVERY=https://auth.mattvperry.com/application/o/wud/.well-known/openid-configuration
