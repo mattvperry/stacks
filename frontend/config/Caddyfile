@@ -15,7 +15,6 @@
 www.mattvperry.com, mattvperry.com {
 	@auth {
 		not client_ip private_ranges
-		not path /stats*
 		not path /public*
 	}
 
