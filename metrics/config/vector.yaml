@@ -20,11 +20,6 @@ sources:
     type: prometheus_scrape
     endpoints:
       - http://caddy:2019/metrics
-
-  wud_metrics:
-    type: prometheus_scrape
-    endpoints:
-      - http://wud:3000/metrics
   
   vector_logs:
     type: internal_logs
@@ -70,6 +65,5 @@ sinks:
       - cadvisor
       - node_exporter
       - caddy_metrics
-      - wud_metrics
     healthcheck:
       enabled: false
