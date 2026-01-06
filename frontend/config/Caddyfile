@@ -6,7 +6,7 @@
 }
 
 (fwauth) {
-	forward_auth tinyauth:3000 {
+	forward_auth {args[0]} tinyauth:3000 {
 		uri /api/auth/caddy
 		trusted_proxies private_ranges
 	}
