@@ -87,5 +87,5 @@ networks:
     external: true
   auth_default:
     external: true
-  wud_default:
+  whatsupdocker_default:
     external: true
