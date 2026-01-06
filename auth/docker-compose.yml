@@ -4,7 +4,7 @@ services:
     container_name: pocketid
     restart: unless-stopped
     volumes:
-      - pocketid_data:/data
+      - pocketid_data:/app/data
     environment:
       - APP_URL=https://auth.mattvperry.com
       - ENCRYPTION_KEY=${ENCRYPTION_KEY}
