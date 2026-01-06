@@ -6,6 +6,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
     environment:
+      - WUD_WATCHER_DOCKER_LOCAL_CRON=0 5 * * *
       - WUD_TRIGGER_DOCKER_LOCAL_AUTO=true
       - WUD_TRIGGER_DOCKER_LOCAL_PRUNE=true
       - WUD_REGISTRY_HUB_PUBLIC_LOGIN=${DOCKERHUB_USERNAME}
