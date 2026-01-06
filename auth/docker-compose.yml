@@ -23,7 +23,11 @@ services:
     environment:
       - APP_URL=https://authproxy.mattvperry.com
     networks:
-      - auth_default
+      - default
 
 volumes:
   pocketid_data:
+
+networks:
+  default:
+    driver: bridge
