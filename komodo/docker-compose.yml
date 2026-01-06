@@ -1,0 +1,44 @@
+services:
+  mongo:
+    image: docker.io/library/mongo:latest
+    container_name: komodo_db
+    command: --quiet --wiredTigerCacheSizeGB 0.25
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${KOMODO_DB_USERNAME:-admin}
+      - MONGO_INITDB_ROOT_PASSWORD=${KOMODO_DB_PASSWORD}
+    volumes:
+      - mongo_data:/data/db
+      - mongo_config:/data/configdb
+    restart: unless-stopped
+    labels:
+      - komodo.skip
+
+  core:
+    image: ghcr.io/moghtech/komodo-core:latest
+    container_name: komodo_core
+    depends_on:
+      - mongo
+    environment:
+      - KOMODO_DATABASE_ADDRESS=komodo_db:27017
+      - KOMODO_DATABASE_USERNAME=${KOMODO_DB_USERNAME:-admin}
+      - KOMODO_DATABASE_PASSWORD=${KOMODO_DB_PASSWORD}
+    volumes:
+      - /etc/komodo/backups:/backups
+    restart: unless-stopped
+    labels:
+      - komodo.skip
+
+  periphery:
+    image: ghcr.io/moghtech/komodo-periphery:latest
+    container_name: komodo_periphery
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /proc:/proc
+      - /etc/komodo:/etc/komodo
+    restart: unless-stopped
+    labels:
+      - komodo.skip
+
+volumes:
+  mongo_data:
+  mongo_config:

@@ -76,9 +76,26 @@ services:
       - redis
     restart: unless-stopped
 
+  pocket-id:
+    image: ghcr.io/pocket-id/pocket-id:latest
+    restart: unless-stopped
+    volumes:
+      - pocketid_data:/data
+    environment:
+      - APP_URL=https://auth.mattvperry.com
+      - ENCRYPTION_KEY=${ENCRYPTION_KEY}
+      - TRUST_PROXY=true
+    healthcheck:
+      test: ["CMD", "/app/pocket-id", "healthcheck"]
+      interval: 1m30s
+      timeout: 5s
+      retries: 2
+      start_period: 10s
+
 volumes:
   database:
   redis:
+  pocketid_data:
 
 networks:
   media_default:
