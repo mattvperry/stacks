@@ -23,7 +23,7 @@ services:
       - metrics_default
       - dns_default
       - auth_default
-      - wud_default
+      - whatsupdocker_default
 
   ##
   # Reverse proxy
@@ -55,7 +55,7 @@ services:
       - metrics_default
       - dns_default
       - auth_default
-      - wud_default
+      - whatsupdocker_default
     labels:
       - homepage.group=System
       - homepage.name=Caddy

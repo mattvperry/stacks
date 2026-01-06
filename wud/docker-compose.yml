@@ -4,8 +4,4 @@ services:
     container_name: wud
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      default:
-        aliases:
-          - wud
     restart: unless-stopped
