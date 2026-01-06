@@ -5,36 +5,21 @@
 	}
 }
 
-#(fwauth) {
-#	reverse_proxy /outpost.goauthentik.io/* auth_server:9000
-#
-#	forward_auth {args[0]} auth_server:9000 {
-#		uri /outpost.goauthentik.io/auth/caddy
-#		copy_headers {
-#			X-Authentik-Username
-#			X-Authentik-Groups
-#			X-Authentik-Email
-#			X-Authentik-Name
-#			X-Authentik-Uid
-#			X-Authentik-Jwt
-#			X-Authentik-Meta-Jwks
-#			X-Authentik-Meta-Outpost
-#			X-Authentik-Meta-Provider
-#			X-Authentik-Meta-App
-#			X-Authentik-Meta-Version
-#		}
-#		trusted_proxies private_ranges
-#	}
-#}
+(fwauth) {
+	forward_auth tinyauth:3000 {
+		uri /api/auth/caddy
+		trusted_proxies private_ranges
+	}
+}
 
 www.mattvperry.com, mattvperry.com {
-	#@auth {
-	#	not client_ip private_ranges
-	#	not path /stats*
-	#	not path /public*
-	#}
+	@auth {
+		not client_ip private_ranges
+		not path /stats*
+		not path /public*
+	}
 
-	#import fwauth @auth
+	import fwauth @auth
 
 	reverse_proxy homepage:3000
 
@@ -71,6 +56,10 @@ www.mattvperry.com, mattvperry.com {
 
 auth.mattvperry.com {
 	reverse_proxy pocketid:1411
+}
+
+authproxy.mattvperry.com {
+	reverse_proxy tinyauth:3000
 }
 
 dns.mattvperry.com {

@@ -1,81 +1,4 @@
 services:
-  postgresql:
-    image: docker.io/library/postgres:16-alpine
-    container_name: auth_db
-    environment:
-      - POSTGRES_PASSWORD=${PG_PASS:?database password required}
-      - POSTGRES_USER=${PG_USER:-authentik}
-      - POSTGRES_DB=${PG_DB:-authentik}
-    volumes:
-      - database:/var/lib/postgresql/data
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
-      start_period: 20s
-      interval: 30s
-      retries: 5
-      timeout: 5s
-    labels:
-      - wud.tag.include=16-alpine
-
-  redis:
-    image: docker.io/library/redis:alpine
-    container_name: auth_cache
-    command: --save 60 1 --loglevel warning
-    volumes:
-      - redis:/data
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "redis-cli ping | grep PONG"]
-      start_period: 20s
-      interval: 30s
-      retries: 5
-      timeout: 3s
-
-  server:
-    image: ghcr.io/goauthentik/server:latest
-    container_name: auth_server
-    command: server
-    environment:
-      - AUTHENTIK_SECRET_KEY=${AUTHENTIK_SECRET_KEY}
-      - AUTHENTIK_REDIS__HOST=redis
-      - AUTHENTIK_POSTGRESQL__HOST=postgresql
-      - AUTHENTIK_POSTGRESQL__USER=${PG_USER:-authentik}
-      - AUTHENTIK_POSTGRESQL__NAME=${PG_DB:-authentik}
-      - AUTHENTIK_POSTGRESQL__PASSWORD=${PG_PASS}
-    #volumes:
-      #- ./media:/media
-      #- ./custom-templates:/templates
-    depends_on:
-      - postgresql
-      - redis
-    restart: unless-stopped
-
-  worker:
-    image: ghcr.io/goauthentik/server:latest
-    container_name: auth_worker
-    command: worker
-    environment:
-      - AUTHENTIK_SECRET_KEY=${AUTHENTIK_SECRET_KEY}
-      - AUTHENTIK_REDIS__HOST=redis
-      - AUTHENTIK_POSTGRESQL__HOST=postgresql
-      - AUTHENTIK_POSTGRESQL__USER=${PG_USER:-authentik}
-      - AUTHENTIK_POSTGRESQL__NAME=${PG_DB:-authentik}
-      - AUTHENTIK_POSTGRESQL__PASSWORD=${PG_PASS}
-    #volumes:
-      #- /var/run/docker.sock:/var/run/docker.sock
-      #- ./media:/media
-      #- ./certs:/certs
-      #- ./custom-templates:/templates
-    user: root
-    networks:
-      - default
-      - media_default
-    depends_on:
-      - postgresql
-      - redis
-    restart: unless-stopped
-
   pocket-id:
     image: ghcr.io/pocket-id/pocket-id:latest
     container_name: pocketid
@@ -93,11 +16,12 @@ services:
       retries: 2
       start_period: 10s
 
-volumes:
-  database:
-  redis:
-  pocketid_data:
+  tinyauth:
+    image: ghcr.io/steveiliop56/tinyauth:latest
+    container_name: tinyauth
+    restart: unless-stopped
+    environment:
+      - APP_URL=https://authproxy.mattvperry.com
 
-networks:
-  media_default:
-    external: true
+volumes:
+  pocketid_data:
