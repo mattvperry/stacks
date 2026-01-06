@@ -1,6 +1,6 @@
 services:
   unifi-db:
-    image: docker.io/mongo:7.0.14
+    image: docker.io/mongo:8.0-noble
     container_name: unifi-db
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
@@ -13,6 +13,8 @@ services:
       - mongo_db:/data/db
       - /var/lib/mongodb/init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh:ro
     restart: unless-stopped
+    labels:
+      - wub.tag.include=8.0-noble
 
   unifi-network-app:
     image: docker.io/linuxserver/unifi-network-application:latest

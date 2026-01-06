@@ -39,7 +39,7 @@ services:
   ##
   mariadb:
     container_name: pterodactyl_db
-    image: docker.io/library/mariadb:10.11
+    image: docker.io/library/mariadb:latest
     env_file: ./mariadb.env
     networks:
       default:
