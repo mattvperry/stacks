@@ -104,7 +104,7 @@ services:
       - 3000:3000
     environment:
       - GF_SERVER_ROOT_URL=https://logs.mattvperry.com
-      - GF_SECURITY_COOKIE_SAMESITE=disabled
+      - GF_AUTH_OAUTH_ALLOW_INSECURE_EMAIL_LOOKUP=true
       - GF_USERS_ALLOW_SIGN_UP=false
       - GF_INSTALL_PLUGINS=${GF_VL_PLUGIN};victorialogs-datasource,${GF_VM_PLUGIN};victoriametrics-datasource
       - GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=victorialogs-datasource,victoriametrics-datasource
