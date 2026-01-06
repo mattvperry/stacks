@@ -31,6 +31,6 @@ services:
       - homepage.description=Docker monitoring and updates
       - homepage.href=https://wud.mattvperry.com
 
-network:
+networks:
   metrics_default:
     external: true
