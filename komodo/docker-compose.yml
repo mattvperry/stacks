@@ -4,6 +4,7 @@ services:
     container_name: komodo_db
     command: --quiet --wiredTigerCacheSizeGB 0.25
     environment:
+      - TZ=America/New_York
       - MONGO_INITDB_ROOT_USERNAME=${KOMODO_DB_USERNAME:-admin}
       - MONGO_INITDB_ROOT_PASSWORD=${KOMODO_DB_PASSWORD}
     volumes:
@@ -19,9 +20,18 @@ services:
     depends_on:
       - mongo
     environment:
+      - TZ=America/New_York
       - KOMODO_DATABASE_ADDRESS=komodo_db:27017
       - KOMODO_DATABASE_USERNAME=${KOMODO_DB_USERNAME:-admin}
       - KOMODO_DATABASE_PASSWORD=${KOMODO_DB_PASSWORD}
+      - KOMODO_PASSKEY=${KOMODO_PASSKEY}
+      - KOMODO_HOST=https://docker.mattvperry.com
+      - KOMODO_OIDC_ENABLED=true
+      - KOMODO_OIDC_PROVIDER=https://auth.mattvperry.com/authorize
+      - KOMODO_OIDC_CLIENT_ID=${KOMODO_OIDC_CLIENT_ID}
+      - KOMODO_OIDC_CLIENT_SECRET=${KOMODO_OIDC_CLIENT_SECRET}
+      - KOMODO_OIDC_USER_FULL_EMAIL=true
+      - KOMODO_WEBOOK_SECRET=${KOMODO_WEBHOOK_SECRET}
     volumes:
       - /etc/komodo/backups:/backups
     restart: unless-stopped
@@ -31,6 +41,9 @@ services:
   periphery:
     image: ghcr.io/moghtech/komodo-periphery:latest
     container_name: komodo_periphery
+    environment:
+      - TZ=America/New_York
+      - PERIPHERY_PASSKEYS=${KOMODO_PASSKEY}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /proc:/proc

@@ -75,7 +75,7 @@ networks:
     external: true
   pterodactyl_default:
     external: true
-  portainer_default:
+  komodo_default:
     external: true
   unifi_default:
     external: true
