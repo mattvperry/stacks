@@ -27,7 +27,7 @@ services:
       - KOMODO_PASSKEY=${KOMODO_PASSKEY}
       - KOMODO_HOST=https://docker.mattvperry.com
       - KOMODO_OIDC_ENABLED=true
-      - KOMODO_OIDC_PROVIDER=https://auth.mattvperry.com/authorize
+      - KOMODO_OIDC_PROVIDER=https://auth.mattvperry.com
       - KOMODO_OIDC_CLIENT_ID=${KOMODO_OIDC_CLIENT_ID}
       - KOMODO_OIDC_CLIENT_SECRET=${KOMODO_OIDC_CLIENT_SECRET}
       - KOMODO_OIDC_USER_FULL_EMAIL=true
