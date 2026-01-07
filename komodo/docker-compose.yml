@@ -32,7 +32,6 @@ services:
       - KOMODO_OIDC_CLIENT_SECRET=${KOMODO_OIDC_CLIENT_SECRET}
       - KOMODO_OIDC_USER_FULL_EMAIL=true
       - KOMODO_WEBOOK_SECRET=${KOMODO_WEBHOOK_SECRET}
-      - KOMODO_FIRST_SERVER=https://komodo_periphery:8120
     volumes:
       - /etc/komodo/backups:/backups
     restart: unless-stopped
