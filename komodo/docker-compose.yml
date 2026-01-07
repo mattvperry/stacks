@@ -31,7 +31,7 @@ services:
       - KOMODO_OIDC_CLIENT_ID=${KOMODO_OIDC_CLIENT_ID}
       - KOMODO_OIDC_CLIENT_SECRET=${KOMODO_OIDC_CLIENT_SECRET}
       - KOMODO_OIDC_USER_FULL_EMAIL=true
-      - KOMODO_WEBOOK_SECRET=${KOMODO_WEBHOOK_SECRET}
+      - KOMODO_WEBHOOK_SECRET=${KOMODO_WEBHOOK_SECRET}
     volumes:
       - /etc/komodo/backups:/backups
     restart: unless-stopped
