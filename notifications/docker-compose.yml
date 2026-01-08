@@ -1,0 +1,16 @@
+services:
+  ntfy:
+    image: binwiederhier/ntfy:latest
+    container_name: ntfy
+    restart: unless-stopped
+    command:
+      - serve
+    environment:
+      - TZ=America/New_York
+    volumes:
+      - cache:/var/cache/ntfy
+      - data:/etc/ntfy
+
+volumes:
+  cache:
+  data:
