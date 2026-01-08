@@ -10,9 +10,6 @@ services:
     ports:
       - 2023:2022
     tty: true
-    networks:
-      - default
-      - pelican_nw
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
