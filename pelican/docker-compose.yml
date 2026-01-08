@@ -19,7 +19,7 @@ services:
       - /tmp/pelican:/tmp/pelican
       - config:/etc/pelican
 
-  database:
+  mariadb:
     container_name: pelican_db
     image: docker.io/library/mariadb:latest
     env_file: ./mariadb.env
@@ -31,7 +31,7 @@ services:
     volumes:
       - mysql:/var/lib/mysql
 
-  cache:
+  redis:
     container_name: pelican_cache
     cpu_count: 2
     image: docker.io/library/redis:alpine
