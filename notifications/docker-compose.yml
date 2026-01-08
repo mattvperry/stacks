@@ -14,6 +14,8 @@ services:
       - NTFY_BEHIND_PROXY=true
       - NTFY_ATTACHEMENT_CACHE_DIR=/var/lib/ntfy/attachments
       - NTFY_ENABLE_LOGIN=true
+      - NTFY_AUTH_USERS=${NTFY_AUTH_USERS}
+      - NTFY_AUTH_TOKENS=${NTFY_AUTH_TOKENS}
     volumes:
       - data:/var/lib/ntfy
 
