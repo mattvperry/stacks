@@ -19,7 +19,6 @@ services:
       - pterodactyl_default
       - komodo_default
       - unifi_default
-      - watchtower_default
       - metrics_default
       - dns_default
       - auth_default
@@ -51,7 +50,6 @@ services:
       - pterodactyl_default
       - komodo_default
       - unifi_default
-      - watchtower_default
       - metrics_default
       - dns_default
       - auth_default
