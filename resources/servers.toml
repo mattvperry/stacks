@@ -1,5 +1,0 @@
-[[server]]
-name = "Local"
-[server.config]
-address = "https://komodo_periphery:8120"
-enabled = true
