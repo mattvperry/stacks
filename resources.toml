@@ -7,6 +7,37 @@ enabled = true
 ##
 
 [[stack]]
+name = "auth"
+[stack.config]
+server = "Local"
+linked_repo = "Stacks"
+webhook_enabled = false
+run_directory = "auth"
+file_paths = ["docker-compose.yml"]
+environment = """
+POCKETID_CLIENT_ID=[[POCKETID_CLIENT_ID]]
+POCKETID_CLIENT_SECRET=[[POCKETID_CLIENT_SECRET]]
+ENCRYPTION_KEY=[[AUTH_ENCRYPTION_KEY]]
+"""
+
+##
+
+[[stack]]
+name = "dns"
+[stack.config]
+server = "Local"
+linked_repo = "Stacks"
+webhook_enabled = false
+run_directory = "dns"
+file_paths = ["docker-compose.yml"]
+environment = """
+PIHOLE_PASS=[[PIHOLE_PASS]]
+PIHOLE_KEY=[[PIHOLE_KEY]]
+"""
+
+##
+
+[[stack]]
 name = "frontend"
 [stack.config]
 server = "Local"
@@ -14,6 +45,25 @@ linked_repo = "Stacks"
 webhook_enabled = false
 run_directory = "frontend"
 file_paths = ["docker-compose.yml"]
+
+##
+
+[[stack]]
+name = "media"
+[stack.config]
+server = "Local"
+linked_repo = "Stacks"
+webhook_enabled = false
+run_directory = "media"
+file_paths = ["docker-compose.yml"]
+environment = """
+PROWLARR_API=[[PROWLARR_API]]
+RADARR_API=[[RADARR_API]]
+SONARR_API=[[SONARR_API]]
+PLEX_API=[[PLEX_API]]
+OVERSEERR_API=[[OVERSEERR_API]]
+TAUTULLI_API=[[TAUTULLI_API]]
+"""
 
 ##
 
