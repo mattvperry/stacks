@@ -75,6 +75,6 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.20.0.0/16
+        - subnet: 172.30.0.0/16
     driver_opts:
       com.docker.network.bridge.name: pelican_nw
