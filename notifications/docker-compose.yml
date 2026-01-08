@@ -7,10 +7,17 @@ services:
       - serve
     environment:
       - TZ=America/New_York
+      - NTFY_BASE_URL=https://ntfy.mattvperry.com/
+      - NTFY_CACHE_FILE=/var/lib/ntfy/cache.db
+      - NTFY_AUTH_FILE=/var/lib/ntfy/auth.db
+      - NTFY_AUTH_DEFAULT_ACCESS=deny-all
+      - NTFY_BEHIND_PROXY=true
+      - NTFY_ATTACHEMENT_CACHE_DIR=/var/lib/ntfy/attachments
+      - NTFY_ENABLE_LOGIN=true
+      - NTFY_AUTH_USERS=${NTFY_AUTH_USERS}
+      - NTFY_AUTH_TOKENS=${NTFY_AUTH_TOKENS}
     volumes:
-      - cache:/var/cache/ntfy
-      - data:/etc/ntfy
+      - data:/var/lib/ntfy
 
 volumes:
-  cache:
   data:
