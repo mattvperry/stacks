@@ -85,6 +85,17 @@ GF_VM_PLUGIN=https://github.com/VictoriaMetrics/victoriametrics-datasource/relea
 ##
 
 [[stack]]
+name = "notifications"
+[stack.config]
+server = "Local"
+linked_repo = "Stacks"
+webhook_enabled = false
+run_directory = "notifications"
+file_paths = ["docker-compose.yml"]
+
+##
+
+[[stack]]
 name = "pterodactyl"
 [stack.config]
 server = "Local"
@@ -167,6 +178,13 @@ enabled = true
 executions = [
   { execution.type = "GlobalAutoUpdate", execution.params = {}, enabled = true }
 ]
+
+##
+
+[[alerter]]
+name = "test"
+[alerter.config]
+
 
 ##
 
