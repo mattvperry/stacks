@@ -31,8 +31,7 @@ webhook_enabled = false
 run_directory = "dns"
 file_paths = ["docker-compose.yml"]
 environment = """
-PIHOLE_PASS=[[PIHOLE_PASS]]
-PIHOLE_KEY=[[PIHOLE_KEY]]
+TECHNITIUM_KEY=[[TECHNITIUM_KEY]]
 """
 
 ##
