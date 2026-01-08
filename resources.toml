@@ -8,7 +8,6 @@ enabled = true
 
 [[stack]]
 name = "frontend"
-template = true
 [stack.config]
 server = "Local"
 linked_repo = "Stacks"
