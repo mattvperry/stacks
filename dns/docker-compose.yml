@@ -26,6 +26,23 @@ services:
       - homepage.widget.key=${PIHOLE_KEY}
       - homepage.widget.version=6
 
+  technitium_dns:
+    image: technitium/dns-server:latest
+    container_name: technitium_dns
+    environment:
+      - TZ=America/New_York
+      - DNS_SERVER_FORWARDERS=1.1.1.1,1.0.0.1
+      - DNS_SERVER_PROTOCOL=Https
+    ports:
+      - 5380:5380/tcp
+    restart: unless-stopped
+    labels:
+      - homepage.group=Network
+      - homepage.name=Technitium DNS
+      - homepage.icon=technitium
+      - homepage.href=https://dns.mattvperry.com
+      - homepage.description=Network adblock
+
 volumes:
   pihole_config:
   pihole_dnsmasq:
