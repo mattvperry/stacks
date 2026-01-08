@@ -42,6 +42,11 @@ services:
       - homepage.icon=komodo
       - homepage.href=https://docker.mattvperry.com
       - homepage.description=Docker management
+      - homepage.widget.type=komodo
+      - homepage.widget.url=https://docker.mattvperry.com
+      - homepage.widget.key=${KOMODO_KEY}
+      - homepage.widget.secret=${KOMODO_SECRET}
+      - homepage.widget.showSummary=true
 
   periphery:
     image: ghcr.io/moghtech/komodo-periphery:latest
