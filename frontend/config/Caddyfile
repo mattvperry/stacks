@@ -79,6 +79,14 @@ games.mattvperry.com:9443 {
 	reverse_proxy daemon:9443
 }
 
+games2.mattvperry.com {
+	reverse_proxy pelican_panel:80
+}
+
+games2.mattvperry.com:9443 {
+	reverse_proxy pelican_wings:9443
+}
+
 unifi.mattvperry.com {
 	reverse_proxy unifi:8443 {
 		transport http {

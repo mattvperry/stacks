@@ -1,0 +1,67 @@
+services:
+  daemon:
+    container_name: pelican_wings
+    environment:
+      - TZ=America/New_York
+      - WINGS_UID=998
+      - WINGS_GID=998
+      - WINGS_USERNAME=pelican
+    image: ghcr.io/pelican-dev/wings:latest
+    ports:
+      - 2023:2022
+    tty: true
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/containers:/var/lib/docker/containers
+      - /var/lib/pelican:/var/lib/pelican
+      - /var/log/pelican:/var/log/pelican
+      - /tmp/pelican:/tmp/pelican
+      - config:/etc/pelican
+
+  database:
+    container_name: pelican_db
+    image: docker.io/library/mariadb:latest
+    env_file: ./mariadb.env
+    networks:
+      default:
+        aliases:
+          - mysql
+    restart: unless-stopped
+    volumes:
+      - mysql:/var/lib/mysql
+
+  cache:
+    container_name: pelican_cache
+    cpu_count: 2
+    image: docker.io/library/redis:alpine
+    mem_limit: 128m
+    networks:
+      default:
+        aliases:
+          - cache
+    restart: unless-stopped
+
+  panel:
+    container_name: pelican_panel
+    env_file: ./panel.env
+    image: ghcr.io/pelican-dev/panel:latest
+    restart: unless-stopped
+    volumes:
+      - panel:/pelican-data
+    depends_on:
+      mariadb:
+        condition: service_started
+      redis:
+        condition: service_started
+    labels:
+      - homepage.group=Games
+      - homepage.name=Pelican
+      - homepage.icon=pelican
+      - homepage.href=https://games2.mattvperry.com
+      - homepage.description=Game server management
+
+volumes:
+  panel:
+  mysql:
+  config:

@@ -23,6 +23,7 @@ services:
       - dns_default
       - auth_default
       - whatsupdocker_default
+      - pelican_default
 
   ##
   # Reverse proxy
@@ -54,6 +55,7 @@ services:
       - dns_default
       - auth_default
       - whatsupdocker_default
+      - pelican_default
     labels:
       - homepage.group=System
       - homepage.name=Caddy
@@ -84,4 +86,6 @@ networks:
   auth_default:
     external: true
   whatsupdocker_default:
+    external: true
+  pelican_default:
     external: true
