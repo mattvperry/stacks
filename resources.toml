@@ -18,6 +18,51 @@ file_paths = ["docker-compose.yml"]
 ##
 
 [[stack]]
+name = "metrics"
+[stack.config]
+server = "Local"
+linked_repo = "Stacks"
+webhook_enabled = false
+run_directory = "metrics"
+file_paths = ["docker-compose.yml"]
+environment = """
+GF_VL_PLUGIN=https://github.com/VictoriaMetrics/victorialogs-datasource/releases/download/v0.3.0/victorialogs-datasource-v0.3.0.zip
+GF_VM_PLUGIN=https://github.com/VictoriaMetrics/victoriametrics-datasource/releases/download/v0.9.0/victoriametrics-datasource-v0.9.0.zip
+"""
+
+##
+
+[[stack]]
+name = "pterodactyl"
+[stack.config]
+server = "Local"
+linked_repo = "Stacks"
+webhook_enabled = false
+run_directory = "pterodactyl"
+file_paths = ["docker-compose.yml"]
+environment = """
+PTERO_API_KEY=[[PTERO_API_KEY]]
+"""
+
+##
+
+[[stack]]
+name = "unifi"
+[stack.config]
+server = "Local"
+linked_repo = "Stacks"
+webhook_enabled = false
+run_directory = "unifi"
+file_paths = ["docker-compose.yml"]
+environment = """
+MONGO_PASS=[[UNIFI_MONGO_PASS]]
+UNIFI_USER=[[UNIFI_USER]]
+UNIFI_PASS=[[UNIFI_PASS]]
+"""
+
+##
+
+[[stack]]
 name = "whatsupdocker"
 [stack.config]
 server = "Local"
