@@ -8,9 +8,6 @@ services:
     volumes:
       - pihole_config:/etc/pihole
       - pihole_dnsmasq:/etc/dnsmasq.d
-    ports:
-      - 53:53/tcp
-      - 53:53/udp
     networks:
       default:
         ipv4_address: 172.27.0.3
@@ -35,6 +32,8 @@ services:
       - DNS_SERVER_PROTOCOL=Https
     ports:
       - 5380:5380/tcp
+      - 53:53/tcp
+      - 53:53/udp
     restart: unless-stopped
     labels:
       - homepage.group=Network
