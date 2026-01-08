@@ -182,9 +182,17 @@ executions = [
 ##
 
 [[alerter]]
-name = "test"
+name = "Ntfy"
 [alerter.config]
 
+
+##
+
+[[builder]]
+name = "Local"
+[builder.config]
+type = "Server"
+params.server_id = "Local"
 
 ##
 
