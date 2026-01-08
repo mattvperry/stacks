@@ -37,6 +37,11 @@ services:
     restart: unless-stopped
     labels:
       - komodo.skip
+      - homepage.group=System
+      - homepage.name=Komodo
+      - homepage.icon=komodo
+      - homepage.href=https://docker.mattvperry.com
+      - homepage.description=Docker management
 
   periphery:
     image: ghcr.io/moghtech/komodo-periphery:latest
