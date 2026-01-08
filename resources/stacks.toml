@@ -1,0 +1,17 @@
+[[stack]]
+name = "template"
+template = true
+[stack.config]
+server = "Local"
+linked_repo = "Stacks"
+webhook_enabled = false
+file_paths = ["docker-compose.yml"]
+
+[[stack]]
+name = "frontend"
+[stack.config]
+server = "Local"
+linked_repo = "Stacks"
+webhook_enabled = false
+run_directory = "frontend"
+file_paths = ["docker-compose.yml"]
