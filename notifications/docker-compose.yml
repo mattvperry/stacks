@@ -16,6 +16,7 @@ services:
       - NTFY_ENABLE_LOGIN=true
       - NTFY_AUTH_USERS=${NTFY_AUTH_USERS}
       - NTFY_AUTH_TOKENS=${NTFY_AUTH_TOKENS}
+      - NTFY_REQUIRE_LOGIN=true
     volumes:
       - data:/var/lib/ntfy
 
