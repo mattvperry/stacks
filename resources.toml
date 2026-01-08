@@ -1,5 +1,6 @@
 [[server]]
 name = "Local"
+tags = ["synced"]
 [server.config]
 address = "https://komodo_periphery:8120"
 enabled = true
@@ -8,6 +9,7 @@ enabled = true
 
 [[stack]]
 name = "auth"
+tags = ["synced"]
 [stack.config]
 server = "Local"
 linked_repo = "Stacks"
@@ -24,6 +26,7 @@ ENCRYPTION_KEY=[[AUTH_ENCRYPTION_KEY]]
 
 [[stack]]
 name = "dns"
+tags = ["synced"]
 [stack.config]
 server = "Local"
 linked_repo = "Stacks"
@@ -38,6 +41,7 @@ TECHNITIUM_KEY=[[TECHNITIUM_KEY]]
 
 [[stack]]
 name = "frontend"
+tags = ["synced"]
 [stack.config]
 server = "Local"
 linked_repo = "Stacks"
@@ -52,6 +56,7 @@ config_files = [
 
 [[stack]]
 name = "media"
+tags = ["synced"]
 [stack.config]
 server = "Local"
 linked_repo = "Stacks"
@@ -71,6 +76,7 @@ TAUTULLI_API=[[TAUTULLI_API]]
 
 [[stack]]
 name = "metrics"
+tags = ["synced"]
 [stack.config]
 server = "Local"
 linked_repo = "Stacks"
@@ -86,17 +92,23 @@ GF_VM_PLUGIN=https://github.com/VictoriaMetrics/victoriametrics-datasource/relea
 
 [[stack]]
 name = "notifications"
+tags = ["synced"]
 [stack.config]
 server = "Local"
 linked_repo = "Stacks"
 webhook_enabled = false
 run_directory = "notifications"
 file_paths = ["docker-compose.yml"]
+environment = """
+NTFY_AUTH_USERS=[[NTFY_AUTH_USERS]]
+NTFY_AUTH_TOKENS=[[NTFY_AUTH_TOKENS]]
+"""
 
 ##
 
 [[stack]]
 name = "pterodactyl"
+tags = ["synced"]
 [stack.config]
 server = "Local"
 linked_repo = "Stacks"
@@ -111,6 +123,7 @@ PTERO_API_KEY=[[PTERO_API_KEY]]
 
 [[stack]]
 name = "unifi"
+tags = ["synced"]
 [stack.config]
 server = "Local"
 linked_repo = "Stacks"
@@ -127,6 +140,7 @@ UNIFI_PASS=[[UNIFI_PASS]]
 
 [[stack]]
 name = "whatsupdocker"
+tags = ["synced"]
 [stack.config]
 server = "Local"
 linked_repo = "Stacks"
@@ -138,12 +152,14 @@ AUTH_CLIENT_ID=[[WUD_AUTH_CLIENT_ID]]
 AUTH_CLIENT_SECRET=[[WUD_AUTH_CLIENT_SECRET]]
 DOCKERHUB_USERNAME=[[DOCKERHUB_USERNAME]]
 DOCKERHUB_TOKEN=[[DOCKERHUB_TOKEN]]
+NTFY_AUTH_TOKEN=[[NTFY_AUTH_TOKEN]]
 """
 
 ##
 
 [[repo]]
 name = "Stacks"
+tags = ["synced"]
 [repo.config]
 server = "Local"
 git_account = "mattvperry"
@@ -154,7 +170,7 @@ repo = "mattvperry/stacks"
 [[procedure]]
 name = "Backup Core Database"
 description = "Triggers the Core database backup at the scheduled time."
-tags = ["system"]
+tags = ["system", "synced"]
 config.schedule = "Every day at 01:00"
 
 [[procedure.config.stage]]
@@ -169,7 +185,7 @@ executions = [
 [[procedure]]
 name = "Global Auto Update"
 description = "Pulls and auto updates Stacks and Deployments using 'poll_for_updates' or 'auto_update'."
-tags = ["system"]
+tags = ["system", "synced"]
 config.schedule = "Every day at 03:00"
 
 [[procedure.config.stage]]
@@ -181,15 +197,9 @@ executions = [
 
 ##
 
-[[alerter]]
-name = "Ntfy"
-[alerter.config]
-
-
-##
-
 [[builder]]
 name = "Local"
+tags = ["synced"]
 [builder.config]
 type = "Server"
 params.server_id = "Local"
@@ -198,7 +208,9 @@ params.server_id = "Local"
 
 [[resource_sync]]
 name = "Main Sync"
+tags = ["synced"]
 [resource_sync.config]
 linked_repo = "Stacks"
 resource_path = ["resources.toml"]
 managed = true
+match_tags = ["synced"]
