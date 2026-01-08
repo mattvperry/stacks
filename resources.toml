@@ -13,7 +13,6 @@ tags = ["synced"]
 [stack.config]
 server = "Local"
 linked_repo = "Stacks"
-webhook_enabled = false
 run_directory = "auth"
 file_paths = ["docker-compose.yml"]
 environment = """
@@ -30,7 +29,6 @@ tags = ["synced"]
 [stack.config]
 server = "Local"
 linked_repo = "Stacks"
-webhook_enabled = false
 run_directory = "dns"
 file_paths = ["docker-compose.yml"]
 environment = """
@@ -45,7 +43,6 @@ tags = ["synced"]
 [stack.config]
 server = "Local"
 linked_repo = "Stacks"
-webhook_enabled = false
 run_directory = "frontend"
 file_paths = ["docker-compose.yml"]
 config_files = [
@@ -60,7 +57,6 @@ tags = ["synced"]
 [stack.config]
 server = "Local"
 linked_repo = "Stacks"
-webhook_enabled = false
 run_directory = "media"
 file_paths = ["docker-compose.yml"]
 environment = """
@@ -80,7 +76,6 @@ tags = ["synced"]
 [stack.config]
 server = "Local"
 linked_repo = "Stacks"
-webhook_enabled = false
 run_directory = "metrics"
 file_paths = ["docker-compose.yml"]
 environment = """
@@ -96,7 +91,6 @@ tags = ["synced"]
 [stack.config]
 server = "Local"
 linked_repo = "Stacks"
-webhook_enabled = false
 run_directory = "notifications"
 file_paths = ["docker-compose.yml"]
 environment = """
@@ -112,7 +106,6 @@ tags = ["synced"]
 [stack.config]
 server = "Local"
 linked_repo = "Stacks"
-webhook_enabled = false
 run_directory = "pterodactyl"
 file_paths = ["docker-compose.yml"]
 environment = """
@@ -127,7 +120,6 @@ tags = ["synced"]
 [stack.config]
 server = "Local"
 linked_repo = "Stacks"
-webhook_enabled = false
 run_directory = "unifi"
 file_paths = ["docker-compose.yml"]
 environment = """
@@ -144,7 +136,6 @@ tags = ["synced"]
 [stack.config]
 server = "Local"
 linked_repo = "Stacks"
-webhook_enabled = false
 run_directory = "wud"
 file_paths = ["docker-compose.yml"]
 environment = """
