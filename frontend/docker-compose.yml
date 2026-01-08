@@ -23,7 +23,7 @@ services:
       - dns_default
       - auth_default
       - whatsupdocker_default
-      - ntfy_default
+      - notifications_default
 
   ##
   # Reverse proxy
@@ -55,7 +55,7 @@ services:
       - dns_default
       - auth_default
       - whatsupdocker_default
-      - ntfy_default
+      - notifications_default
     labels:
       - homepage.group=System
       - homepage.name=Caddy
@@ -87,5 +87,5 @@ networks:
     external: true
   whatsupdocker_default:
     external: true
-  ntfy_default:
+  notifications_default:
     external: true
