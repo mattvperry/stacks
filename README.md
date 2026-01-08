@@ -1,2 +1,2 @@
 # stacks
-Portainer stacks
+Komodo stacks
