@@ -50,9 +50,9 @@ services:
     volumes:
       - panel:/pelican-data
     depends_on:
-      database:
+      mariadb:
         condition: service_started
-      cache:
+      redis:
         condition: service_started
     labels:
       - homepage.group=Games
