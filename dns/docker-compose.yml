@@ -4,10 +4,7 @@ services:
     container_name: technitium_dns
     environment:
       - TZ=America/New_York
-      - DNS_SERVER_FORWARDERS=1.1.1.1,1.0.0.1
-      - DNS_SERVER_PROTOCOL=Https
     ports:
-      - 5380:5380/tcp
       - 53:53/tcp
       - 53:53/udp
     restart: unless-stopped
@@ -17,15 +14,10 @@ services:
       - homepage.icon=technitium
       - homepage.href=https://dns.mattvperry.com
       - homepage.description=Network adblock
+      - homepage.widget.type=technitium
+      - homepage.widget.url=https://dns.mattvperry.com
+      - homepage.widget.key=${TECHNITIUM_KEY}
+      - homepage.widget.range=LastDay
 
 volumes:
-  pihole_config:
-  pihole_dnsmasq:
-
-networks:
-  default:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.27.0.0/24
-          gateway: 172.27.0.1
+  technitium_config:/etc/dns

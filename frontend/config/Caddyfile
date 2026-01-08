@@ -60,7 +60,7 @@ authproxy.mattvperry.com {
 }
 
 dns.mattvperry.com {
-	reverse_proxy pihole
+	reverse_proxy technitium_dns:5380
 }
 
 media.mattvperry.com {
