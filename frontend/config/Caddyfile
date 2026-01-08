@@ -72,11 +72,11 @@ plex.mattvperry.com {
 }
 
 games.mattvperry.com {
-	reverse_proxy panel:80
+	reverse_proxy pterodactyl_panel:80
 }
 
 games.mattvperry.com:9443 {
-	reverse_proxy daemon:9443
+	reverse_proxy pterodactyl_wings:9443
 }
 
 games2.mattvperry.com {
