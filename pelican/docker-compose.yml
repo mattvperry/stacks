@@ -65,3 +65,13 @@ volumes:
   panel:
   mysql:
   config:
+
+networks:
+  pelican_nw:
+    name: pelican_nw
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+    driver_opts:
+      com.docker.network.bridge.name: pelican_nw
