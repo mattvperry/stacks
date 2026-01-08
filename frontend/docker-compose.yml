@@ -79,8 +79,6 @@ networks:
     external: true
   unifi_default:
     external: true
-  watchtower_default:
-    external: true
   metrics_default:
     external: true
   dns_default:
