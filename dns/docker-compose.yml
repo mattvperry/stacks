@@ -4,6 +4,8 @@ services:
     container_name: technitium_dns
     environment:
       - TZ=America/New_York
+    volumes:
+      - technitium_config:/etc/dns
     ports:
       - 53:53/tcp
       - 53:53/udp
@@ -20,4 +22,4 @@ services:
       - homepage.widget.range=LastDay
 
 volumes:
-  technitium_config:/etc/dns
+  technitium_config:
