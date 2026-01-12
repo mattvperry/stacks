@@ -9,5 +9,6 @@ services:
       - RENOVATE_PLATFORM=github
       - RENOVATE_TOKEN=${RENOVATE_GITHUB_COM_TOKEN}
       - RENOVATE_CONFIG_FILE=/opt/renovate/config.json
+      - RENOVATE_GIT_AUTHOR=Renovate Bot <bot@renovateapp.com>
     volumes:
       - ./renovate_config.json:/opt/renovate/config.json
