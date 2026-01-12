@@ -1,0 +1,6 @@
+{
+    "repositories": [
+        "mattvperry/stacks"
+    ],
+    "dryRun": "full"
+}
