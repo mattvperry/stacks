@@ -8,5 +8,6 @@ services:
       - RENOVATE_AUTODISCOVER=false
       - RENOVATE_PLATFORM=github
       - RENOVATE_TOKEN=${RENOVATE_GITHUB_COM_TOKEN}
+      - RENOVATE_CONFIG_FILE=/opt/renovate/config.json
     volumes:
       - ./renovate_config.json:/opt/renovate/config.json
