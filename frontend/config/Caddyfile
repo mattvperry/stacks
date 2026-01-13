@@ -95,10 +95,6 @@ logs.mattvperry.com {
 	reverse_proxy grafana:3000
 }
 
-wud.mattvperry.com {
-	reverse_proxy wud:3000
-}
-
 ntfy.mattvperry.com {
 	reverse_proxy ntfy:80
 }
