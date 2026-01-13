@@ -22,7 +22,6 @@ services:
       - metrics_default
       - dns_default
       - auth_default
-      - whatsupdocker_default
       - notifications_default
       - maintenance_default
 
@@ -55,7 +54,6 @@ services:
       - metrics_default
       - dns_default
       - auth_default
-      - whatsupdocker_default
       - notifications_default
       - maintenance_default
     labels:
@@ -86,8 +84,6 @@ networks:
   dns_default:
     external: true
   auth_default:
-    external: true
-  whatsupdocker_default:
     external: true
   notifications_default:
     external: true
