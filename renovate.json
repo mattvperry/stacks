@@ -6,7 +6,7 @@
   "packageRules": [
     {
       "matchFileNames": ["unifi/docker-compose.yml"],
-      "matchPackageNames": ["mongo"],
+      "matchPackageNames": ["docker.io/mongo"],
       "allowedVersions": "=8.0"
     },
     {
