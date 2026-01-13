@@ -13,6 +13,8 @@ services:
     volumes:
       - ./config.js:/usr/srv/app/config.js:ro
       - cache:/opt/renovate/cache
+      - database:/opt/renovate/database
 
 volumes:
   cache:
+  database:

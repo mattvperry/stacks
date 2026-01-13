@@ -8,5 +8,4 @@ module.exports = {
     ],
     repositoryCache: "enabled",
     cacheDir: "/opt/renovate/cache",
-    repositories: ["mattvperry/stacks"],
 };
