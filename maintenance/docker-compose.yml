@@ -8,13 +8,10 @@ services:
       - MEND_RNV_WEBHOOK_SECRET=${MEND_WEBHOOK_SECRET}
       - MEND_RNV_LICENSE_KEY=${MEND_LICENSE_KEY}
       - MEND_RNV_ACCEPT_TOS=Y
-      - MEND_RNV_SQLITE_FILE_PATH=/opt/renovate/db/renovate.sqlite
     restart: unless-stopped
     volumes:
       - ./config.js:/usr/srv/app/config.js:ro
       - cache:/opt/renovate/cache
-      - database:/opt/renovate/db
 
 volumes:
   cache:
-  database:
