@@ -1,6 +1,6 @@
 services:
   donkeybot:
-    image: ghcr.io/mattvperry/donkeybot:db3
+    image: ghcr.io/mattvperry/donkeybot:db3@sha256:433b4357a526eb13801df4393ed54a1a08d6f0115079e7c5a408581a73b6a85b
     restart: unless-stopped
     environment:
       - HUBOT_DISCORD_TOKEN=${HUBOT_DISCORD_TOKEN}

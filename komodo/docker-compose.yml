@@ -1,6 +1,6 @@
 services:
   mongo:
-    image: docker.io/library/mongo:latest
+    image: docker.io/library/mongo:latest@sha256:7f5bbdafebde7c42e42e33396d01c0eda3eb753da8dae99071a30e350568a0a4
     container_name: komodo_db
     command: --quiet --wiredTigerCacheSizeGB 0.25
     environment:
@@ -15,7 +15,7 @@ services:
       - komodo.skip
 
   core:
-    image: ghcr.io/moghtech/komodo-core:latest
+    image: ghcr.io/moghtech/komodo-core:latest@sha256:a1cceb4f971443b1e9f2a767788f663d0afb6244ee2135f7fe3fd1036af37ade
     container_name: komodo_core
     depends_on:
       - mongo
@@ -49,7 +49,7 @@ services:
       - homepage.widget.showSummary=true
 
   periphery:
-    image: ghcr.io/moghtech/komodo-periphery:latest
+    image: ghcr.io/moghtech/komodo-periphery:latest@sha256:bd79cf960ed054fe8e02384322303e462448679b1149dde48bbef151417255b1
     container_name: komodo_periphery
     environment:
       - TZ=America/New_York

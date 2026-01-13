@@ -39,7 +39,7 @@ services:
   ##
   mariadb:
     container_name: pterodactyl_db
-    image: docker.io/library/mariadb:latest
+    image: docker.io/library/mariadb:latest@sha256:e1bcd6f85781f4a875abefb11c4166c1d79e4237c23de597bf0df81fec225b40
     env_file: ./mariadb.env
     networks:
       default:
@@ -81,7 +81,7 @@ services:
   redis:
     container_name: pterodactyl_cache
     cpu_count: 2
-    image: docker.io/library/redis:alpine
+    image: docker.io/library/redis:alpine@sha256:6cbef353e480a8a6e7f10ec545f13d7d3fa85a212cdcc5ffaf5a1c818b9d3798
     mem_limit: 128m
     networks:
       default:

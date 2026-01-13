@@ -1,6 +1,6 @@
 services:
   unifi-db:
-    image: docker.io/mongo:8.0-noble
+    image: docker.io/mongo:8.0-noble@sha256:6a8f63fe4e532b7fdcc394c4aa7703684cd42da746e482aa38b8833ace0a188e
     container_name: unifi-db
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
@@ -15,7 +15,7 @@ services:
     restart: unless-stopped
 
   unifi-network-app:
-    image: docker.io/linuxserver/unifi-network-application:latest
+    image: docker.io/linuxserver/unifi-network-application:latest@sha256:268340299e6a8a85c29800923e242c60ed7baa24557943f0ff5ec4ea52804232
     container_name: unifi-network-app
     environment:
       - PUID=113
@@ -52,7 +52,7 @@ services:
       - homepage.widget.fields=["uptime","wlan_devices"]
 
   orb-docker:
-    image: orbforge/orb:latest
+    image: orbforge/orb:latest@sha256:f27199ec8fe0acdba422dc6e6d0a9fba14931c6b853ee41c990d623b347bd808
     container_name: orb-sensor
     network_mode: host
     volumes:
