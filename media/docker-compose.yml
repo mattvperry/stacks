@@ -3,7 +3,7 @@ services:
   # Bittorrent client
   ##
   transmission:
-    image: docker.io/linuxserver/transmission:latest@sha256:7ffccac759f5c2f075ab09757b2da1db2c05a35989b5b0c27ae535928c09283f
+    image: docker.io/linuxserver/transmission:4.0.6@sha256:7ffccac759f5c2f075ab09757b2da1db2c05a35989b5b0c27ae535928c09283f
     container_name: transmission
     environment:
       - PUID=169
@@ -30,7 +30,7 @@ services:
   # Usenet client
   ##
   nzbget:
-    image: docker.io/linuxserver/nzbget:latest@sha256:500b4e697584d80f0ed09176ec9b8dd92e45d9a41952bde6dbe349b0487988fb
+    image: docker.io/linuxserver/nzbget:25.4.20260109@sha256:500b4e697584d80f0ed09176ec9b8dd92e45d9a41952bde6dbe349b0487988fb
     container_name: nzbget
     environment:
       - PUID=974
@@ -53,7 +53,7 @@ services:
   # Index organizer
   ##
   prowlarr:
-    image: docker.io/linuxserver/prowlarr:latest@sha256:67a8aaedcfd6989f3030b937a6a07007310b1dfc7ee8df16d2cbfa48d1c1158c
+    image: docker.io/linuxserver/prowlarr:2.3.0@sha256:67a8aaedcfd6989f3030b937a6a07007310b1dfc7ee8df16d2cbfa48d1c1158c
     container_name: prowlarr
     environment:
       - PUID=977
@@ -76,7 +76,7 @@ services:
   # Movies
   ##
   radarr:
-    image: docker.io/linuxserver/radarr:latest@sha256:6c0948b42c149e36bb3dbc0b64d36c77b2d3c9dccf1b424c4f72af1e57ba0c21
+    image: docker.io/linuxserver/radarr:6.0.4@sha256:6c0948b42c149e36bb3dbc0b64d36c77b2d3c9dccf1b424c4f72af1e57ba0c21
     container_name: radarr
     environment:
       - PUID=986
@@ -101,7 +101,7 @@ services:
   # Television
   ##
   sonarr:
-    image: docker.io/linuxserver/sonarr:latest@sha256:8b9f2138ec50fc9e521960868f79d2ad0d529bc610aef19031ea8ff80b54c5e0
+    image: docker.io/linuxserver/sonarr:4.0.16@sha256:8b9f2138ec50fc9e521960868f79d2ad0d529bc610aef19031ea8ff80b54c5e0
     container_name: sonarr
     environment:
       - PUID=991
@@ -126,7 +126,7 @@ services:
   # Media metrics
   ##
   tautulli:
-    image: docker.io/linuxserver/tautulli:latest@sha256:98bd286311e590872be8b9d4773849926d386eb4b995c30e637dd63c2b953215
+    image: docker.io/linuxserver/tautulli:2.16.0@sha256:98bd286311e590872be8b9d4773849926d386eb4b995c30e637dd63c2b953215
     container_name: tautulli
     environment:
       - PUID=421
@@ -149,7 +149,7 @@ services:
   # Library & Streaming
   ##
   plex:
-    image: docker.io/linuxserver/plex:latest@sha256:1720efa8e919a724ff3003cce7c1c0ae91a54e097ca3c8f6713a780c6fd73432
+    image: docker.io/linuxserver/plex:1.42.2@sha256:1720efa8e919a724ff3003cce7c1c0ae91a54e097ca3c8f6713a780c6fd73432
     container_name: plex
     network_mode: host
     environment: 
@@ -177,7 +177,7 @@ services:
   # Requests
   ##
   overseerr:
-    image: docker.io/linuxserver/overseerr:latest@sha256:f6a782e44742a02bdb6032d32ebb4e9615e261140f879be897b28cdb40ff800e
+    image: docker.io/linuxserver/overseerr:1.34.0@sha256:f6a782e44742a02bdb6032d32ebb4e9615e261140f879be897b28cdb40ff800e
     container_name: overseerr
     environment:
       - PUID=1000

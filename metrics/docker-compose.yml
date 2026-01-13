@@ -3,7 +3,7 @@ services:
   # Machine stats collector
   ##
   node_exporter:
-    image: docker.io/prom/node-exporter:latest@sha256:3ac34ce007accad95afed72149e0d2b927b7e42fd1c866149b945b84737c62c3
+    image: docker.io/prom/node-exporter:v1.10.2@sha256:3ac34ce007accad95afed72149e0d2b927b7e42fd1c866149b945b84737c62c3
     container_name: node_exporter
     volumes:
       - /:/host:ro,rslave
@@ -18,7 +18,7 @@ services:
   # Docker metrics
   ##
   cadvisor:
-    image: gcr.io/cadvisor/cadvisor:latest@sha256:3de2bd5203120b866d74a9b283b2ffb8ec382fbf9dc321814700c6ea6f44ec57
+    image: gcr.io/cadvisor/cadvisor:v0.55.1@sha256:3de2bd5203120b866d74a9b283b2ffb8ec382fbf9dc321814700c6ea6f44ec57
     container_name: cadvisor
     privileged: true
     devices:
@@ -36,7 +36,7 @@ services:
   # Collection aggregation
   ##
   vector:
-    image: docker.io/timberio/vector:latest-alpine@sha256:7d697bec60a484e148ca61f4268dd5a5c8cd2dd6e22e0e2cfd54bf2bc8c576ae
+    image: docker.io/timberio/vector:0.52.0-alpine@sha256:4be91e938bc85ad1915c2d66f77342078904ca3391934d590c8f523e66613ad7
     container_name: vector
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -55,7 +55,7 @@ services:
   # Log aggregation
   ##
   victorialogs:
-    image: docker.io/victoriametrics/victoria-logs:latest@sha256:3db89651b2ffa0f4fe5a0f8805ede409701f41ca63ebdd64cfa4a3cb63976b43
+    image: docker.io/victoriametrics/victoria-logs:v1.43.1@sha256:3db89651b2ffa0f4fe5a0f8805ede409701f41ca63ebdd64cfa4a3cb63976b43
     container_name: victorialogs
     volumes:
       - victorialogs_data:/vlogs
@@ -73,7 +73,7 @@ services:
   # Metric aggregation
   ##
   victoriametrics:
-    image: docker.io/victoriametrics/victoria-metrics:latest@sha256:254069e96bf39deb06065e8600ca754fcf1287bfc04982e760d0e77f4a6fac4d
+    image: docker.io/victoriametrics/victoria-metrics:v1.133.0@sha256:254069e96bf39deb06065e8600ca754fcf1287bfc04982e760d0e77f4a6fac4d
     container_name: victoriametrics
     volumes:
       - victoriametrics_data:/vmsingle
@@ -93,7 +93,7 @@ services:
   # Dashboard and query interface
   ##
   grafana:
-    image: docker.io/grafana/grafana:latest@sha256:2175aaa91c96733d86d31cf270d5310b278654b03f5718c59de12a865380a31f
+    image: docker.io/grafana/grafana:12.3@sha256:2175aaa91c96733d86d31cf270d5310b278654b03f5718c59de12a865380a31f
     container_name: grafana
     volumes:
       - grafana_data:/var/lib/grafana

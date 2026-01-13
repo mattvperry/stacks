@@ -8,7 +8,7 @@ services:
     container_name: pterodactyl_cron
     command: p:cron
     env_file: ./panel.env
-    image: ccarney16/pterodactyl-panel:${PANEL_VERSION:-latest}
+    image: ccarney16/pterodactyl-panel:v1.12.0@sha256:0283aafa61190762f7b8da29e8a1f7bbd76dc4fc02efbbdf82f861470923bcb8
     restart: unless-stopped
     volumes:
       - panel:/data
@@ -21,7 +21,7 @@ services:
     container_name: pterodactyl_wings
     environment:
       - TZ=${DAEMON_TIMEZONE:-UTC}
-    image: docker.io/ccarney16/pterodactyl-daemon:${DAEMON_VERSION:-latest}
+    image: docker.io/ccarney16/pterodactyl-daemon:v1.12.0@sha256:8c0fa4445e67601f62fe2caa5b9bcf466841b0c02ef43718992f52ff64c3c8d0
     ports:
       - 2022:2022
     privileged: true
@@ -39,7 +39,7 @@ services:
   ##
   mariadb:
     container_name: pterodactyl_db
-    image: docker.io/library/mariadb:latest@sha256:e1bcd6f85781f4a875abefb11c4166c1d79e4237c23de597bf0df81fec225b40
+    image: mariadb:12.1.2@sha256:e1bcd6f85781f4a875abefb11c4166c1d79e4237c23de597bf0df81fec225b40
     env_file: ./mariadb.env
     networks:
       default:
@@ -56,7 +56,7 @@ services:
   panel:
     container_name: pterodactyl_panel
     env_file: ./panel.env
-    image: docker.io/ccarney16/pterodactyl-panel:${PANEL_VERSION:-latest}
+    image: ccarney16/pterodactyl-panel:v1.12.0@sha256:0283aafa61190762f7b8da29e8a1f7bbd76dc4fc02efbbdf82f861470923bcb8
     restart: unless-stopped
     volumes:
       - panel:/data
@@ -81,7 +81,7 @@ services:
   redis:
     container_name: pterodactyl_cache
     cpu_count: 2
-    image: docker.io/library/redis:alpine@sha256:6cbef353e480a8a6e7f10ec545f13d7d3fa85a212cdcc5ffaf5a1c818b9d3798
+    image: redis:8.4.0@sha256:eab64db310e251b0e8baa2418891094954aed5021ca790edc2842f74b1d8c9e1
     mem_limit: 128m
     networks:
       default:
@@ -96,7 +96,7 @@ services:
     container_name: pterodactyl_worker
     command: p:worker
     env_file: ./panel.env
-    image: docker.io/ccarney16/pterodactyl-panel:${PANEL_VERSION:-latest}
+    image: ccarney16/pterodactyl-panel:v1.12.0@sha256:0283aafa61190762f7b8da29e8a1f7bbd76dc4fc02efbbdf82f861470923bcb8
     restart: unless-stopped
     volumes:
       - panel:/data
