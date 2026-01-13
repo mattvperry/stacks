@@ -7,5 +7,5 @@ module.exports = {
         "security:minimumReleaseAgeNpm",
     ],
     repositoryCache: "enabled",
-    cacheDir: "/opt/renovate/cache",
+    cacheDir: "/tmp/renovate/cache",
 };
