@@ -5,6 +5,10 @@
       "matchFileNames": ["unifi/docker-compose.yml"],
       "matchPackageNames": ["mongo"],
       "allowedVersions": "<=8.0"
+    },
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
     }
   ]
 }
