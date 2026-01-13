@@ -1,0 +1,21 @@
+services:
+  renovate:
+    image: ghcr.io/mend/renovate-ce:13.3.0@sha256:5e7252befdc0b83bc62b50fed68be81e41064f8fbdf35f3e4624b215f7264580
+    environment:
+      - MEND_RNV_PLATFORM=github
+      - MEND_RNV_GITHUB_APP_ID=${MEND_GITHUB_APP_ID}
+      - MEND_RNV_GITHUB_APP_KEY=${MEND_GITHUB_APP_KEY}
+      - MEND_RNV_WEBHOOK_SECRET=${MEND_WEBHOOK_SECRET}
+      - MEND_RNV_LICENSE_KEY=${MEND_LICENSE_KEY}
+      - MEND_RNV_ACCEPT_TOS=Y
+      - MEND_RNV_SQLITE_FILE_PATH=/opt/renovate/db/renovate.db
+      - RENOVATE_REPOSITORY_CACHE=enabled 
+      - RENOVATE_CACHE_DIR=/opt/renovate/cache
+    restart: unless-stopped
+    volumes:
+      - cache:/opt/renovate/cache
+      - database:/opt/renovate/db
+
+volumes:
+  cache:
+  database:

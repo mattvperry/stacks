@@ -102,3 +102,7 @@ wud.mattvperry.com {
 ntfy.mattvperry.com {
 	reverse_proxy ntfy:80
 }
+
+renovate.mattvperry.com {
+	reverse_proxy renovate:8080
+}

@@ -24,6 +24,7 @@ services:
       - auth_default
       - whatsupdocker_default
       - notifications_default
+      - maintenance_default
 
   ##
   # Reverse proxy
@@ -56,6 +57,7 @@ services:
       - auth_default
       - whatsupdocker_default
       - notifications_default
+      - maintenance_default
     labels:
       - homepage.group=System
       - homepage.name=Caddy
@@ -88,4 +90,6 @@ networks:
   whatsupdocker_default:
     external: true
   notifications_default:
+    external: true
+  maintenance_default:
     external: true
