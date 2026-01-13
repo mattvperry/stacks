@@ -53,24 +53,6 @@ config_files = [
 ##
 
 [[stack]]
-name = "maintenance"
-tags = ["synced"]
-[stack.config]
-server = "Local"
-linked_repo = "Stacks"
-run_directory = "maintenance"
-file_paths = ["docker-compose.yml"]
-config_files = [
-  { path = "./renovate_config.json", requires = "Restart" }
-]
-ignore_services = ["renovate"]
-environment = """
-RENOVATE_GITHUB_COM_TOKEN=[[GITHUB_PAT]]
-"""
-
-##
-
-[[stack]]
 name = "media"
 tags = ["synced"]
 [stack.config]
@@ -203,20 +185,6 @@ name = "Stage 1"
 enabled = true
 executions = [
   { execution.type = "GlobalAutoUpdate", execution.params = {}, enabled = true }
-]
-
-##
-
-[[procedure]]
-name = "Renovate"
-tags = ["system", "synced"]
-config.webhook_enabled = false
-
-[[procedure.config.stage]]
-name = "Stage 1"
-enabled = true
-executions = [
-  { execution.type = "RunStackService", execution.params.stack = "maintenance", execution.params.service = "renovate", enabled = true }
 ]
 
 ##
