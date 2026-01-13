@@ -53,6 +53,26 @@ config_files = [
 ##
 
 [[stack]]
+name = "maintenance"
+tags = ["synced"]
+[stack.config]
+server = "Local"
+linked_repo = "Stacks"
+run_directory = "maintenance"
+file_paths = ["docker-compose.yml"]
+config_files = [
+  { path = "config.js", services = ["renovate"], requires = "Restart" }
+]
+environment = """
+MEND_GITHUB_APP_ID=[[MEND_GITHUB_APP_ID]]
+MEND_GITHUB_APP_KEY=[[MEND_GITHUB_APP_KEY]]
+MEND_WEBHOOK_SECRET=[[MEND_WEBHOOK_SECRET]]
+MEND_LICENSE_KEY=[[MEND_LICENSE_KEY]]
+"""
+
+##
+
+[[stack]]
 name = "media"
 tags = ["synced"]
 [stack.config]
@@ -127,24 +147,6 @@ environment = """
 MONGO_PASS=[[UNIFI_MONGO_PASS]]
 UNIFI_USER=[[UNIFI_USER]]
 UNIFI_PASS=[[UNIFI_PASS]]
-"""
-
-##
-
-[[stack]]
-name = "whatsupdocker"
-tags = ["synced"]
-[stack.config]
-server = "Local"
-linked_repo = "Stacks"
-run_directory = "wud"
-file_paths = ["docker-compose.yml"]
-environment = """
-AUTH_CLIENT_ID=[[WUD_AUTH_CLIENT_ID]]
-AUTH_CLIENT_SECRET=[[WUD_AUTH_CLIENT_SECRET]]
-DOCKERHUB_USERNAME=[[DOCKERHUB_USERNAME]]
-DOCKERHUB_TOKEN=[[DOCKERHUB_TOKEN]]
-NTFY_AUTH_TOKEN=[[NTFY_AUTH_TOKEN]]
 """
 
 ##
