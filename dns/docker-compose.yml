@@ -1,6 +1,6 @@
 services:
   technitium_dns:
-    image: technitium/dns-server:14.3.0@sha256:94f2b90d63f03181421152157a8099ea2752b13fa30b6c96833859be8e93dfa9
+    image: technitium/dns-server:14.3.0@sha256:322b236403ca25028032f28736e2270a860527b030b162c9f82451c6494c4698
     container_name: technitium_dns
     environment:
       - TZ=America/New_York
