@@ -1,6 +1,6 @@
 services:
   unifi-db:
-    image: docker.io/mongo:8.0-noble@sha256:6a8f63fe4e532b7fdcc394c4aa7703684cd42da746e482aa38b8833ace0a188e
+    image: docker.io/mongo:8.2-noble@sha256:d775d416112201f006871dd792dc0917eec9aa566b327611b1ca52397e79bf03
     container_name: unifi-db
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
