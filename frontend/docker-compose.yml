@@ -4,7 +4,7 @@ services:
   # https://gethomepage.dev/
   ##
   homepage:
-    image: ghcr.io/gethomepage/homepage:latest
+    image: ghcr.io/gethomepage/homepage:latest@sha256:7dc099d5c6ec7fc945d858218565925b01ff8a60bcbfda990fc680a8b5cd0b6e
     container_name: homepage
     environment:
       - HOMEPAGE_ALLOWED_HOSTS=mattvperry.com
@@ -29,7 +29,7 @@ services:
   # Reverse proxy
   ##
   proxy:
-    image: docker.io/caddy:latest
+    image: docker.io/caddy:latest@sha256:dedfbbeb703b2ce9ff4a98fc06aa9c7c7d9a42f0b7d778738c1dd3ef11dcc767
     container_name: caddy
     cap_add:
       - NET_ADMIN
