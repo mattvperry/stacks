@@ -3,6 +3,7 @@
   "extends": [
     "docker:enableMajor"
   ],
+  "ignoreTests": true,
   "packageRules": [
     {
       "matchFileNames": ["unifi/docker-compose.yml"],
@@ -10,8 +11,13 @@
       "allowedVersions": "=8.0"
     },
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "matchUpdateTypes": ["minor", "patch"],
       "automerge": true
+    },
+    {
+      "matchUpdateTypes": ["pin", "digest"],
+      "automerge": true,
+      "automergeType": "branch"
     }
   ]
 }
