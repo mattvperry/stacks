@@ -1,6 +1,10 @@
+name: maintenance
+
 services:
   renovate:
     image: ghcr.io/mend/renovate-ce:13.3.0@sha256:5e7252befdc0b83bc62b50fed68be81e41064f8fbdf35f3e4624b215f7264580
+    volumes:
+      - ./config.js:/usr/src/app/config.js:ro
     environment:
       - LOG_LEVEL=debug
       - MEND_RNV_PLATFORM=github
@@ -10,5 +14,3 @@ services:
       - MEND_RNV_LICENSE_KEY=${MEND_LICENSE_KEY}
       - MEND_RNV_ACCEPT_TOS=Y
     restart: unless-stopped
-    volumes:
-      - ./config.js:/usr/src/app/config.js:ro

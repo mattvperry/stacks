@@ -1,44 +1,16 @@
-services:
-  ##
-  # Bittorrent client
-  ##
-  transmission:
-    image: docker.io/linuxserver/transmission:4.0.6@sha256:7ffccac759f5c2f075ab09757b2da1db2c05a35989b5b0c27ae535928c09283f
-    container_name: transmission
-    environment:
-      - PUID=169
-      - PGID=1001
-      - TZ=America/New_York
-    volumes:
-      - transmission_config:/config
-      - /media/trinity/.torrents:/data/.torrents
-    ports:
-      - 51413:51413
-      - 51413:51413/udp
-    restart: unless-stopped
-    labels:
-      - homepage.group=Downloads
-      - homepage.name=Transmission
-      - homepage.icon=transmission
-      - homepage.href=https://mattvperry.com/torrent/web/
-      - homepage.description=Torrent downloader
-      - homepage.widget.type=transmission
-      - homepage.widget.url=http://transmission:9091/
-      - homepage.widget.rpcUrl=transmission/
+name: media
 
-  ##
-  # Usenet client
-  ##
+services:
   nzbget:
     image: docker.io/linuxserver/nzbget:25.4.20260109@sha256:500b4e697584d80f0ed09176ec9b8dd92e45d9a41952bde6dbe349b0487988fb
     container_name: nzbget
+    volumes:
+      - nzbget_config:/config
+      - /media/trinity/.usenet:/data/.usenet
     environment:
       - PUID=974
       - PGID=1001
       - TZ=America/New_York
-    volumes:
-      - nzbget_config:/config
-      - /media/trinity/.usenet:/data/.usenet
     restart: unless-stopped
     labels:
       - homepage.group=Downloads
@@ -50,17 +22,68 @@ services:
       - homepage.widget.url=http://nzbget:6789
 
   ##
+  # Requests
+  ##
+  overseerr:
+    image: docker.io/linuxserver/overseerr:1.34.0@sha256:f6a782e44742a02bdb6032d32ebb4e9615e261140f879be897b28cdb40ff800e
+    container_name: overseerr
+    volumes:
+      - overseerr_config:/config
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - TZ=America/New_York
+    restart: unless-stopped
+    labels:
+      - homepage.group=Media
+      - homepage.name=Overseerr
+      - homepage.icon=overseerr
+      - homepage.href=https://media.mattvperry.com
+      - homepage.description=Media requests
+      - homepage.widget.type=overseerr
+      - homepage.widget.url=http://overseerr:5055
+      - homepage.widget.key=${OVERSEERR_API}
+
+  ##
+  # Library & Streaming
+  ##
+  plex:
+    image: docker.io/linuxserver/plex:1.42.2@sha256:1720efa8e919a724ff3003cce7c1c0ae91a54e097ca3c8f6713a780c6fd73432
+    container_name: plex
+    volumes:
+      - plex_config:/config
+      - /media/trinity:/data
+    environment:
+      - PUID=421
+      - PGID=1001
+      - TZ=America/New_York
+      - VERSION=latest
+    network_mode: host
+    restart: unless-stopped
+    labels:
+      - homepage.group=Media
+      - homepage.name=Plex
+      - homepage.icon=plex
+      - homepage.href=https://plex.mattvperry.com/
+      - homepage.description=Media library
+      - homepage.widget.type=plex
+      - homepage.widget.url=https://plex.mattvperry.com
+      - homepage.widget.key=${PLEX_API}
+    devices:
+      - /dev/dri:/dev/dri
+
+  ##
   # Index organizer
   ##
   prowlarr:
     image: docker.io/linuxserver/prowlarr:2.3.0@sha256:67a8aaedcfd6989f3030b937a6a07007310b1dfc7ee8df16d2cbfa48d1c1158c
     container_name: prowlarr
+    volumes:
+      - prowlarr_config:/config
     environment:
       - PUID=977
       - PGID=977
       - TZ=America/New_York
-    volumes:
-      - prowlarr_config:/config
     restart: unless-stopped
     labels:
       - homepage.group=Downloads
@@ -78,13 +101,13 @@ services:
   radarr:
     image: docker.io/linuxserver/radarr:6.0.4@sha256:6c0948b42c149e36bb3dbc0b64d36c77b2d3c9dccf1b424c4f72af1e57ba0c21
     container_name: radarr
+    volumes:
+      - radarr_config:/config
+      - /media/trinity:/data
     environment:
       - PUID=986
       - PGID=1001
       - TZ=America/New_York
-    volumes:
-      - radarr_config:/config
-      - /media/trinity:/data
     restart: unless-stopped
     labels:
       - homepage.group=Media
@@ -103,13 +126,13 @@ services:
   sonarr:
     image: docker.io/linuxserver/sonarr:4.0.16@sha256:8b9f2138ec50fc9e521960868f79d2ad0d529bc610aef19031ea8ff80b54c5e0
     container_name: sonarr
+    volumes:
+      - sonarr_config:/config
+      - /media/trinity:/data
     environment:
       - PUID=991
       - PGID=1001
       - TZ=America/New_York
-    volumes:
-      - sonarr_config:/config
-      - /media/trinity:/data
     restart: unless-stopped
     labels:
       - homepage.group=Media
@@ -128,12 +151,12 @@ services:
   tautulli:
     image: docker.io/linuxserver/tautulli:2.16.0@sha256:98bd286311e590872be8b9d4773849926d386eb4b995c30e637dd63c2b953215
     container_name: tautulli
+    volumes:
+      - tautulli_config:/config
     environment:
       - PUID=421
       - PGID=1001
       - TZ=America/New_York
-    volumes:
-      - tautulli_config:/config
     restart: unless-stopped
     labels:
       - homepage.group=Media
@@ -144,57 +167,29 @@ services:
       - homepage.widget.type=tautulli
       - homepage.widget.url=http://tautulli:8181/stats
       - homepage.widget.key=${TAUTULLI_API}
-
-  ##
-  # Library & Streaming
-  ##
-  plex:
-    image: docker.io/linuxserver/plex:1.42.2@sha256:1720efa8e919a724ff3003cce7c1c0ae91a54e097ca3c8f6713a780c6fd73432
-    container_name: plex
-    network_mode: host
-    environment: 
-      - PUID=421
-      - PGID=1001
-      - TZ=America/New_York
-      - VERSION=latest
+  transmission:
+    image: docker.io/linuxserver/transmission:4.0.6@sha256:7ffccac759f5c2f075ab09757b2da1db2c05a35989b5b0c27ae535928c09283f
+    container_name: transmission
     volumes:
-      - plex_config:/config
-      - /media/trinity:/data
-    devices:
-      - /dev/dri:/dev/dri
-    restart: unless-stopped
-    labels:
-      - homepage.group=Media
-      - homepage.name=Plex
-      - homepage.icon=plex
-      - homepage.href=https://plex.mattvperry.com/
-      - homepage.description=Media library
-      - homepage.widget.type=plex
-      - homepage.widget.url=https://plex.mattvperry.com
-      - homepage.widget.key=${PLEX_API}
-
-  ##
-  # Requests
-  ##
-  overseerr:
-    image: docker.io/linuxserver/overseerr:1.34.0@sha256:f6a782e44742a02bdb6032d32ebb4e9615e261140f879be897b28cdb40ff800e
-    container_name: overseerr
+      - transmission_config:/config
+      - /media/trinity/.torrents:/data/.torrents
     environment:
-      - PUID=1000
+      - PUID=169
       - PGID=1001
       - TZ=America/New_York
-    volumes:
-      - overseerr_config:/config
+    ports:
+      - '51413:51413'
+      - '51413:51413/udp'
     restart: unless-stopped
     labels:
-      - homepage.group=Media
-      - homepage.name=Overseerr
-      - homepage.icon=overseerr
-      - homepage.href=https://media.mattvperry.com
-      - homepage.description=Media requests
-      - homepage.widget.type=overseerr
-      - homepage.widget.url=http://overseerr:5055
-      - homepage.widget.key=${OVERSEERR_API}
+      - homepage.group=Downloads
+      - homepage.name=Transmission
+      - homepage.icon=transmission
+      - homepage.href=https://mattvperry.com/torrent/web/
+      - homepage.description=Torrent downloader
+      - homepage.widget.type=transmission
+      - homepage.widget.url=http://transmission:9091/
+      - homepage.widget.rpcUrl=transmission/
 
 volumes:
   transmission_config:

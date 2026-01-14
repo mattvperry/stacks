@@ -1,10 +1,11 @@
+name: notifications
+
 services:
   ntfy:
     image: binwiederhier/ntfy:v2.15@sha256:aa10e84da624f65be107f9317dbf6e212fa812e0ebf62e74d032d0762eccc930
     container_name: ntfy
-    restart: unless-stopped
-    command:
-      - serve
+    volumes:
+      - data:/var/lib/ntfy
     environment:
       - TZ=America/New_York
       - NTFY_BASE_URL=https://ntfy.mattvperry.com/
@@ -18,8 +19,9 @@ services:
       - NTFY_AUTH_TOKENS=${NTFY_AUTH_TOKENS}
       - NTFY_AUTH_ACCESS=api:*:rw
       - NTFY_REQUIRE_LOGIN=true
-    volumes:
-      - data:/var/lib/ntfy
+    command:
+      - serve
+    restart: unless-stopped
 
 volumes:
   data:

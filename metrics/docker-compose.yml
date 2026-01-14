@@ -1,28 +1,9 @@
-services:
-  ##
-  # Machine stats collector
-  ##
-  node_exporter:
-    image: docker.io/prom/node-exporter:v1.10.2@sha256:3ac34ce007accad95afed72149e0d2b927b7e42fd1c866149b945b84737c62c3
-    container_name: node_exporter
-    volumes:
-      - /:/host:ro,rslave
-    command:
-      - --web.listen-address=172.17.0.1:9100
-      - --path.rootfs=/host
-    network_mode: host
-    pid: host
-    restart: unless-stopped
+name: metrics
 
-  ##
-  # Docker metrics
-  ##
+services:
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:v0.55.1@sha256:3de2bd5203120b866d74a9b283b2ffb8ec382fbf9dc321814700c6ea6f44ec57
     container_name: cadvisor
-    privileged: true
-    devices:
-      - /dev/kmsg:/dev/kmsg
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:ro
@@ -31,6 +12,45 @@ services:
       - /dev/disk:/dev/disk:ro
     command: --store_container_labels=false
     restart: unless-stopped
+    devices:
+      - /dev/kmsg:/dev/kmsg
+    privileged: true
+
+  ##
+  # Dashboard and query interface
+  ##
+  grafana:
+    image: docker.io/grafana/grafana:12.3@sha256:2175aaa91c96733d86d31cf270d5310b278654b03f5718c59de12a865380a31f
+    container_name: grafana
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ./provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./config/dashboards:/var/lib/grafana/dashboards
+    environment:
+      - GF_SERVER_ROOT_URL=https://logs.mattvperry.com
+      - GF_AUTH_OAUTH_ALLOW_INSECURE_EMAIL_LOOKUP=true
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_INSTALL_PLUGINS=${GF_VL_PLUGIN};victorialogs-datasource,${GF_VM_PLUGIN};victoriametrics-datasource
+      - GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=victorialogs-datasource,victoriametrics-datasource
+    restart: unless-stopped
+    labels:
+      - homepage.group=System
+      - homepage.name=Grafana
+      - homepage.icon=grafana
+      - homepage.href=https://logs.mattvperry.com
+      - homepage.description=Dashboards and Monitoring
+  node_exporter:
+    image: docker.io/prom/node-exporter:v1.10.2@sha256:3ac34ce007accad95afed72149e0d2b927b7e42fd1c866149b945b84737c62c3
+    container_name: node_exporter
+    volumes:
+      - /:/host:ro,rslave
+    network_mode: host
+    command:
+      - --web.listen-address=172.17.0.1:9100
+      - --path.rootfs=/host
+    restart: unless-stopped
+    pid: host
 
   ##
   # Collection aggregation
@@ -38,17 +58,17 @@ services:
   vector:
     image: docker.io/timberio/vector:0.52.0-alpine@sha256:4be91e938bc85ad1915c2d66f77342078904ca3391934d590c8f523e66613ad7
     container_name: vector
+    depends_on:
+      victorialogs:
+        condition: service_healthy
+      victoriametrics:
+        condition: service_healthy
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/lib/docker:/var/lib/docker
       - ./config/vector.yaml:/etc/vector/vector.yaml:ro
     extra_hosts:
       - host.docker.internal:host-gateway
-    depends_on:
-      victorialogs:
-        condition: service_healthy
-      victoriametrics:
-        condition: service_healthy
     restart: unless-stopped
 
   ##
@@ -62,12 +82,12 @@ services:
     command:
       - -storageDataPath=/vlogs
       - -loggerFormat=json
+    restart: unless-stopped
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://victorialogs:9428/health"]
+      test: [ "CMD", "wget", "-qO-", "http://victorialogs:9428/health" ]
       interval: 1s
       timeout: 1s
       retries: 10
-    restart: unless-stopped
 
   ##
   # Metric aggregation
@@ -82,39 +102,12 @@ services:
       - -storageDataPath=/vmsingle
       - -promscrape.config=/promscrape.yaml
       - -loggerFormat=json
+    restart: unless-stopped
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://victoriametrics:8428/health"]
+      test: [ "CMD", "wget", "-qO-", "http://victoriametrics:8428/health" ]
       interval: 1s
       timeout: 1s
       retries: 10
-    restart: unless-stopped
-
-  ##
-  # Dashboard and query interface
-  ##
-  grafana:
-    image: docker.io/grafana/grafana:12.3@sha256:2175aaa91c96733d86d31cf270d5310b278654b03f5718c59de12a865380a31f
-    container_name: grafana
-    volumes:
-      - grafana_data:/var/lib/grafana
-      - ./provisioning/dashboards:/etc/grafana/provisioning/dashboards
-      - ./provisioning/datasources:/etc/grafana/provisioning/datasources
-      - ./config/dashboards:/var/lib/grafana/dashboards
-    ports:
-      - 3000:3000
-    environment:
-      - GF_SERVER_ROOT_URL=https://logs.mattvperry.com
-      - GF_AUTH_OAUTH_ALLOW_INSECURE_EMAIL_LOOKUP=true
-      - GF_USERS_ALLOW_SIGN_UP=false
-      - GF_INSTALL_PLUGINS=${GF_VL_PLUGIN};victorialogs-datasource,${GF_VM_PLUGIN};victoriametrics-datasource
-      - GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=victorialogs-datasource,victoriametrics-datasource
-    restart: unless-stopped
-    labels:
-      - homepage.group=System
-      - homepage.name=Grafana
-      - homepage.icon=grafana
-      - homepage.href=https://logs.mattvperry.com
-      - homepage.description=Dashboards and Monitoring
 
 volumes:
   victorialogs_data:

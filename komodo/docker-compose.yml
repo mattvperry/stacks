@@ -1,24 +1,13 @@
-services:
-  mongo:
-    image: mongo:8.2.3@sha256:7f5bbdafebde7c42e42e33396d01c0eda3eb753da8dae99071a30e350568a0a4
-    container_name: komodo_db
-    command: --quiet --wiredTigerCacheSizeGB 0.25
-    environment:
-      - TZ=America/New_York
-      - MONGO_INITDB_ROOT_USERNAME=${KOMODO_DB_USERNAME:-admin}
-      - MONGO_INITDB_ROOT_PASSWORD=${KOMODO_DB_PASSWORD}
-    volumes:
-      - mongo_data:/data/db
-      - mongo_config:/data/configdb
-    restart: unless-stopped
-    labels:
-      - komodo.skip
+name: komodo
 
+services:
   core:
     image: ghcr.io/moghtech/komodo-core:1.19.5@sha256:a1cceb4f971443b1e9f2a767788f663d0afb6244ee2135f7fe3fd1036af37ade
     container_name: komodo_core
     depends_on:
       - mongo
+    volumes:
+      - /etc/komodo/backups:/backups
     environment:
       - TZ=America/New_York
       - KOMODO_DATABASE_ADDRESS=komodo_db:27017
@@ -32,8 +21,6 @@ services:
       - KOMODO_OIDC_CLIENT_SECRET=${KOMODO_OIDC_CLIENT_SECRET}
       - KOMODO_OIDC_USER_FULL_EMAIL=true
       - KOMODO_WEBHOOK_SECRET=${KOMODO_WEBHOOK_SECRET}
-    volumes:
-      - /etc/komodo/backups:/backups
     restart: unless-stopped
     labels:
       - komodo.skip
@@ -47,17 +34,31 @@ services:
       - homepage.widget.key=${KOMODO_KEY}
       - homepage.widget.secret=${KOMODO_SECRET}
       - homepage.widget.showSummary=true
+  mongo:
+    image: mongo:8.2.3@sha256:7f5bbdafebde7c42e42e33396d01c0eda3eb753da8dae99071a30e350568a0a4
+    container_name: komodo_db
+    volumes:
+      - mongo_data:/data/db
+      - mongo_config:/data/configdb
+    environment:
+      - TZ=America/New_York
+      - MONGO_INITDB_ROOT_USERNAME=${KOMODO_DB_USERNAME:-admin}
+      - MONGO_INITDB_ROOT_PASSWORD=${KOMODO_DB_PASSWORD}
+    command: --quiet --wiredTigerCacheSizeGB 0.25
+    restart: unless-stopped
+    labels:
+      - komodo.skip
 
   periphery:
     image: ghcr.io/moghtech/komodo-periphery:1.19.5@sha256:bd79cf960ed054fe8e02384322303e462448679b1149dde48bbef151417255b1
     container_name: komodo_periphery
-    environment:
-      - TZ=America/New_York
-      - PERIPHERY_PASSKEYS=${KOMODO_PASSKEY}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /proc:/proc
       - /etc/komodo:/etc/komodo
+    environment:
+      - TZ=America/New_York
+      - PERIPHERY_PASSKEYS=${KOMODO_PASSKEY}
     restart: unless-stopped
     labels:
       - komodo.skip

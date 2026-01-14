@@ -1,18 +1,15 @@
+name: frontend
+
 services:
-  ##
-  # Server homepage
-  # https://gethomepage.dev/
-  ##
   homepage:
     image: ghcr.io/gethomepage/homepage:v1.8.0@sha256:7dc099d5c6ec7fc945d858218565925b01ff8a60bcbfda990fc680a8b5cd0b6e
     container_name: homepage
-    environment:
-      - HOMEPAGE_ALLOWED_HOSTS=mattvperry.com
     volumes:
       - homepage_config:/app/config
       - /media/trinity:/trinity:ro
       - /var/run/docker.sock:/var/run/docker.sock
-    restart: unless-stopped
+    environment:
+      - HOMEPAGE_ALLOWED_HOSTS=mattvperry.com
     networks:
       - default
       - media_default
@@ -24,6 +21,7 @@ services:
       - auth_default
       - notifications_default
       - maintenance_default
+    restart: unless-stopped
 
   ##
   # Reverse proxy
@@ -31,20 +29,16 @@ services:
   proxy:
     image: docker.io/caddy:2.10.2@sha256:dedfbbeb703b2ce9ff4a98fc06aa9c7c7d9a42f0b7d778738c1dd3ef11dcc767
     container_name: caddy
-    cap_add:
-      - NET_ADMIN
     volumes:
       - ./config/Caddyfile:/etc/caddy/Caddyfile
       - /srv:/srv
       - caddy_data:/data
       - caddy_config:/config
     ports:
-      - 80:80
-      - 443:443
-      - 443:443/udp
-      - 9443:9443
-      - 61512:61512
-    restart: unless-stopped
+      - '80:80'
+      - '443:443'
+      - '443:443/udp'
+      - '9443:9443'
     networks:
       - default
       - media_default
@@ -56,6 +50,7 @@ services:
       - auth_default
       - notifications_default
       - maintenance_default
+    restart: unless-stopped
     labels:
       - homepage.group=System
       - homepage.name=Caddy
@@ -63,12 +58,8 @@ services:
       - homepage.description=Reverse proxy
       - homepage.widget.type=caddy
       - homepage.widget.url=http://caddy:2019
-
-volumes:
-  homepage_config:
-  caddy_data:
-  caddy_config:
-
+    cap_add:
+      - NET_ADMIN
 networks:
   default:
   media_default:
@@ -89,3 +80,9 @@ networks:
     external: true
   maintenance_default:
     external: true
+
+volumes:
+  homepage_config:
+  caddy_data:
+  caddy_config:
+

@@ -1,14 +1,16 @@
+name: dns
+
 services:
   technitium_dns:
     image: technitium/dns-server:14.3.0@sha256:322b236403ca25028032f28736e2270a860527b030b162c9f82451c6494c4698
     container_name: technitium_dns
-    environment:
-      - TZ=America/New_York
     volumes:
       - technitium_config:/etc/dns
+    environment:
+      - TZ=America/New_York
     ports:
-      - 53:53/tcp
-      - 53:53/udp
+      - '53:53/tcp'
+      - '53:53/udp'
     restart: unless-stopped
     labels:
       - homepage.group=Network
