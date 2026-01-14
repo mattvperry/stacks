@@ -165,6 +165,7 @@ repo = "mattvperry/stacks"
 name = "Backup Core Database"
 description = "Triggers the Core database backup at the scheduled time."
 tags = ["system", "synced"]
+config.schedule_alert = false
 config.schedule = "Every day at 01:00"
 
 [[procedure.config.stage]]
