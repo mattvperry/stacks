@@ -9,7 +9,7 @@ services:
     network_mode: host
     restart: unless-stopped
   unifi-db:
-    image: docker.io/mongo:8.0-noble@sha256:6a8f63fe4e532b7fdcc394c4aa7703684cd42da746e482aa38b8833ace0a188e
+    image: docker.io/mongo:8.0-noble@sha256:1b778aacebd6c9a9ec7ddca3ac3f7fc32af278228a402db09ddd325f1a93c76b
     container_name: unifi-db
     volumes:
       - mongo_db:/data/db
