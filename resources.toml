@@ -193,6 +193,21 @@ executions = [
 
 ##
 
+[[procedure]]
+name = "Prune Images"
+tags = ["system", "synced"]
+config.schedule_alert = false
+config.schedule = "Run every day at 5:00 am"
+
+[[procedure.config.stage]]
+name = "Stage 1"
+enabled = true
+executions = [
+  { execution.type = "PruneImages", execution.params.server = "Local", enabled = true }
+]
+
+##
+
 [[builder]]
 name = "Local"
 tags = ["synced"]
