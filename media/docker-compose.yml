@@ -73,19 +73,6 @@ services:
       - /dev/dri:/dev/dri
 
   ##
-  # Quality profile manager
-  ##
-  profilarr:
-    image: santiagosayshey/profilarr:v1.1.3@sha256:c8ad91a8e5d60b3816321b3a1f68332b29a23f910f6bd2c2d7b4a83f881f032f
-    container_name: profilarr
-    volumes:
-      - profilarr_config:/config
-    environment:
-      - TZ=America/New_York
-    ports:
-      - '6868:6868'
-
-  ##
   # Index organizer
   ##
   prowlarr:
@@ -205,6 +192,19 @@ services:
       - homepage.widget.url=http://transmission:9091/
       - homepage.widget.rpcUrl=transmission/
 
+    ##
+    # Media maintenance
+    ##
+    maintainerr:
+      image: ghcr.io/maintainerr/maintainerr:2.26.0@sha256:91b0770ad7f21d1bdc6dcf27955f2264e34498345ba1e790141ed703301c6918
+      container_name: maintainerr
+      volumes:
+        - maintainerr_data:/opt/data
+      environment:
+        - TZ=Europe/Brussels
+        - BASE_PATH=/maintain
+      restart: unless-stopped
+
 volumes:
   transmission_config:
   nzbget_config:
@@ -214,4 +214,4 @@ volumes:
   tautulli_config:
   plex_config:
   overseerr_config:
-  profilarr_config:
+  maintainerr_data:
