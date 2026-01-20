@@ -26,6 +26,8 @@ www.mattvperry.com, mattvperry.com {
 
 	reverse_proxy /movies* radarr:7878
 
+	reverse_proxy /profiles* profilarr:6868
+
 	reverse_proxy /stats* tautulli:8181 {
 		header_up X-Forwarded-Ssl on
 	}
