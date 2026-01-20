@@ -82,6 +82,8 @@ services:
       - profilarr_config:/config
     environment:
       - TZ=America/New_York
+    ports:
+      - '6868:6868'
 
   ##
   # Index organizer
