@@ -1,6 +1,19 @@
 name: media
 
 services:
+
+  ##
+  # Media maintenance
+  ##
+  maintainerr:
+    image: ghcr.io/maintainerr/maintainerr:2.26.0@sha256:91b0770ad7f21d1bdc6dcf27955f2264e34498345ba1e790141ed703301c6918
+    container_name: maintainerr
+    volumes:
+      - maintainerr_data:/opt/data
+    environment:
+      - TZ=Europe/Brussels
+      - BASE_PATH=/maintain
+    restart: unless-stopped
   nzbget:
     image: docker.io/linuxserver/nzbget:25.4.20260109@sha256:500b4e697584d80f0ed09176ec9b8dd92e45d9a41952bde6dbe349b0487988fb
     container_name: nzbget
@@ -191,19 +204,6 @@ services:
       - homepage.widget.type=transmission
       - homepage.widget.url=http://transmission:9091/
       - homepage.widget.rpcUrl=transmission/
-
-    ##
-    # Media maintenance
-    ##
-    maintainerr:
-      image: ghcr.io/maintainerr/maintainerr:2.26.0@sha256:91b0770ad7f21d1bdc6dcf27955f2264e34498345ba1e790141ed703301c6918
-      container_name: maintainerr
-      volumes:
-        - maintainerr_data:/opt/data
-      environment:
-        - TZ=Europe/Brussels
-        - BASE_PATH=/maintain
-      restart: unless-stopped
 
 volumes:
   transmission_config:
