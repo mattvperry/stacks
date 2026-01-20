@@ -168,7 +168,7 @@ services:
       - homepage.widget.url=http://tautulli:8181/stats
       - homepage.widget.key=${TAUTULLI_API}
   transmission:
-    image: docker.io/linuxserver/transmission:4.0.6@sha256:7ffccac759f5c2f075ab09757b2da1db2c05a35989b5b0c27ae535928c09283f
+    image: docker.io/linuxserver/transmission:4.0.6@sha256:bea1c86bd65e255589403d3df823e0b8e7525c7b6777801bbccdd4bb0c9fe379
     container_name: transmission
     volumes:
       - transmission_config:/config
