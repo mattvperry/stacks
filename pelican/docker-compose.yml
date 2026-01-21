@@ -16,5 +16,19 @@ services:
       - TRUSTED_PROXIES=127.0.0.1
     restart: unless-stopped
 
+  wings:
+    image: ghcr.io/pelican-dev/wings:v1.0.0-beta22@sha256:fa100d398c65764d98a95fd4f7996962a7f0c85f85f22bfd05eb324fc03528e7
+    restart: unless-stopped
+    container_name: pelican_wings
+    tty: true
+    environment:
+      - TZ=America/New_York
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/pelican:/var/lib/pelican
+      - /tmp/pelican:/tmp/pelican
+      - pelican_config:/etc/pelican
+
 volumes:
   pelican_data:
+  pelican_config:

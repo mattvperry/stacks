@@ -85,6 +85,10 @@ pelican.mattvperry.com {
 	reverse_proxy pelican_panel:80
 }
 
+wings.mattvperry.com {
+	reverse_proxy pelican_wings:8080
+}
+
 unifi.mattvperry.com {
 	reverse_proxy unifi:8443 {
 		transport http {
