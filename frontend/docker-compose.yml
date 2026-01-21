@@ -21,6 +21,7 @@ services:
       - auth_default
       - notifications_default
       - maintenance_default
+      - pelican_default
     restart: unless-stopped
 
   ##
@@ -50,6 +51,7 @@ services:
       - auth_default
       - notifications_default
       - maintenance_default
+      - pelican_default
     restart: unless-stopped
     labels:
       - homepage.group=System
@@ -79,6 +81,8 @@ networks:
   notifications_default:
     external: true
   maintenance_default:
+    external: true
+  pelican_default:
     external: true
 
 volumes:

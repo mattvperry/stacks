@@ -81,6 +81,10 @@ games.mattvperry.com:9443 {
 	reverse_proxy pterodactyl_wings:9443
 }
 
+pelican.mattvperry.com {
+	reverse_proxy pelican_panel:80
+}
+
 unifi.mattvperry.com {
 	reverse_proxy unifi:8443 {
 		transport http {
