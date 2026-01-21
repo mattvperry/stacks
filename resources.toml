@@ -122,6 +122,17 @@ NTFY_AUTH_TOKENS=[[NTFY_AUTH_TOKENS]]
 ##
 
 [[stack]]
+name = "pelican"
+tags = ["synced"]
+[stack.config]
+server = "Local"
+linked_repo = "Stacks"
+run_directory = "pelican"
+file_paths = ["docker-compose.yml"]
+
+##
+
+[[stack]]
 name = "pterodactyl"
 tags = ["synced"]
 [stack.config]
