@@ -2,7 +2,7 @@ name: media
 
 services:
   maintainerr:
-    image: ghcr.io/maintainerr/maintainerr:2.26.1@sha256:fb33a82d738bd556cfdbb3b88d64d9933641627d8c85687cb774377adb95337f
+    image: ghcr.io/maintainerr/maintainerr:2.26.1@sha256:35f5e04151298e828e804f54be0ef00104c35dbf9bfd8e03dacc42e525d2f336
     container_name: maintainerr
     volumes:
       - maintainerr_data:/opt/data
