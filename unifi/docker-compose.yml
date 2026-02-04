@@ -2,7 +2,7 @@ name: unifi
 
 services:
   orb-docker:
-    image: orbforge/orb:1.4.3@sha256:6de019782f937a5d5201a7d316b9d088cd2cb085602726bd4fae2e1ba62661bf
+    image: orbforge/orb:1.4.4@sha256:70d05f9ca465108936db03dfd9fb2f905fdaafd9ade176a399b88f5b97b914f8
     container_name: orb-sensor
     volumes:
       - orb_data:/root/.config/orb
