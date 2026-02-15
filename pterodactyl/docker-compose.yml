@@ -2,7 +2,7 @@ name: pterodactyl
 
 services:
   cron:
-    image: ccarney16/pterodactyl-panel:v1.12.0@sha256:0283aafa61190762f7b8da29e8a1f7bbd76dc4fc02efbbdf82f861470923bcb8
+    image: ccarney16/pterodactyl-panel:v1.12.1@sha256:c637ee7903def812bce692514b69f35fb9442aa28310b0ba7eb63fbd386726a6
     container_name: pterodactyl_cron
     volumes:
       - panel:/data
@@ -51,7 +51,7 @@ services:
   # This is the container that provides the main web interface.
   ##
   panel:
-    image: ccarney16/pterodactyl-panel:v1.12.0@sha256:0283aafa61190762f7b8da29e8a1f7bbd76dc4fc02efbbdf82f861470923bcb8
+    image: ccarney16/pterodactyl-panel:v1.12.1@sha256:c637ee7903def812bce692514b69f35fb9442aa28310b0ba7eb63fbd386726a6
     container_name: pterodactyl_panel
     depends_on:
       mariadb:
@@ -90,7 +90,7 @@ services:
   # -- Panel Worker --
   ##
   worker:
-    image: ccarney16/pterodactyl-panel:v1.12.0@sha256:0283aafa61190762f7b8da29e8a1f7bbd76dc4fc02efbbdf82f861470923bcb8
+    image: ccarney16/pterodactyl-panel:v1.12.1@sha256:c637ee7903def812bce692514b69f35fb9442aa28310b0ba7eb63fbd386726a6
     container_name: pterodactyl_worker
     volumes:
       - panel:/data
