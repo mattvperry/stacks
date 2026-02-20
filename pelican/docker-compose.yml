@@ -2,7 +2,7 @@ name: pelican
 
 services:
   panel:
-    image: ghcr.io/pelican-dev/panel:v1.0.0-beta31@sha256:5c57b17627eb134d52c0589bc1eaccf198b811a47c33cceb6416ff29504b2fa5
+    image: ghcr.io/pelican-dev/panel:v1.0.0-beta33@sha256:871032c289b7e00a23e1eb701772603750a14b8c7cfa72b072058ce645c41032
     container_name: pelican_panel
     volumes:
       - pelican_data:/pelican-data
@@ -17,7 +17,7 @@ services:
     restart: unless-stopped
 
   wings:
-    image: ghcr.io/pelican-dev/wings:v1.0.0-beta22@sha256:fa100d398c65764d98a95fd4f7996962a7f0c85f85f22bfd05eb324fc03528e7
+    image: ghcr.io/pelican-dev/wings:v1.0.0-beta24@sha256:2a1d4bbf7af43870d746684f8f8e01144cb6a0605bacab779fc1b2fda390591a
     restart: unless-stopped
     container_name: pelican_wings
     tty: true
