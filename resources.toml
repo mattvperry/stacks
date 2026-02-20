@@ -4,6 +4,7 @@ tags = ["synced"]
 [server.config]
 address = "https://komodo_periphery:8120"
 enabled = true
+send_mem_alerts = false
 mem_warning = 85.0
 
 ##

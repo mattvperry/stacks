@@ -2,7 +2,7 @@ name: media
 
 services:
   maintainerr:
-    image: ghcr.io/maintainerr/maintainerr:2.26.1@sha256:8332446ca6f7512bb561d6db2edaef5df1d22cf47432513f35a68e4462347fdc
+    image: ghcr.io/maintainerr/maintainerr:2.26.1@sha256:35f5e04151298e828e804f54be0ef00104c35dbf9bfd8e03dacc42e525d2f336
     container_name: maintainerr
     volumes:
       - maintainerr_data:/opt/data
@@ -11,7 +11,7 @@ services:
       - BASE_PATH=/maintain
     restart: unless-stopped
   nzbget:
-    image: docker.io/linuxserver/nzbget:25.4.20260109@sha256:500b4e697584d80f0ed09176ec9b8dd92e45d9a41952bde6dbe349b0487988fb
+    image: docker.io/linuxserver/nzbget:25.4.20260130@sha256:51184d6996a33e79f5db2136c31724f3ce783fde708b3ef780f259e7f168e76a
     container_name: nzbget
     volumes:
       - nzbget_config:/config
@@ -31,7 +31,7 @@ services:
       - homepage.widget.url=http://nzbget:6789
 
   overseerr:
-    image: docker.io/linuxserver/overseerr:1.34.0@sha256:f6a782e44742a02bdb6032d32ebb4e9615e261140f879be897b28cdb40ff800e
+    image: docker.io/linuxserver/overseerr:1.35.0@sha256:6108ed066d4a919c05251d9dab041c1e55e67ff7247e7b31be97b65ffcbaeeb1
     container_name: overseerr
     volumes:
       - overseerr_config:/config
@@ -51,7 +51,7 @@ services:
       - homepage.widget.key=${OVERSEERR_API}
 
   plex:
-    image: docker.io/linuxserver/plex:1.42.2@sha256:b19a5e34c6f8dd42abf88556b8aa5c8987c0c34820aaeaa320a02d8c17fdaab3
+    image: docker.io/linuxserver/plex:1.43.0@sha256:bbe0118e39e2c071fc5fe39af3f32072207bf4146d56b6a8901bcb23082df207
     container_name: plex
     volumes:
       - plex_config:/config
@@ -76,7 +76,7 @@ services:
       - /dev/dri:/dev/dri
 
   prowlarr:
-    image: docker.io/linuxserver/prowlarr:2.3.0@sha256:d3e9307b320b6772749a2cf8fc2712e9e824c4930b034680ad4d08a9e2f25884
+    image: docker.io/linuxserver/prowlarr:2.3.0@sha256:e74a1e093dcc223d671d4b7061e2b4946f1989a4d3059654ff4e623b731c9134
     container_name: prowlarr
     volumes:
       - prowlarr_config:/config
@@ -96,7 +96,7 @@ services:
       - homepage.widget.key=${PROWLARR_API}
 
   radarr:
-    image: docker.io/linuxserver/radarr:6.0.4@sha256:270f25698624b57b86ca119cc95399d7ff15be8297095b4e1223fd5b549b732c
+    image: docker.io/linuxserver/radarr:6.0.4@sha256:6d3e68474ea146f995af98d3fb2cb1a14e2e4457ddaf035aa5426889e2f9249c
     container_name: radarr
     volumes:
       - radarr_config:/config
@@ -118,7 +118,7 @@ services:
       - homepage.widget.enableQueue=true
 
   sonarr:
-    image: docker.io/linuxserver/sonarr:4.0.16@sha256:02b4d538d351d6e35882a021c08e8600fe95d28860fb1dd724b597166e7221ca
+    image: docker.io/linuxserver/sonarr:4.0.16@sha256:37be832b78548e3f55f69c45b50e3b14d18df1b6def2a4994258217e67efb1a1
     container_name: sonarr
     volumes:
       - sonarr_config:/config
@@ -140,7 +140,7 @@ services:
       - homepage.widget.enableQueue=true
 
   tautulli:
-    image: docker.io/linuxserver/tautulli:2.16.0@sha256:47d3aa9a36b6d13dd947292410121e9a905ca4ba8e25e05ea3dd693931cee36e
+    image: docker.io/linuxserver/tautulli:2.16.1@sha256:9d4cd2f0342d4a2e31f4bcf22d9acad1b2e13fc5997a55ceec11344d699c0976
     container_name: tautulli
     volumes:
       - tautulli_config:/config
@@ -160,7 +160,7 @@ services:
       - homepage.widget.key=${TAUTULLI_API}
 
   transmission:
-    image: docker.io/linuxserver/transmission:4.0.6@sha256:bea1c86bd65e255589403d3df823e0b8e7525c7b6777801bbccdd4bb0c9fe379
+    image: docker.io/linuxserver/transmission:4.1.0@sha256:4d84e7d6459b0bb760623d968a19bc20028b32014cc6f7eec72580be7281b249
     container_name: transmission
     volumes:
       - transmission_config:/config

@@ -2,7 +2,7 @@ name: frontend
 
 services:
   homepage:
-    image: ghcr.io/gethomepage/homepage:v1.9.0@sha256:7fa7b07a26bd8d90a44bb975c6455b10d8dee467ce674b040750ffb4a0f486d6
+    image: ghcr.io/gethomepage/homepage:v1.10.1@sha256:0b596092c0b55fe4c65379a428a3fe90bd192f10d1b07d189a34fe5fabe7eedb
     container_name: homepage
     volumes:
       - homepage_config:/app/config
@@ -28,7 +28,7 @@ services:
   # Reverse proxy
   ##
   proxy:
-    image: docker.io/caddy:2.10.2@sha256:2adb640cdc0ce1d8870887c30af1e21edfb3cdfd8433431b2a15f40119a7d654
+    image: docker.io/caddy:2.10.2@sha256:c3d7ee5d2b11f9dc54f947f68a734c84e9c9666c92c88a7f30b9cba5da182adb
     container_name: caddy
     volumes:
       - ./config/Caddyfile:/etc/caddy/Caddyfile

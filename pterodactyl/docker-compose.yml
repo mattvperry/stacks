@@ -2,7 +2,7 @@ name: pterodactyl
 
 services:
   cron:
-    image: ccarney16/pterodactyl-panel:v1.12.0@sha256:0283aafa61190762f7b8da29e8a1f7bbd76dc4fc02efbbdf82f861470923bcb8
+    image: ccarney16/pterodactyl-panel:v1.12.1@sha256:c637ee7903def812bce692514b69f35fb9442aa28310b0ba7eb63fbd386726a6
     container_name: pterodactyl_cron
     volumes:
       - panel:/data
@@ -35,7 +35,7 @@ services:
   # Stores Server/User information
   ##
   mariadb:
-    image: mariadb:12.1.2@sha256:f54db0cb3ccfe9431aba6d08c65a1763c499789b116b4cb651dd7fcf325965b3
+    image: mariadb:12.2.2@sha256:b1cb255a9939d28a1856815f0de6046c20c28c21b92a9f2696bc782b247a47ee
     container_name: pterodactyl_db
     volumes:
       - mysql:/var/lib/mysql
@@ -51,7 +51,7 @@ services:
   # This is the container that provides the main web interface.
   ##
   panel:
-    image: ccarney16/pterodactyl-panel:v1.12.0@sha256:0283aafa61190762f7b8da29e8a1f7bbd76dc4fc02efbbdf82f861470923bcb8
+    image: ccarney16/pterodactyl-panel:v1.12.1@sha256:c637ee7903def812bce692514b69f35fb9442aa28310b0ba7eb63fbd386726a6
     container_name: pterodactyl_panel
     depends_on:
       mariadb:
@@ -76,7 +76,7 @@ services:
   # -- Redis --
   ##
   redis:
-    image: redis:8.4.0@sha256:73dad4271642c5966db88db7a7585fae7cf10b685d1e48006f31e0294c29fdd7
+    image: redis:8.6.0@sha256:7b6fb55d8b0adcd77269dc52b3cfffe5f59ca5d43dec3c90dbe18aacce7942e1
     container_name: pterodactyl_cache
     networks:
       default:
@@ -90,7 +90,7 @@ services:
   # -- Panel Worker --
   ##
   worker:
-    image: ccarney16/pterodactyl-panel:v1.12.0@sha256:0283aafa61190762f7b8da29e8a1f7bbd76dc4fc02efbbdf82f861470923bcb8
+    image: ccarney16/pterodactyl-panel:v1.12.1@sha256:c637ee7903def812bce692514b69f35fb9442aa28310b0ba7eb63fbd386726a6
     container_name: pterodactyl_worker
     volumes:
       - panel:/data
