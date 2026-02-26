@@ -90,7 +90,7 @@ wings.mattvperry.com {
 }
 
 unifi.mattvperry.com {
-	reverse_proxy unifi:11443
+	reverse_proxy unifi-os:11443
 }
 
 docker.mattvperry.com {
