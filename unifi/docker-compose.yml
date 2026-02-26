@@ -49,5 +49,4 @@ volumes:
   unifi_os_home:
   unifi_os_monogo:
   unifi_os_rabbit:
-  mongo_db:
   orb_data:
