@@ -24,6 +24,7 @@ services:
     environment:
       - UOS_SYSTEM_IP=192.168.1.100
     ports:
+      - '11443:443'
       - '3478:3478/udp'
       - '8080:8080'
       - '8443:8443'
