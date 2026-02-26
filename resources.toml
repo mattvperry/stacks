@@ -156,9 +156,7 @@ linked_repo = "Stacks"
 run_directory = "unifi"
 file_paths = ["docker-compose.yml"]
 environment = """
-MONGO_PASS=[[UNIFI_MONGO_PASS]]
-UNIFI_USER=[[UNIFI_USER]]
-UNIFI_PASS=[[UNIFI_PASS]]
+UNIFI_API=[[UNIFI_API]]
 """
 
 ##
