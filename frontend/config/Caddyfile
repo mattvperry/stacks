@@ -90,7 +90,11 @@ wings.mattvperry.com {
 }
 
 unifi.mattvperry.com {
-	reverse_proxy https://unifi-os:443
+	reverse_proxy https://unifi-os:443 {
+		transport http {
+			tls_insecure_skip_verify
+		}
+	}
 }
 
 docker.mattvperry.com {
