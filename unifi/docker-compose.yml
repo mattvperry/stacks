@@ -8,6 +8,7 @@ services:
       - orb_data:/root/.config/orb
     network_mode: host
     restart: unless-stopped
+
   unifi-db:
     image: docker.io/mongo:8.0-noble@sha256:1773d7826e340cd966f439a4e71abea42fd9ca70ddce1ab6b96eb76013c3ca8e
     container_name: unifi-db
@@ -21,6 +22,31 @@ services:
       - MONGO_PASS=${MONGO_PASS}
       - MONGO_DBNAME=unifi
       - MONGO_AUTHSOURCE=admin
+    restart: unless-stopped
+
+  unifi-os:
+    image: ghcr.io/lemker/unifi-os-server:5.0.6@sha256:5e17e4492cca4ed5b821ea57c5cd51f524b46a25ee02c6b7a22a9a59807bd647
+    container_name: unifi-os
+    privileged: true
+    volumes:
+      - unifi_os_persist:/persistent
+      - unifi_os_log:/var/log
+      - unifi_os_data:/data
+      - unifi_os_srv:/srv
+      - unifi_os_home:/var/lib/unifi
+      - unifi_os_monogo:/var/lib/mongodb
+      - unifi_os_rabbit:/etc/rabbitmq/ssl
+    environment:
+      - UOS_SYSTEM_IP=192.168.1.100
+    ports:
+      - '3478:3478/udp'
+      - '8080:8080'
+      - '8443:8443'
+      - '10003:10003/udp'
+    networks:
+      default:
+        aliases:
+          - unifi
     restart: unless-stopped
 
   unifi-network-app:
@@ -38,11 +64,11 @@ services:
       - MONGO_PORT=27017
       - MONGO_DBNAME=unifi
       - MONGO_AUTHSOURCE=admin
-    ports:
-      - '3478:3478/udp'
-      - '8080:8080'
-      - '8443:8443'
-      - '10001:10001/udp'
+ #   ports:
+ #     - '3478:3478/udp'
+ #     - '8080:8080'
+ #     - '8443:8443'
+ #     - '10001:10001/udp'
     networks:
       default:
         aliases:
@@ -61,7 +87,13 @@ services:
       - homepage.widget.fields=["uptime","wlan_devices"]
 
 volumes:
+  unifi_os_persist:
+  unifi_os_log:
+  unifi_os_data:
+  unifi_os_srv:
+  unifi_os_home:
+  unifi_os_monogo:
+  unifi_os_rabbit:
   mongo_db:
   unifi_config:
   orb_data:
-  ddclient_config:
