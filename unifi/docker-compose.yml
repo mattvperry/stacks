@@ -37,7 +37,7 @@ services:
       - homepage.href=https://unifi.mattvperry.com
       - homepage.description=Network management
       - homepage.widget.type=unifi
-      - homepage.widget.url=https://unifi-os:8443
+      - homepage.widget.url=https://unifi-os:443
       - homepage.widget.key=${UNIFI_API}
       - homepage.widget.fields=["uptime","wlan_devices"]
 
