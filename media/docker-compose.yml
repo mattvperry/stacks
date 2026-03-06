@@ -11,7 +11,7 @@ services:
       - BASE_PATH=/maintain
     restart: unless-stopped
   nzbget:
-    image: docker.io/linuxserver/nzbget:26.0.20260227@sha256:33e28111e4395227115002a39583a3bda36c4406ac126af32bffd5a2774d59fa
+    image: docker.io/linuxserver/nzbget:26.0.20260306@sha256:ec3ef0ae7dc410084086a7fdd447deda4747531154aa1cc5c7c48ac60794e277
     container_name: nzbget
     volumes:
       - nzbget_config:/config
