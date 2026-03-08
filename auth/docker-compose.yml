@@ -25,13 +25,13 @@ services:
       - TINYAUTH_APPURL=https://authproxy.mattvperry.com
       - TINYAUTH_UI_TITLE=Proxy Auth
       - TINYAUTH_OAUTH_AUTOREDIRECT=pocketid
-      - TINYAUTH_OAUTH_POCKETID_CLIENTID=${POCKETID_CLIENT_ID}
-      - TINYAUTH_OAUTH_POCKETID_CLIENTSECRET=${POCKETID_CLIENT_SECRET}
-      - TINYAUTH_OAUTH_POCKETID_AUTHURL=https://auth.mattvperry.com/authorize
-      - TINYAUTH_OAUTH_POCKETID_TOKENURL=https://auth.mattvperry.com/api/oidc/token
-      - TINYAUTH_OAUTH_POCKETID_USERINFOURL=https://auth.mattvperry.com/api/oidc/userinfo
-      - TINYAUTH_OAUTH_POCKETID_SCOPES=openid email profile groups
-      - TINYAUTH_OAUTH_POCKETID_NAME=Carbon Auth
+      - TINYAUTH_OAUTH_PROVIDERS_POCKETID_CLIENTID=${POCKETID_CLIENT_ID}
+      - TINYAUTH_OAUTH_PROVIDERS_POCKETID_CLIENTSECRET=${POCKETID_CLIENT_SECRET}
+      - TINYAUTH_OAUTH_PROVIDERS_POCKETID_AUTHURL=https://auth.mattvperry.com/authorize
+      - TINYAUTH_OAUTH_PROVIDERS_POCKETID_TOKENURL=https://auth.mattvperry.com/api/oidc/token
+      - TINYAUTH_OAUTH_PROVIDERS_POCKETID_USERINFOURL=https://auth.mattvperry.com/api/oidc/userinfo
+      - TINYAUTH_OAUTH_PROVIDERS_POCKETID_SCOPES=openid email profile groups
+      - TINYAUTH_OAUTH_PROVIDERS_POCKETID_NAME=Carbon Auth
     restart: unless-stopped
 
 volumes:
