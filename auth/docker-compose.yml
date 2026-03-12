@@ -19,7 +19,7 @@ services:
       start_period: 10s
 
   tinyauth:
-    image: ghcr.io/steveiliop56/tinyauth:v5.0.3@sha256:fcd4ffb950f6556a39663090f0bf4aaa06bfec38ac4dbdfa0082ae25d8905c30
+    image: ghcr.io/steveiliop56/tinyauth:v5.0.4@sha256:d5035210ee238ca23f438f3715bcfec9b8135475316d2507a9df3ffc191aa173
     container_name: tinyauth
     environment:
       - TINYAUTH_APPURL=https://authproxy.mattvperry.com
