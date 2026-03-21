@@ -10,7 +10,7 @@ services:
     restart: unless-stopped
 
   unifi-os:
-    image: ghcr.io/lemker/unifi-os-server:5.0.6@sha256:5e17e4492cca4ed5b821ea57c5cd51f524b46a25ee02c6b7a22a9a59807bd647
+    image: ghcr.io/lemker/unifi-os-server:v1.0.0@sha256:ac1e2d669b57fe13586ec478b359bf50428591a085ff439bce581e5514aa1282
     container_name: unifi-os
     privileged: true
     volumes:
