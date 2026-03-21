@@ -39,6 +39,7 @@ services:
       - '8080:8080'
       - '8443:8443'
       - '10003:10003/udp'
+      - '10001:10001/udp'
     restart: unless-stopped
     labels:
       - homepage.group=Network
