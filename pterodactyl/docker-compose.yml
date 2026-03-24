@@ -35,7 +35,7 @@ services:
   # Stores Server/User information
   ##
   mariadb:
-    image: mariadb:12.2.2@sha256:b1cb255a9939d28a1856815f0de6046c20c28c21b92a9f2696bc782b247a47ee
+    image: mariadb:12.2.2@sha256:e16f61b8f6ed25111adbb1c5c19bbc2904efc8ed14029999af0cbe1c7ae18bf1
     container_name: pterodactyl_db
     volumes:
       - mysql:/var/lib/mysql
@@ -76,7 +76,7 @@ services:
   # -- Redis --
   ##
   redis:
-    image: redis:8.6.1@sha256:5cb00b0f236e286254ce9f3eea989b00bb69d04fb9b6c9a9d0b07e588e49f44e
+    image: redis:8.6.1@sha256:315270d166080f537bbdf1b489b603aaaa213cb55a544acfa51feb7481abb1c0
     container_name: pterodactyl_cache
     networks:
       default:

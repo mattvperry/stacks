@@ -2,7 +2,7 @@ name: auth
 
 services:
   pocket-id:
-    image: ghcr.io/pocket-id/pocket-id:v2.3.0@sha256:3e3714a7efe20ade573c77844955ce3d096455f8b1f888068ec32a874792f781
+    image: ghcr.io/pocket-id/pocket-id:v2.4.0@sha256:3e790c5d4fd82ff276b1c2bc3242be9da13cff204a2b937768ea1eba1e892571
     container_name: pocketid
     volumes:
       - pocketid_data:/app/data
@@ -19,19 +19,19 @@ services:
       start_period: 10s
 
   tinyauth:
-    image: ghcr.io/steveiliop56/tinyauth:v4.1.0@sha256:402ee231204757a3e01b4aaba9e4aa09a3c7c4680a82bc47135632ec8864b8c8
+    image: ghcr.io/steveiliop56/tinyauth:v5.0.4@sha256:d5035210ee238ca23f438f3715bcfec9b8135475316d2507a9df3ffc191aa173
     container_name: tinyauth
     environment:
-      - APP_URL=https://authproxy.mattvperry.com
-      - APP_TITLE=Proxy Auth
-      - OAUTH_AUTO_REDIRECT=pocketid
-      - PROVIDERS_POCKETID_CLIENT_ID=${POCKETID_CLIENT_ID}
-      - PROVIDERS_POCKETID_CLIENT_SECRET=${POCKETID_CLIENT_SECRET}
-      - PROVIDERS_POCKETID_AUTH_URL=https://auth.mattvperry.com/authorize
-      - PROVIDERS_POCKETID_TOKEN_URL=https://auth.mattvperry.com/api/oidc/token
-      - PROVIDERS_POCKETID_USER_INFO_URL=https://auth.mattvperry.com/api/oidc/userinfo
-      - PROVIDERS_POCKETID_SCOPES=openid email profile groups
-      - PROVIDERS_POCKETID_NAME=Carbon Auth
+      - TINYAUTH_APPURL=https://authproxy.mattvperry.com
+      - TINYAUTH_UI_TITLE=Proxy Auth
+      - TINYAUTH_OAUTH_AUTOREDIRECT=pocketid
+      - TINYAUTH_OAUTH_PROVIDERS_POCKETID_CLIENTID=${POCKETID_CLIENT_ID}
+      - TINYAUTH_OAUTH_PROVIDERS_POCKETID_CLIENTSECRET=${POCKETID_CLIENT_SECRET}
+      - TINYAUTH_OAUTH_PROVIDERS_POCKETID_AUTHURL=https://auth.mattvperry.com/authorize
+      - TINYAUTH_OAUTH_PROVIDERS_POCKETID_TOKENURL=https://auth.mattvperry.com/api/oidc/token
+      - TINYAUTH_OAUTH_PROVIDERS_POCKETID_USERINFOURL=https://auth.mattvperry.com/api/oidc/userinfo
+      - TINYAUTH_OAUTH_PROVIDERS_POCKETID_SCOPES=openid email profile groups
+      - TINYAUTH_OAUTH_PROVIDERS_POCKETID_NAME=Carbon Auth
     restart: unless-stopped
 
 volumes:

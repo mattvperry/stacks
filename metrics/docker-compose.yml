@@ -20,7 +20,7 @@ services:
   # Dashboard and query interface
   ##
   grafana:
-    image: docker.io/grafana/grafana:12.4@sha256:b0ae311af06228bcfd4a620504b653db80f5b91e94dc3dc2a5b7dab202bcde20
+    image: docker.io/grafana/grafana:12.4@sha256:e932bd6ed0e026595b08483cd0141e5103e1ab7ff8604839ff899b8dc54cabcb
     container_name: grafana
     volumes:
       - grafana_data:/var/lib/grafana
@@ -56,7 +56,7 @@ services:
   # Collection aggregation
   ##
   vector:
-    image: docker.io/timberio/vector:0.53.0-alpine@sha256:ca92d617e905953c3f852e7e88061f7039460e733522e3f0c21bc6ae946b2558
+    image: docker.io/timberio/vector:0.54.0-alpine@sha256:0a5568d7fe54ef565c9e83a8c20ecf0bc7289d1923d78cd5fbe192158a495267
     container_name: vector
     depends_on:
       victorialogs:
@@ -75,7 +75,7 @@ services:
   # Log aggregation
   ##
   victorialogs:
-    image: docker.io/victoriametrics/victoria-logs:v1.47.0@sha256:70cadcf591e593456decccb23250765a4a5f2cd62904e2ab181fd4db45428d5e
+    image: docker.io/victoriametrics/victoria-logs:v1.48.0@sha256:2c15cfb7902d3f2756efbdf120dbeabb9dca45457addf32f7071236b4c6feb8e
     container_name: victorialogs
     volumes:
       - victorialogs_data:/vlogs
@@ -93,7 +93,7 @@ services:
   # Metric aggregation
   ##
   victoriametrics:
-    image: docker.io/victoriametrics/victoria-metrics:v1.136.0@sha256:593b533bfbea439f2fd8aed306294cb6a5b362e7932681ebb476cc6aaef70841
+    image: docker.io/victoriametrics/victoria-metrics:v1.138.0@sha256:b9b667f6709f20044328ddefae8869c56ced840ebafdf89bc3bba1f28f2d7e60
     container_name: victoriametrics
     volumes:
       - victoriametrics_data:/vmsingle
