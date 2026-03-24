@@ -4,10 +4,12 @@ services:
   core:
     image: ghcr.io/moghtech/komodo-core:2.0.0@sha256:3cc134272b39313ae1fb34ea8a3c8a0c2f629a3c2eeaf71258702159f154f9e9
     container_name: komodo_core
+    init: true
     depends_on:
       - mongo
     volumes:
       - /etc/komodo/backups:/backups
+      - keys:/config/keys
     environment:
       - TZ=America/New_York
       - KOMODO_DATABASE_ADDRESS=komodo_db:27017
@@ -67,3 +69,4 @@ services:
 volumes:
   mongo_data:
   mongo_config:
+  keys:
