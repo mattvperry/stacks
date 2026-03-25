@@ -203,6 +203,21 @@ executions = [
 ##
 
 [[procedure]]
+name = "Key Rotation"
+tags = ["system", "synced"]
+config.schedule = "* * * * */3 SUN"
+config.schedule_format = "Cron"
+
+[[procedure.config.stage]]
+name = "Stage 1"
+enabled = true
+executions = [
+  { execution.type = "RotateAllServerKeys", execution.params = {}, enabled = true }
+]
+
+##
+
+[[procedure]]
 name = "Prune Images"
 tags = ["system", "synced"]
 config.schedule_alert = false
