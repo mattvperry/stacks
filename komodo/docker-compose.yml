@@ -55,13 +55,17 @@ services:
   periphery:
     image: ghcr.io/moghtech/komodo-periphery:2.0.0@sha256:cc9aff8b621d49bbcca394e1538d9d9ea28c48bcfd2d6c8a6f9d5d3eef7f8341
     container_name: komodo_periphery
+    depends_on:
+      - core
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /proc:/proc
       - /etc/komodo:/etc/komodo
+      - keys:/config/keys
     environment:
       - TZ=America/New_York
-      - PERIPHERY_PASSKEYS=${KOMODO_PASSKEY}
+      - PERIPHERY_CORE_ADDRESS=ws://komodo_core:9120
+      - PERIPHERY_CONNECT_AS=Local
     restart: unless-stopped
     labels:
       - komodo.skip
