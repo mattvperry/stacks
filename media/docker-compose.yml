@@ -10,6 +10,7 @@ services:
       - TZ=Europe/Brussels
       - BASE_PATH=/maintain
     restart: unless-stopped
+
   nzbget:
     image: docker.io/linuxserver/nzbget:26.0.20260320@sha256:c476c76281b17c05bab8001af37c0b8cab93f0690369e290f81fa33f098e5052
     container_name: nzbget
@@ -30,24 +31,28 @@ services:
       - homepage.widget.type=nzbget
       - homepage.widget.url=http://nzbget:6789
 
-  overseerr:
-    image: docker.io/linuxserver/overseerr:1.35.0@sha256:6108ed066d4a919c05251d9dab041c1e55e67ff7247e7b31be97b65ffcbaeeb1
-    container_name: overseerr
+  seerr:
+    image: ghcr.io/seerr-team/seerr:v3.1.0@sha256:b35ba0461c4a1033d117ac1e5968fd4cbe777899e4cbfbdeaf3d10a42a0eb7e9
+    container_name: seerr
     volumes:
-      - overseerr_config:/config
+      - overseerr_config:/app/config
     environment:
-      - PUID=1000
-      - PGID=1001
       - TZ=America/New_York
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://seerr:5055/api/v1/status || exit 1
+      start_period: 20s
+      timeout: 3s
+      interval: 15s
+      retries: 3
     restart: unless-stopped
     labels:
       - homepage.group=Media
-      - homepage.name=Overseerr
+      - homepage.name=Seerr
       - homepage.icon=overseerr
       - homepage.href=https://media.mattvperry.com
       - homepage.description=Media requests
       - homepage.widget.type=overseerr
-      - homepage.widget.url=http://overseerr:5055
+      - homepage.widget.url=http://seerr:5055
       - homepage.widget.key=${OVERSEERR_API}
 
   plex:
