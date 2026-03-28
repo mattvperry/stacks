@@ -18,6 +18,8 @@ services:
       - dispatcharr_data:/data
     environment:
       - DISPATCHARR_ENV=aio
+    devices:
+      - /dev/dri:/dev/dri
     restart: unless-stopped
 
   nzbget:
