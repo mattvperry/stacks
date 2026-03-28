@@ -11,6 +11,15 @@ services:
       - BASE_PATH=/maintain
     restart: unless-stopped
 
+  dispatcharr:
+    image: ghcr.io/dispatcharr/dispatcharr:0.21.1@sha256:3fe4da0af06887781aba4650bb64bbffc3a10f11a602d4d5a1a8df6a8edca416
+    container_name: dispatcharr
+    volumes:
+      - dispatcharr_data:/data
+    environment:
+      - DISPATCHARR_ENV=aio
+    restart: unless-stopped
+
   nzbget:
     image: docker.io/linuxserver/nzbget:26.0.20260320@sha256:c476c76281b17c05bab8001af37c0b8cab93f0690369e290f81fa33f098e5052
     container_name: nzbget
@@ -198,3 +207,4 @@ volumes:
   plex_config:
   overseerr_config:
   maintainerr_data:
+  dispatcharr_data:
