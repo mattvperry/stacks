@@ -14,6 +14,8 @@ services:
   dispatcharr:
     image: ghcr.io/dispatcharr/dispatcharr:0.21.1@sha256:3fe4da0af06887781aba4650bb64bbffc3a10f11a602d4d5a1a8df6a8edca416
     container_name: dispatcharr
+    ports:
+      - '9191:9191'
     volumes:
       - dispatcharr_data:/data
     environment:
