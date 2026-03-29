@@ -1,0 +1,17 @@
+name: trips
+
+services:
+  trek:
+    image: mauriceboe/trek:2.6.2@sha256:edb2a5d065cb2601b035af5a324f2fca1a22bc941f70b5e1c0c6c9779a8d9efc
+    container_name: trek
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    volumes:
+      - data:/app/data
+      - uploads:/app/uploads
+    restart: unless-stopped
+
+volumes:
+  data:
+  uploads:
