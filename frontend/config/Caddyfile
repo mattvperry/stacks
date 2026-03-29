@@ -116,3 +116,7 @@ renovate.mattvperry.com {
 channels.mattvperry.com {
     reverse_proxy dispatcharr:9191
 }
+
+trips.mattvperry.com {
+    reverse_proxy trek:3000
+}

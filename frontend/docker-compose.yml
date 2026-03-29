@@ -52,6 +52,7 @@ services:
       - notifications_default
       - maintenance_default
       - pelican_default
+      - trips_default
     restart: unless-stopped
     labels:
       - homepage.group=System
@@ -83,6 +84,8 @@ networks:
   maintenance_default:
     external: true
   pelican_default:
+    external: true
+  trips_default:
     external: true
 
 volumes:
