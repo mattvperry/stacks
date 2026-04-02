@@ -2,7 +2,7 @@ name: komodo
 
 services:
   core:
-    image: ghcr.io/moghtech/komodo-core:2.0.0@sha256:518e6f4b76a9adc27b6ec0c4bb05533c8f5752986e145e3bfb64e4d15c232e32
+    image: ghcr.io/moghtech/komodo-core:2.1.1@sha256:2bbbb1efd3534211dac35091e0818f10398d9bdd98fdbf0ddef09e9e0b5ec4ba
     container_name: komodo_core
     init: true
     depends_on:
@@ -38,7 +38,7 @@ services:
       - homepage.widget.showSummary=true
 
   mongo:
-    image: mongo:8.2.6@sha256:d343c378b5c6e2fe373174abcf4a877be0dfc721b5d0b9d582204dccb1c00b86
+    image: mongo:8.2.6@sha256:eea8506335198f8b359865b32004036310854a935fbd317083817c614152818f
     container_name: komodo_db
     volumes:
       - mongo_data:/data/db
@@ -53,7 +53,7 @@ services:
       - komodo.skip
 
   periphery:
-    image: ghcr.io/moghtech/komodo-periphery:2.0.0@sha256:cc9aff8b621d49bbcca394e1538d9d9ea28c48bcfd2d6c8a6f9d5d3eef7f8341
+    image: ghcr.io/moghtech/komodo-periphery:2.1.1@sha256:9324baa15d355796fc8ab7fb4a4de7f2904327238100fa78fc2c814ba9d56022
     container_name: komodo_periphery
     depends_on:
       - core

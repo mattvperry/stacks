@@ -147,6 +147,17 @@ PTERO_API_KEY=[[PTERO_API_KEY]]
 ##
 
 [[stack]]
+name = "trips"
+tags = ["synced"]
+[stack.config]
+server = "Local"
+linked_repo = "Stacks"
+run_directory = "trips"
+file_paths = ["docker-compose.yml"]
+
+##
+
+[[stack]]
 name = "unifi"
 tags = ["synced"]
 [stack.config]

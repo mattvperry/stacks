@@ -2,7 +2,7 @@ name: media
 
 services:
   maintainerr:
-    image: ghcr.io/maintainerr/maintainerr:3.2.0@sha256:6c65cdbf787f44327944abdca11778a9043cb3ae4f91edd10b9fcb7203c00f1c
+    image: ghcr.io/maintainerr/maintainerr:3.3.0@sha256:918e375bf295f6a97ddfa0e6002b4b4b23adc47d118e54a8d0bbd4a4a5aa9bc8
     container_name: maintainerr
     volumes:
       - maintainerr_data:/opt/data
@@ -12,7 +12,7 @@ services:
     restart: unless-stopped
 
   dispatcharr:
-    image: ghcr.io/dispatcharr/dispatcharr:0.21.1@sha256:3fe4da0af06887781aba4650bb64bbffc3a10f11a602d4d5a1a8df6a8edca416
+    image: ghcr.io/dispatcharr/dispatcharr:0.22.0@sha256:06189b5f338fe2c8bd2527ab9e2751bc8a1b32b955a44c1bc16cc0768ae290e6
     container_name: dispatcharr
     ports:
       - '9191:9191'
@@ -72,7 +72,7 @@ services:
       - homepage.widget.key=${OVERSEERR_API}
 
   plex:
-    image: docker.io/linuxserver/plex:1.43.0@sha256:a27f1ce1e1d14cd3627ed217f042bf8de0f796ed274fb27b2dc971ae22a64b95
+    image: docker.io/linuxserver/plex:1.43.0@sha256:cbd631f9a972a1c453953a9192c1781dd7d2084db075a1bee78a3cc6387fb103
     container_name: plex
     volumes:
       - plex_config:/config
@@ -97,7 +97,7 @@ services:
       - /dev/dri:/dev/dri
 
   prowlarr:
-    image: docker.io/linuxserver/prowlarr:2.3.0@sha256:9ef5d8bf832edcacb6082f9262cb36087854e78eb7b1c3e1d4375056055b2d82
+    image: docker.io/linuxserver/prowlarr:2.3.0@sha256:e50f3b188a7d1771b61f395c4203e35476bd3047683508740305e830e15bacf7
     container_name: prowlarr
     volumes:
       - prowlarr_config:/config
@@ -117,7 +117,7 @@ services:
       - homepage.widget.key=${PROWLARR_API}
 
   radarr:
-    image: docker.io/linuxserver/radarr:6.0.4@sha256:ca43905eaf2dd11425efdcfe184892e43806b1ae0a830440c825cecbc2629cfb
+    image: docker.io/linuxserver/radarr:6.1.1@sha256:581f159c2b67436863cb4da30e158ef6f6b8878472abbba79ee5d5f7e6b7d28d
     container_name: radarr
     volumes:
       - radarr_config:/config
@@ -181,7 +181,7 @@ services:
       - homepage.widget.key=${TAUTULLI_API}
 
   transmission:
-    image: docker.io/linuxserver/transmission:4.1.1@sha256:9be45020def7c121267d0c08ee7dfdcb39a07432699b347780f8acfb465951b5
+    image: docker.io/linuxserver/transmission:4.1.1@sha256:215b62e0c51e139ec7237a21d44c6ace14bbf36bff4c092465803d5c974a531e
     container_name: transmission
     volumes:
       - transmission_config:/config
