@@ -2,7 +2,7 @@ name: trips
 
 services:
   trek:
-    image: mauriceboe/trek:2.9.3@sha256:2b80c098d206c5b69436a2c64baa4676026f4ba80355438b2a5abab879ce4c3f
+    image: mauriceboe/trek:2.9.7@sha256:220d5f553e23018a37a887cf78b2e02218221eacbc2535a7b67e4dbff5513746
     container_name: trek
     environment:
       - NODE_ENV=production
