@@ -216,7 +216,7 @@ executions = [
 [[procedure]]
 name = "Key Rotation"
 tags = ["system", "synced"]
-config.schedule = "* * * * */3 SUN"
+config.schedule = "0 0 0 0 */3 SUN"
 config.schedule_format = "Cron"
 
 [[procedure.config.stage]]
