@@ -75,7 +75,7 @@ services:
   # Log aggregation
   ##
   victorialogs:
-    image: docker.io/victoriametrics/victoria-logs:v1.49.0@sha256:d0c8441ca886e055c519daa89fb0a399bfdc0908fe85700d603beb2126d714c6
+    image: docker.io/victoriametrics/victoria-logs:v1.50.0@sha256:ae9bea8d8a3b0fc47c7f0058bcca410e79c84b4a0acd12d4dac71b9302526590
     container_name: victorialogs
     volumes:
       - victorialogs_data:/vlogs
