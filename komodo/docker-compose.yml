@@ -38,7 +38,7 @@ services:
       - homepage.widget.showSummary=true
 
   mongo:
-    image: mongo:8.2.7@sha256:0ebdca54ec8007f4bacd3790135f4a8db9ea2e9c62d296442776cf9d3b1c3422
+    image: mongo:8.2.7@sha256:7abfba0d07c9330373f8173981ea4d09cd8a82cdf0e86ccaf7008848d1d24f62
     container_name: komodo_db
     volumes:
       - mongo_data:/data/db
