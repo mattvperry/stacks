@@ -56,7 +56,7 @@ services:
   # Collection aggregation
   ##
   vector:
-    image: docker.io/timberio/vector:0.54.0-alpine@sha256:0a5568d7fe54ef565c9e83a8c20ecf0bc7289d1923d78cd5fbe192158a495267
+    image: docker.io/timberio/vector:0.55.0-alpine@sha256:faf14cdafb5526a94b478b2a51055b774b92761c2a22ce3af1fa416a67b75939
     container_name: vector
     depends_on:
       victorialogs:
