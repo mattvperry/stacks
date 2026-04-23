@@ -2,7 +2,7 @@ name: trips
 
 services:
   trek:
-    image: mauriceboe/trek:3.0.4@sha256:f4c28435c5cf169bcd3f10c75338a2f18a72cbe5093fe74d63205f20e624612b
+    image: mauriceboe/trek:3.0.6@sha256:edcaa1d15d7b3163a39faedcc832d450b5c4c2d49102aca6825ce8ad437bf988
     container_name: trek
     environment:
       - APP_URL=https://trips.mattvperry.com
