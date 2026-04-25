@@ -2,7 +2,7 @@ name: dns
 
 services:
   technitium_dns:
-    image: technitium/dns-server:14.3.0@sha256:322b236403ca25028032f28736e2270a860527b030b162c9f82451c6494c4698
+    image: technitium/dns-server:15.0.0@sha256:1265326d6744ba0ae24254c625196f2dfa84a36d4bb84dad07d9d2f950ace1d8
     container_name: technitium_dns
     volumes:
       - technitium_config:/etc/dns
