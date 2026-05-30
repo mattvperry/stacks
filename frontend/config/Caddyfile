@@ -120,3 +120,7 @@ channels.mattvperry.com {
 trips.mattvperry.com {
     reverse_proxy trek:3000
 }
+
+books.mattvperry.com {
+    reverse_proxy grimmory:6060
+}
