@@ -28,7 +28,7 @@ services:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=grimmory
       - MYSQL_USER=grimmory
-      - MYSQL_PASWORD=${DB_PASSWORD}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
     volumes:
       - mariadb_config:/config
     restart: unless-stopped
