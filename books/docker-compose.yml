@@ -1,0 +1,43 @@
+name: unifi
+
+services:
+  grimmory:
+    image: grimmory/grimmory:v3.1.0@sha256:c83dcb59975c9a680ecdf84d60e7e5c9b05200818bab8794f4d84a7e008a549a
+    container_name: grimmory
+    environment:
+      - USER_ID=1000
+      - GROUP_ID=1001
+      - TZ=America/New_York
+      - DATABASE_URL=jdbc:mariadb://mariadb:3306/grimmory
+      - DATABASE_USERNAME=grimmory
+      - DATABASE_PASSWORD=${DB_PASSWORD}
+      - BOOKLORE_PORT=6060
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    volumes:
+      - grimmory_data:/app/data
+    restart: unless-stopped
+
+  mariadb:
+    image: lsct.io/linuxserver/mariadb:11.4.12@sha256:9f24c5bea49f85077cecba60e198b2c588b13c17f4ca394dd83916a95a58ca70
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=grimmory
+      - MYSQL_USER=grimmory
+      - MYSQL_PASWORD=${DB_PASSWORD}
+    volumes:
+      - mariadb_config:/config
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mariadb-admin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  grimmory_data:
+  mariadb_config:
