@@ -25,6 +25,21 @@ ENCRYPTION_KEY=[[AUTH_ENCRYPTION_KEY]]
 ##
 
 [[stack]]
+name = "books"
+tags = ["synced"]
+[stack.config]
+server = "Local"
+linked_repo = "Stacks"
+run_directory = "books"
+file_paths = ["docker-compose.yml"]
+environment = """
+DB_PASSWORD=[[BOOKS_DB_PASS]]
+MYSQL_ROOT_PASSWORD=[[BOOKS_DB_ROOT_PASS]]
+"""
+
+##
+
+[[stack]]
 name = "dns"
 tags = ["synced"]
 [stack.config]
