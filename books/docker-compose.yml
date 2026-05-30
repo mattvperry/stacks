@@ -17,6 +17,8 @@ services:
         condition: service_healthy
     volumes:
       - grimmory_data:/app/data
+      - /media/trinity/books:/books
+      - /media/trinity/.usenet/complete/books:/bookdrop
     restart: unless-stopped
 
   mariadb:
