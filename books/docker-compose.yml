@@ -18,7 +18,19 @@ services:
     volumes:
       - grimmory_data:/app/data
       - /media/trinity/books:/books
-      - /media/trinity/.usenet/complete/books:/bookdrop
+      - bookdrop:/bookdrop
+    restart: unless-stopped
+
+  shelfmark:
+    image: ghcr.io/calibrain/shelfmark:v1.3.0@sha256:e891eda444b261da48a839db652034bce4e20ac09c167f14adf939dedf96b572
+    container_name: shelfmark
+    environment:
+      - PUID=1000
+      - PGID=1001
+    volumes:
+      - bookdrop:/bookdrop
+      - shelfmark_config:/config
+      - /media/trinity/.usenet/complete/books:/media/trinity/.usenet/complete/books
     restart: unless-stopped
 
   mariadb:
@@ -42,4 +54,6 @@ services:
 
 volumes:
   grimmory_data:
+  shelfmark_config:
   mariadb_config:
+  bookdrop:
