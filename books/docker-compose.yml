@@ -27,6 +27,9 @@ services:
     environment:
       - PUID=1000
       - PGID=1001
+      - HIDE_LOCAL_AUTH=true
+      - DISABLE_LOCAL_AUTH=true
+      - OIDC_AUTO_REDIRECT=true
     volumes:
       - bookdrop:/bookdrop
       - shelfmark_config:/config
