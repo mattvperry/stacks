@@ -41,6 +41,7 @@ services:
       - shelfmark_config:/config
       - /media/trinity/audiobooks:/audiobooks
       - /media/trinity/.usenet/complete/books:/media/trinity/.usenet/complete/books
+      - /media/trinity/.torrents/complete:/media/trinity/.torrents/complete
     networks:
       - default
       - media_default
