@@ -40,8 +40,8 @@ services:
       - bookdrop:/bookdrop
       - shelfmark_config:/config
       - /media/trinity/audiobooks:/audiobooks
-      - /media/trinity/.usenet/complete/books:/media/trinity/.usenet/complete/books
-      - /media/trinity/.torrents/complete:/media/trinity/.torrents/complete
+      - /media/trinity/.usenet/complete/books:/data/.usenet/complete/books
+      - /media/trinity/.torrents/complete:/data/.torrents/complete
     networks:
       - default
       - media_default
