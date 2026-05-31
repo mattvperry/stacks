@@ -39,6 +39,7 @@ services:
     volumes:
       - bookdrop:/bookdrop
       - shelfmark_config:/config
+      - /media/trinity/audiobooks:/audiobooks
       - /media/trinity/.usenet/complete/books:/media/trinity/.usenet/complete/books
     networks:
       - default
