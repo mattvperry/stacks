@@ -122,7 +122,11 @@ trips.mattvperry.com {
 }
 
 library.mattvperry.com {
-    reverse_proxy grimmory:6060
+    reverse_proxy autocaliweb:8083
+}
+
+abs.mattvperry.com {
+    reverse_proxy audiobookshelf:80
 }
 
 books.mattvperry.com {
