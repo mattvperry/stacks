@@ -29,7 +29,7 @@ services:
   # Reverse proxy
   ##
   proxy:
-    image: docker.io/caddy:2.11.3@sha256:ec18ee54aab3315c22e25f3b2babda73ff8007d39b13b3bd1bfffa2f0444c7d9
+    image: docker.io/caddy:2.11.4@sha256:eb37f58646a901dc7727cf448cae36daaefaba79de33b5058dab79aa4c04aefb
     container_name: caddy
     volumes:
       - ./config/Caddyfile:/etc/caddy/Caddyfile
