@@ -181,7 +181,7 @@ services:
       - homepage.widget.key=${TAUTULLI_API}
 
   transmission:
-    image: docker.io/linuxserver/transmission:4.1.1@sha256:cc1b5ba5b79ff201cb9a8c3cb5d94f1fb2b22baea87ad476a5bde087ec26c4be
+    image: docker.io/linuxserver/transmission:4.1.2@sha256:aa4926b22bc25e89820acf427f8a5d1426c34a7ae9bd834e06eda43b12d839c3
     container_name: transmission
     volumes:
       - transmission_config:/config
