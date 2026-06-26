@@ -10,6 +10,7 @@ services:
       - APP_URL=https://auth.mattvperry.com
       - ENCRYPTION_KEY=${ENCRYPTION_KEY}
       - TRUST_PROXY=true
+      - ALLOW_DOWNGRADE=true
     restart: unless-stopped
     healthcheck:
       test: [ "CMD", "/app/pocket-id", "healthcheck" ]
@@ -32,7 +33,6 @@ services:
       - TINYAUTH_OAUTH_PROVIDERS_POCKETID_USERINFOURL=https://auth.mattvperry.com/api/oidc/userinfo
       - TINYAUTH_OAUTH_PROVIDERS_POCKETID_SCOPES=openid email profile groups
       - TINYAUTH_OAUTH_PROVIDERS_POCKETID_NAME=Carbon Auth
-      - ALLOW_DOWNGRADE=true
     restart: unless-stopped
 
 volumes:
