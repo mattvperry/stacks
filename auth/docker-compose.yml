@@ -32,6 +32,7 @@ services:
       - TINYAUTH_OAUTH_PROVIDERS_POCKETID_USERINFOURL=https://auth.mattvperry.com/api/oidc/userinfo
       - TINYAUTH_OAUTH_PROVIDERS_POCKETID_SCOPES=openid email profile groups
       - TINYAUTH_OAUTH_PROVIDERS_POCKETID_NAME=Carbon Auth
+      - ALLOW_DOWNGRADE=true
     restart: unless-stopped
 
 volumes:
