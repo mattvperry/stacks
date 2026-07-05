@@ -2,7 +2,7 @@ name: unifi
 
 services:
   autocaliweb:
-    image: gelbphoenix/autocaliweb:v0.12.11@sha256:d4b2ed0fc7127a861d0c9f4030c33356b612d7d45b48995f002958fd19383ec0
+    image: gelbphoenix/autocaliweb:v0.12.12@sha256:b895a1685b59f3661aa70f3bb20f4051a95401c392661b97b03ed0917bf260db
     container_name: autocaliweb
     environment:
       - TZ=America/New_York
