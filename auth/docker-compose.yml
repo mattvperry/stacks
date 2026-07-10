@@ -2,7 +2,7 @@ name: auth
 
 services:
   pocket-id:
-    image: ghcr.io/pocket-id/pocket-id:v2.8.0@sha256:a073640418b2cfc8587c488a7270580b3ab95cae2c543f5d64bbbe1fd7ccbae8
+    image: ghcr.io/pocket-id/pocket-id:v2.10.0@sha256:183f1ae8426f3af0b65878fae9ddbe9a0515f6548c04d8ebb640ad1abd9c8fce
     container_name: pocketid
     volumes:
       - pocketid_data:/app/data
