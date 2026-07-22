@@ -46,6 +46,7 @@ services:
       - TZ=America/New_York
       - MONGO_INITDB_ROOT_USERNAME=${KOMODO_DB_USERNAME:-admin}
       - MONGO_INITDB_ROOT_PASSWORD=${KOMODO_DB_PASSWORD}
+      - GLIBC_TUNABLES=glibc.pthread.rseq=1
     command: --quiet --wiredTigerCacheSizeGB 0.25
     restart: unless-stopped
     labels:
