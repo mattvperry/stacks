@@ -15,7 +15,6 @@ services:
       - KOMODO_DATABASE_ADDRESS=komodo_db:27017
       - KOMODO_DATABASE_USERNAME=${KOMODO_DB_USERNAME:-admin}
       - KOMODO_DATABASE_PASSWORD=${KOMODO_DB_PASSWORD}
-      - KOMODO_PASSKEY=${KOMODO_PASSKEY}
       - KOMODO_HOST=https://docker.mattvperry.com
       - KOMODO_OIDC_ENABLED=true
       - KOMODO_OIDC_PROVIDER=https://auth.mattvperry.com
