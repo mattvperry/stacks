@@ -84,7 +84,7 @@ services:
       - -loggerFormat=json
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD", "wget", "-qO-", "http://victorialogs:9428/health" ]
+      test: [ "CMD", "curl", "-f", "http://victorialogs:9428/health" ]
       interval: 1s
       timeout: 1s
       retries: 10
