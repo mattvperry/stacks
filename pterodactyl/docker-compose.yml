@@ -15,7 +15,7 @@ services:
   # This service provides the wings runtime.
   ##
   daemon:
-    image: docker.io/ccarney16/pterodactyl-daemon:v1.13.1@sha256:5b80c328414e61afb99c7149cb7de1792a64674079df9d289d1ec2a3a519e7a8
+    image: docker.io/ccarney16/pterodactyl-daemon:v1.13.2@sha256:ef0c75b2931e69c381cd5f8b9be2847ded50a608ccb4d42a049c8fe30f3d352b
     container_name: pterodactyl_wings
     volumes:
       - /var/lib/pterodactyl:/var/lib/pterodactyl
