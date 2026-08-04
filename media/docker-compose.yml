@@ -72,7 +72,7 @@ services:
       - homepage.widget.key=${OVERSEERR_API}
 
   plex:
-    image: docker.io/linuxserver/plex:1.43.3@sha256:0f57346cb9eda39631da8e6f6517dbf0471b91f8e65621305a3e166f8ffce952
+    image: docker.io/linuxserver/plex:1.43.3@sha256:d8b3417b9173bab8bb79b167119b6b69a85558f2127e7fa810a045654e3dbe7f
     container_name: plex
     volumes:
       - plex_config:/config
