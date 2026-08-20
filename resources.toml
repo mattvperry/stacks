@@ -64,6 +64,9 @@ file_paths = ["docker-compose.yml"]
 config_files = [
   { path = "config/Caddyfile", services = ["proxy"], requires = "Restart" }
 ]
+environment = """
+HOMEPAGE_CLIENT_SECRET=${HOMEPAGE_CLIENT_SECRET}
+"""
 
 ##
 
@@ -263,7 +266,7 @@ name = "Local"
 tags = ["synced"]
 [builder.config]
 type = "Server"
-params.server_id = "Local"
+params.servers = ["Local"]
 
 ##
 
