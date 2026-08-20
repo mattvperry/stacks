@@ -65,8 +65,8 @@ config_files = [
   { path = "config/Caddyfile", services = ["proxy"], requires = "Restart" }
 ]
 environment = """
-HOMEPAGE_AUTH_SECRET=${HOMEPAGE_AUTH_SECRET}
-HOMEPAGE_CLIENT_SECRET=${HOMEPAGE_CLIENT_SECRET}
+HOMEPAGE_AUTH_SECRET=[[HOMEPAGE_AUTH_SECRET]]
+HOMEPAGE_CLIENT_SECRET=[[HOMEPAGE_CLIENT_SECRET]]
 """
 
 ##
