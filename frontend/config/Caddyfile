@@ -13,7 +13,7 @@
 www.mattvperry.com, mattvperry.com {
 	@auth {
 		not client_ip private_ranges
-		not path /public* /stats*
+		not path /public* /stats* /api* /
 	}
 
 	import fwauth @auth

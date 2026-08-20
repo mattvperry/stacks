@@ -10,6 +10,10 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - HOMEPAGE_ALLOWED_HOSTS=mattvperry.com
+      - HOMEPAGE_OIDC_ISSUER=https://auth.mattvperry.com
+      - HOMEPAGE_OIDC_CLIENT_ID=86f0d165-8af6-479e-ba62-aeb51de93eda
+      - HOMEPAGE_OIDC_CLIENT_SECRET=${HOMEPAGE_CLIENT_SECRET}
+      - HOMEPAGE_OIDC_NAME=Carbon Auth
     networks:
       - default
       - media_default
