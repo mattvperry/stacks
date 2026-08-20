@@ -11,6 +11,7 @@ services:
     environment:
       - HOMEPAGE_ALLOWED_HOSTS=mattvperry.com
       - HOMEPAGE_AUTH_ENABLED=true
+      - HOMEPAGE_EXTERNAL_URL=https://mattvperry.com
       - HOMEPAGE_OIDC_ISSUER=https://auth.mattvperry.com
       - HOMEPAGE_OIDC_CLIENT_ID=86f0d165-8af6-479e-ba62-aeb51de93eda
       - HOMEPAGE_OIDC_CLIENT_SECRET=${HOMEPAGE_CLIENT_SECRET}
