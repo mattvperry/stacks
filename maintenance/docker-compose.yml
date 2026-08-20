@@ -2,7 +2,7 @@ name: maintenance
 
 services:
   renovate:
-    image: ghcr.io/mend/renovate-ce:14.8.0@sha256:8fdbfee77b2d031c4c8bd49a8931184abc4a535a472180424938ce0cb2e01959
+    image: ghcr.io/mend/renovate-ce:15.3.0@sha256:265d4075adf265b3d1f95f36e89f2b2d93a665e99b4b05e548ba69df0205fefe
     volumes:
       - ./config.js:/usr/src/app/config.js:ro
     environment:
