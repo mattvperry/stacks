@@ -11,6 +11,10 @@
 }
 
 www.mattvperry.com, mattvperry.com {
+	@auth {
+		not client_ip private_ranges
+	}
+
 	reverse_proxy homepage:3000
 
 	reverse_proxy /stats* tautulli:8181 {
@@ -22,9 +26,7 @@ www.mattvperry.com, mattvperry.com {
 		file_server browse
 	}
 
-	import fwauth {
-		not client_ip private_ranges
-	}
+	import fwauth @auth
 
 	reverse_proxy /index* prowlarr:9696
 
