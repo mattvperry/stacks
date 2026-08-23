@@ -11,48 +11,45 @@
 }
 
 www.mattvperry.com, mattvperry.com {
-    handle {
-        reverse_proxy homepage:3000
-
-        reverse_proxy /stats* tautulli:8181 {
-            header_up X-Forwarded-Ssl on
-        }
-
-        handle_path /public* {
-            root * /srv/http/public
-            file_server browse
-        }
+    @auth {
+        not client_ip private_ranges
+        path /index* /tv* /movies* /maintain* /nzb* /torrent* /files*
     }
 
-    handle {
-        @auth {
-            not client_ip private_ranges
-        }
+    import fwauth @auth
 
-        import fwauth @auth
+    reverse_proxy homepage:3000
 
-        reverse_proxy /index* prowlarr:9696
+    reverse_proxy /index* prowlarr:9696
 
-        reverse_proxy /tv* sonarr:8989
+    reverse_proxy /tv* sonarr:8989
 
-        reverse_proxy /movies* radarr:7878
+    reverse_proxy /movies* radarr:7878
 
-        reverse_proxy /maintain* maintainerr:6246
+    reverse_proxy /maintain* maintainerr:6246
 
-        redir /nzb /nzb/
-        handle_path /nzb/* {
-            reverse_proxy nzbget:6789
-        }
+    redir /nzb /nzb/
+    handle_path /nzb/* {
+        reverse_proxy nzbget:6789
+    }
 
-        handle_path /torrent* {
-            rewrite * /transmission{uri}
-            reverse_proxy transmission:9091
-        }
+    handle_path /torrent* {
+        rewrite * /transmission{uri}
+        reverse_proxy transmission:9091
+    }
 
-        handle_path /files* {
-            root * /srv/http/files
-            file_server browse
-        }
+    handle_path /files* {
+        root * /srv/http/files
+        file_server browse
+    }
+
+    reverse_proxy /stats* tautulli:8181 {
+        header_up X-Forwarded-Ssl on
+    }
+
+    handle_path /public* {
+        root * /srv/http/public
+        file_server browse
     }
 }
 
