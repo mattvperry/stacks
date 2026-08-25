@@ -161,7 +161,7 @@ services:
       - homepage.widget.enableQueue=true
 
   tautulli:
-    image: docker.io/linuxserver/tautulli:2.17.2@sha256:91dac75429c459756e7ef81cefa26a751b314086562a641aebb2c03ddfd52d94
+    image: docker.io/linuxserver/tautulli:2.18.0@sha256:05cb00b7aaaee15d7d72b1efa4c271b057e88c4496f654e6774291b99920ed06
     container_name: tautulli
     volumes:
       - tautulli_config:/config
