@@ -10,7 +10,7 @@ services:
     restart: unless-stopped
 
   unifi-os:
-    image: ghcr.io/lemker/unifi-os-server:v1.6.0@sha256:1a6a7167082d005f714b33757af74972aeac890c156ea37136c863ca606bacf9
+    image: ghcr.io/lemker/unifi-os-server:v1.7.0@sha256:ffa7bee4d6ed98350abe29247087ee330232c367b11e45a71b769719d29679f5
     container_name: unifi-os
     cgroup: host
     cap_add:
