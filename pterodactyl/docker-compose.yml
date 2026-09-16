@@ -35,7 +35,7 @@ services:
   # Stores Server/User information
   ##
   mariadb:
-    image: mariadb:12.3.3@sha256:18a63083984079b94399c37e83aec865d2463d48e1c3b69c491cc48b76948732
+    image: mariadb:12.3.3@sha256:adbf5727f3d6ffa0ea11109f948247d88d110edd3f43f8d4c134c0a09060c5f3
     container_name: pterodactyl_db
     volumes:
       - mysql:/var/lib/mysql
