@@ -20,7 +20,7 @@ services:
   # Dashboard and query interface
   ##
   grafana:
-    image: docker.io/grafana/grafana:13.1@sha256:248cda1de5bc3e69c3fb23c5efe1292aa18399d8ece499aa88cab6fd16f78d4b
+    image: docker.io/grafana/grafana:13.1@sha256:1a8e58976a6cd349d1ffdd27a14b92053816c7c60e6b7e157013e9bf0b9cec5f
     container_name: grafana
     volumes:
       - grafana_data:/var/lib/grafana
