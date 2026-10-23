@@ -53,7 +53,7 @@ services:
       - komodo.skip
 
   periphery:
-    image: ghcr.io/moghtech/komodo-periphery:2.3.4@sha256:71da0378b22d541b9b84390ffdb69863a8eeb5b16bbd9d457eb26a37a1be022e
+    image: ghcr.io/moghtech/komodo-periphery:2.3.4@sha256:fb4b52961fcce7a31e3776930e422967b6640f653de876f59f26dea243e29beb
     container_name: komodo_periphery
     depends_on:
       - core
