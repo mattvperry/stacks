@@ -51,6 +51,11 @@ www.mattvperry.com, mattvperry.com {
         root * /srv/http/public
         file_server browse
     }
+
+    handle_path /.well-known* {
+        root * /srv/http/well-known
+        file_server
+    }
 }
 
 auth.mattvperry.com {
