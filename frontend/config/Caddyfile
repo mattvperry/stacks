@@ -136,3 +136,7 @@ books.mattvperry.com {
 map.mattvperry.com {
     reverse_proxy 172.18.0.1:8100
 }
+
+enroll.mattvperry.com {
+    reverse_proxy mattvperry.com:5088
+}
