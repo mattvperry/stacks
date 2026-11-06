@@ -138,5 +138,5 @@ map.mattvperry.com {
 }
 
 enroll.mattvperry.com {
-    reverse_proxy applesim-capture:5088
+    reverse_proxy applesim-capture:8080
 }
