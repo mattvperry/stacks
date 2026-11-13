@@ -28,7 +28,7 @@ services:
     restart: unless-stopped
 
   nzbget:
-    image: docker.io/linuxserver/nzbget:26.3.20261106@sha256:6f86d5cb17fa12c214e0c699addde8ee5b9622fbafd2f4dc2eb8f89e7251dc49
+    image: docker.io/linuxserver/nzbget:26.3.20261113@sha256:17e13511d47b1439af19b7ef17d08c8643eb2a5f009b1d3f800b704ebe590218
     container_name: nzbget
     volumes:
       - nzbget_config:/config
