@@ -76,7 +76,7 @@ services:
   # -- Redis --
   ##
   redis:
-    image: redis:8.12.0@sha256:e18c13184a50fce8f4214e549ed62b0937200b14053d11908836f4ce8264fb65
+    image: redis:8.12.0@sha256:d5dc9046df0c60dd919fb0c6a3c3af2c9c4c93fba71b5b7931ed2b076f7fe6ba
     container_name: pterodactyl_cache
     networks:
       default:
